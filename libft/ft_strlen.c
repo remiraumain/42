@@ -6,13 +6,15 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:15:44 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/08 08:19:41 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:22:54 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *s)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])

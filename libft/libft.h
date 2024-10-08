@@ -6,9 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 09:11:10 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/08 10:53:29 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:22:08 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
