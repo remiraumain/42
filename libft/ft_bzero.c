@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 09:11:10 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/08 10:53:29 by rraumain         ###   ########.fr       */
+/*   Created: 2024/10/08 10:49:53 by rraumain          #+#    #+#             */
+/*   Updated: 2024/10/08 10:53:19 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isalpha(int c);
-int		ft_isdigit(int c);
-int		ft_isalnum(int c);
-int		ft_isascii(int c);
-int		ft_isprint(int c);
-int		ft_strlen(const char *s);
-void	*memset(void *s, int c, int n);
-void	bzero(void *s, int n);
+void	bzero(void *s, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		s[i] = '\0';
+		i++;
+	}
+	return (s);
+}
