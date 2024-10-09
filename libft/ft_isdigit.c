@@ -6,12 +6,12 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:17:55 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/09 08:21:44 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:53:51 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @brief Checks for a numeric character.
+ * @brief Check for a numeric character.
  * 
  * The ft_isdigit() function checks if c is a numeric character (0 through 9).
  * 

@@ -6,12 +6,12 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:22:14 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/09 08:43:25 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:54:02 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @brief Checks for an alphanumeric character.
+ * @brief Check for an alphanumeric character.
  * 
  * The ft_isalnum() function checks if c is an alphanumeric character; it is
  *  equivalent to (isalpha(c) || isdigit(c)).

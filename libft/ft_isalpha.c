@@ -6,12 +6,12 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:15:29 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/09 08:43:53 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:53:58 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @brief Checks for an alphabetic character.
+ * @brief Check for an alphabetic character.
  * 
  * The ft_isalpha() function checks if c is an alphabetic character; it is
  *  equivalent to (isupper(c) || islower(c)).

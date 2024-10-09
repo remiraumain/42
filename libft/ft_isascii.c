@@ -6,12 +6,12 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:29:06 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/09 08:44:35 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:53:55 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @brief Checks if the value fits into the ASCII character set.
+ * @brief Check if the value fits into the ASCII character set.
  * 
  * The ft_isascii() function checks if c is an alphanumeric character; it is
  *  equivalent to (isalpha(c) || isdigit(c)).
