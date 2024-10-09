@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 09:11:10 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/09 11:23:55 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:52:12 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,4 @@ int		ft_strlen(const char *s);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
+int	    ft_atoi(const char *nptr);
