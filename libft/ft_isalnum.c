@@ -6,17 +6,19 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:22:14 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/09 08:23:09 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/09 08:43:25 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
  * @brief Checks for an alphanumeric character.
  * 
- * The ft_isalnum() function checks if c is an alphanumeric character; it is equivalent to (isalpha(c) || isdigit(c)).
+ * The ft_isalnum() function checks if c is an alphanumeric character; it is
+ *  equivalent to (isalpha(c) || isdigit(c)).
  * 
  * @param c Character (ASCII encoded) to check.
- * @return Zero (0) if false (not an alphanumeric character) and One (1) if correct.
+ * @return Zero (0) if false (not an alphanumeric character) and One (1) if
+ *  correct.
  */
 int	ft_isalnum(int c)
 {
