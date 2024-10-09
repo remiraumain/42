@@ -6,19 +6,32 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:41:17 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/08 10:48:16 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/09 08:38:02 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*memset(void *s, int c, int n)
+#include "libft.h"
+
+/**
+ * @brief Replace n bytes of the memory at the location pointed by s with the constant byte c.
+ * 
+ * The ft_memset() function fills the first n bytes of the memory area pointed to by s
+ *  with the constant byte c.
+ * 
+ * @param s Pointer of the memory's location.
+ * @param c The constant byte that is used for the replacement.
+ * @param n Number of bytes to erase.
+ */
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int	i;
+	size_t	i;
+	char	*ptr;
 
 	i = 0;
+	ptr = (char *)s;
 	while (i < n)
 	{
-		s[i] = c;
+		ptr[i] = c;
 		i++;
 	}
-	return (s);
 }
