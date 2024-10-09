@@ -6,19 +6,21 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:49:53 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/09 07:16:10 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/09 07:33:37 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Brief
+ * @brief Erases n bytes of the memory  at the location pointed by s.
  * 
- * Desc
+ * The  bzero()  function  erases  the data in the n bytes of the memory starting
+ *  at the location pointed to by s, by writing zeros (bytes containing '\0') to
+ *  that area.
  * 
- * @param s What is s
- * @param n What is n 
+ * @param s Pointer of the memory's location. 
+ * @param n Number of bytes to erase.
  */
 void	bzero(void *s, size_t n)
 {
@@ -26,7 +28,7 @@ void	bzero(void *s, size_t n)
 	char	*ptr;
 
 	i = 0;
-	ptr = (char)s;
+	ptr = (char *)s;
 	while (i < n)
 	{
 		ptr[i] = '\0';
