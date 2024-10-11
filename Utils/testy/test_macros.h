@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:48:28 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/11 10:55:19 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/11 11:13:42 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	run_test(void (*test)(void), const char *test_name);
  *
  * int main(void)
  * {
- *     RUN_TEST(my_test_function);
+ *     RUN_TEST(my_test_function, my_test_function_name);
  *     return (0);
  * }
  * @endcode
