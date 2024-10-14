@@ -6,9 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:43:28 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/11 10:55:05 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/11 18:26:13 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 /**
  * @brief Runs a test function and displays its name.

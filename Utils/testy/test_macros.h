@@ -6,14 +6,12 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:48:28 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/11 11:13:42 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/11 18:26:10 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEST_MACROS_H
 # define TEST_MACROS_H
-
-# include <stdio.h>
 
 void	run_test(void (*test)(void), const char *test_name);
 
