@@ -5,7 +5,7 @@ LIBDIR := ..
 TESTYDIR := ../../../Utils/testy
 OBJDIR := obj
 
-TEST_SRCS := $(SRCDIR)/test_ft_strlen.c
+TEST_SRCS := $(SRCDIR)/test_ft_strlen.c $(SRCDIR)/test_ft_isalpha.c 
 
 TESTY_SRCS := $(TESTYDIR)/assertions.c $(TESTYDIR)/test_macros.c
 

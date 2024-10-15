@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:48:28 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/11 18:26:10 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/15 07:45:50 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,6 @@
 # define TEST_MACROS_H
 
 void	run_test(void (*test)(void), const char *test_name);
-
-/**
- * @brief Defines a test function.
- *
- * This macro simplifies the declaration of a test function. It defines a
- *  function with the specified name that takes no arguments.
- *
- * @param name The name of the test function.
- *
- * @note Use the `RUN_TEST` macro to execute the test function.
- *
- * @code
- * --- Example usage ---
- *
- * TEST(my_test_function)
- * {
- *     // Your test code here
- * }
- * @endcode
- */
-# define TEST(name) void name(void)
 
 /**
  * @brief Runs a test function and displays its name.

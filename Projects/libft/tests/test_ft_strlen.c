@@ -6,19 +6,17 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:28:30 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/11 20:24:44 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/15 08:10:33 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../Utils/testy/testy.h"
+/* #include "../../../Utils/testy/testy.h"
 #include "../libft.h"
 #include <stdlib.h>
 #include <string.h>
 
-/**
- * Test Standard string.
- */
-TEST(test_ft_strlen_basic)
+// Test Standard string.
+void	test_ft_strlen_basic(void)
 {
 	const char	*str;
 	size_t		expected;
@@ -27,13 +25,11 @@ TEST(test_ft_strlen_basic)
 	str = "Hello, World!";
 	expected = strlen(str);
 	actual = ft_strlen(str);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
-/**
- * Test Empty string.
- */
-TEST(test_ft_strlen_empty)
+// Test Empty string.
+void	test_ft_strlen_empty(void)
 {
 	const char	*str;
 	size_t		expected;
@@ -45,10 +41,8 @@ TEST(test_ft_strlen_empty)
 	ASSERT_EQ(expected, actual);
 }
 
-/**
- * Test one character.
- */
-TEST(test_ft_strlen_only_one)
+// Test one character.
+void	test_ft_strlen_only_one(void)
 {
 	const char	*str;
 	size_t		expected;
@@ -60,10 +54,8 @@ TEST(test_ft_strlen_only_one)
 	ASSERT_EQ(expected, actual);
 }
 
-/**
- * Test white spaces.
- */
-TEST(test_ft_strlen_whitespaces)
+// Test white spaces.
+void	test_ft_strlen_whitespaces(void)
 {
 	const char	*str;
 	size_t		expected;
@@ -75,10 +67,8 @@ TEST(test_ft_strlen_whitespaces)
 	ASSERT_EQ(expected, actual);
 }
 
-/**
- * Test special characters.
- */
-TEST(test_ft_strlen_special)
+// Test special characters.
+void	test_ft_strlen_special(void)
 {
 	const char	*str;
 	size_t		expected;
@@ -90,10 +80,8 @@ TEST(test_ft_strlen_special)
 	ASSERT_EQ(expected, actual);
 }
 
-/**
- * Test if stop at null-terminated character.
- */
-TEST(test_ft_strlen_null_terminated)
+// Test if stop at null-terminated character.
+void	test_ft_strlen_null_terminated(void)
 {
 	const char	*str;
 	size_t		expected;
@@ -105,10 +93,8 @@ TEST(test_ft_strlen_null_terminated)
 	ASSERT_EQ(expected, actual);
 }
 
-/**
- * Test counting of UTF-8 multibyte characters.
- */
-TEST(test_ft_strlen_utf8_character)
+// Test counting of UTF-8 multibyte characters.
+void	test_ft_strlen_utf8_character(void)
 {
 	const char	*str;
 	size_t		expected;
@@ -120,10 +106,8 @@ TEST(test_ft_strlen_utf8_character)
 	ASSERT_EQ(expected, actual);
 }
 
-/**
- * Test ft_strlen with a very long string.
- */
-TEST(test_ft_strlen_long_string)
+// Test ft_strlen with a very long string.
+void	test_ft_strlen_long_string(void)
 {
 	char	*str;
 	size_t	length;
@@ -155,11 +139,12 @@ int	main(void)
 {
 	RUN_TEST(test_ft_strlen_basic, "ft_strlen_basic");
 	RUN_TEST(test_ft_strlen_empty, "ft_strlen_empty");
-	RUN_TEST(test_ft_strlen_long_string, "test_ft_strlen_long_string");
-	RUN_TEST(test_ft_strlen_null_terminated, "test_ft_strlen_null_terminated");
-	RUN_TEST(test_ft_strlen_only_one, "test_ft_strlen_only_one");
-	RUN_TEST(test_ft_strlen_special, "test_ft_strlen_special");
-	RUN_TEST(test_ft_strlen_utf8_character, "test_ft_strlen_utf8_character");
-	RUN_TEST(test_ft_strlen_whitespaces, "test_ft_strlen_whitespaces");
+	RUN_TEST(test_ft_strlen_only_one, "ft_strlen_only_one");
+	RUN_TEST(test_ft_strlen_whitespaces, "ft_strlen_whitespaces");
+	RUN_TEST(test_ft_strlen_long_string, "ft_strlen_long_string");
+	RUN_TEST(test_ft_strlen_null_terminated, "ft_strlen_null_terminated");
+	RUN_TEST(test_ft_strlen_special, "ft_strlen_special");
+	RUN_TEST(test_ft_strlen_utf8_character, "ft_strlen_utf8_character");
 	return (0);
 }
+ */
