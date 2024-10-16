@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:28:23 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/16 12:21:05 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:48:49 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void	run_test(void (*test)(void), const char *test_name);
 void	assert_eq(int expected, int actual);
 void	assert_str_eq(char *expected, char *actual);
 void	assert_fail(char *message);
+int		asser_cmp_buf(const char *expected, const char *actual);
 
 #endif

@@ -88,3 +88,21 @@ void	assert_fail(char *message)
 {
 	printf("%s", message);
 }
+
+/**
+ * @brief Compare deux chaînes de caractères.
+ *
+ * @param expected Chaîne attendue.
+ * @param actual Chaîne obtenue.
+ */
+void	asser_cmp_buf(const char *expected, const char *actual)
+{
+	if (strcmp(expected, actual) != 0)
+	{
+		printf("❌ Expected \"%s\", got \"%s\"\n", expected, actual);
+	}
+	else
+	{
+		printf("✅ Expected \"%s\", got \"%s\"\n", expected, actual);
+	}
+}
