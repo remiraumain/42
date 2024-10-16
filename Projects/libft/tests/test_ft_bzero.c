@@ -30,8 +30,8 @@ void	test_ft_bzero_basic(void)
 	buffer_custom[10] = '\0';
 	bzero(buffer_std, n);
 	ft_bzero(buffer_custom, n);
-	asser_cmp_buf(buffer_std, buffer_custom);
-	asser_cmp_buf(&buffer_std[n], &buffer_custom[n]);
+	asser_cmp_buf(buffer_std, buffer_custom, 10);
+	asser_cmp_buf(&buffer_std[n], &buffer_custom[n], 1);
 }
 
 // Test avec n = 0.
@@ -48,7 +48,7 @@ void	test_ft_bzero_zero_size(void)
 	buffer_custom[10] = '\0';
 	bzero(buffer_std, n);
 	ft_bzero(buffer_custom, n);
-	asser_cmp_buf(buffer_std, buffer_custom);
+	asser_cmp_buf(buffer_std, buffer_custom, 10);
 }
 
 // Test de zérotage complet du buffer.
@@ -65,11 +65,11 @@ void	test_ft_bzero_full_size(void)
 	buffer_custom[15] = '\0';
 	bzero(buffer_std, n);
 	ft_bzero(buffer_custom, n);
-	asser_cmp_buf(buffer_std, buffer_custom);
-	asser_cmp_buf(&buffer_std[n], &buffer_custom[n]);
+	asser_cmp_buf(buffer_std, buffer_custom, 15);
+	asser_cmp_buf(&buffer_std[n], &buffer_custom[n], 1);
 }
 
-// Test avec une taille grande (1024 caractères).
+// Test avec une taille grande (1024 octets).
 void	test_ft_bzero_large_size(void)
 {
 	size_t	n;
@@ -90,8 +90,8 @@ void	test_ft_bzero_large_size(void)
 	buffer_custom[n] = '\0';
 	bzero(buffer_std, n);
 	ft_bzero(buffer_custom, n);
-	asser_cmp_buf(buffer_std, buffer_custom);
-	asser_cmp_buf(&buffer_std[n], &buffer_custom[n]);
+	asser_cmp_buf(buffer_std, buffer_custom, n);
+	asser_cmp_buf(&buffer_std[n], &buffer_custom[n], 1);
 	free(buffer_std);
 	free(buffer_custom);
 }
@@ -114,9 +114,9 @@ void	test_ft_bzero_multiple_calls(void)
 	ft_bzero(buffer_custom, n1);
 	bzero(buffer_std + n1, n2);
 	ft_bzero(buffer_custom + n1, n2);
-	asser_cmp_buf(buffer_std, buffer_custom);
-	asser_cmp_buf(&buffer_std[n1], &buffer_custom[n1]);
-	asser_cmp_buf(&buffer_std[n1 + n2], &buffer_custom[n1 + n2]);
+	asser_cmp_buf(buffer_std, buffer_custom, 10);
+	asser_cmp_buf(&buffer_std[n1], &buffer_custom[n1], n2);
+	asser_cmp_buf(&buffer_std[n1 + n2], &buffer_custom[n1 + n2], 1);
 }
 
 // Test avec des buffers contenant déjà des zéros.
@@ -133,8 +133,8 @@ void	test_ft_bzero_already_zero(void)
 	buffer_custom[10] = '\0';
 	bzero(buffer_std, n);
 	ft_bzero(buffer_custom, n);
-	asser_cmp_buf(buffer_std, buffer_custom);
-	asser_cmp_buf(&buffer_std[n], &buffer_custom[n]);
+	asser_cmp_buf(buffer_std, buffer_custom, 10);
+	asser_cmp_buf(&buffer_std[n], &buffer_custom[n], 1);
 }
 
 int	main(void)

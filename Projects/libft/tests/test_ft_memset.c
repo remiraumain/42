@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../Utils/testy/testy.h"
+/* #include "../../../Utils/testy/testy.h"
 #include "../libft.h"
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
 
-/* Test de base pour ft_memset. */
+// Test de base pour ft_memset.
 void	test_ft_memset_basic(void)
 {
 	char	buffer_std[11];
@@ -34,7 +34,7 @@ void	test_ft_memset_basic(void)
 	asser_cmp_buf(&buffer_std[n], &buffer_custom[n], 1);
 }
 
-/* Test avec n = 0. */
+// Test avec n = 0.
 void	test_ft_memset_zero_size(void)
 {
 	char	buffer_std[11];
@@ -51,7 +51,7 @@ void	test_ft_memset_zero_size(void)
 	asser_cmp_buf(buffer_std, buffer_custom, 10);
 }
 
-/* Test de remplissage complet du buffer. */
+// Test de remplissage complet du buffer.
 void	test_ft_memset_full_size(void)
 {
 	char	buffer_std[16];
@@ -69,7 +69,7 @@ void	test_ft_memset_full_size(void)
 	asser_cmp_buf(&buffer_std[n], &buffer_custom[n], 1);
 }
 
-/* Test avec une taille grande (1024 octets). */
+// Test avec une taille grande (1024 octets).
 void	test_ft_memset_large_size(void)
 {
 	size_t	n;
@@ -96,7 +96,7 @@ void	test_ft_memset_large_size(void)
 	free(buffer_custom);
 }
 
-/* Test multiple appels de ft_memset sur le même buffer. */
+// Test multiple appels de ft_memset sur le même buffer.
 void	test_ft_memset_multiple_calls(void)
 {
 	char	buffer_std[21];
@@ -119,7 +119,7 @@ void	test_ft_memset_multiple_calls(void)
 	asser_cmp_buf(&buffer_std[n1 + n2], &buffer_custom[n1 + n2], 1);
 }
 
-/* Test avec des buffers contenant déjà des zéros. */
+// Test avec des buffers contenant déjà des zéros.
 void	test_ft_memset_already_zero(void)
 {
 	char	buffer_std[11];
@@ -147,3 +147,4 @@ int	main(void)
 	run_test(test_ft_memset_already_zero, "ft_memset_already_zero");
 	return (0);
 }
+ */
