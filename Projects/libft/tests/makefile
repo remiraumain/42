@@ -13,7 +13,7 @@ TEST_SRCS := $(SRCDIR)/test_ft_strlen.c $(SRCDIR)/test_ft_isalpha.c					\
 			$(SRCDIR)/test_ft_memset.c $(SRCDIR)/test_ft_strlcpy.c					\
 			$(SRCDIR)/test_ft_strlcat.c $(SRCDIR)/test_ft_isprint.c					\
 			$(SRCDIR)/test_ft_memmove.c $(SRCDIR)/test_ft_strchr.c					\
-			$(SRCDIR)/test_ft_strrchr.c
+			$(SRCDIR)/test_ft_strrchr.c $(SRCDIR)/test_ft_strncmp.c					\
 
 TESTY_SRCS := $(TESTYDIR)/assertions.c $(TESTYDIR)/test_macros.c
 
@@ -22,7 +22,7 @@ LIB_SRCS := $(LIBDIR)/ft_strlen.c $(LIBDIR)/ft_atoi.c $(LIBDIR)/ft_bzero.c 			\
             $(LIBDIR)/ft_isdigit.c $(LIBDIR)/ft_isprint.c $(LIBDIR)/ft_memcpy.c 	\
             $(LIBDIR)/ft_memset.c $(LIBDIR)/ft_tolower.c $(LIBDIR)/ft_toupper.c		\
 			$(LIBDIR)/ft_strlcpy.c $(LIBDIR)/ft_strlcat.c $(LIBDIR)/ft_memmove.c	\
-			$(LIBDIR)/ft_strchr.c $(LIBDIR)/ft_strrchr.c
+			$(LIBDIR)/ft_strchr.c $(LIBDIR)/ft_strrchr.c $(LIBDIR)/ft_strncmp.c		\
 
 SRCS := $(TEST_SRCS) $(LIB_SRCS) $(TESTY_SRCS)
 
