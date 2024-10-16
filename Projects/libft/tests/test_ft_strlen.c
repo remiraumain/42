@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:28:30 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/15 08:10:33 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:21:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	test_ft_strlen_empty(void)
 	str = "";
 	expected = strlen(str);
 	actual = ft_strlen(str);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test one character.
@@ -51,7 +51,7 @@ void	test_ft_strlen_only_one(void)
 	str = "A";
 	expected = strlen(str);
 	actual = ft_strlen(str);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test white spaces.
@@ -64,7 +64,7 @@ void	test_ft_strlen_whitespaces(void)
 	str = "     ";
 	expected = strlen(str);
 	actual = ft_strlen(str);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test special characters.
@@ -77,7 +77,7 @@ void	test_ft_strlen_special(void)
 	str = "\n\t\r\b\\\'\"";
 	expected = strlen(str);
 	actual = ft_strlen(str);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test if stop at null-terminated character.
@@ -90,7 +90,7 @@ void	test_ft_strlen_null_terminated(void)
 	str = "He\0llo";
 	expected = strlen(str);
 	actual = ft_strlen(str);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test counting of UTF-8 multibyte characters.
@@ -103,7 +103,7 @@ void	test_ft_strlen_utf8_character(void)
 	str = "Héllo";
 	expected = strlen(str);
 	actual = ft_strlen(str);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test ft_strlen with a very long string.
@@ -131,20 +131,20 @@ void	test_ft_strlen_long_string(void)
 	str[length] = '\0';
 	expected = strlen(str);
 	actual = ft_strlen(str);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 	free(str);
 }
 
 int	main(void)
 {
-	RUN_TEST(test_ft_strlen_basic, "ft_strlen_basic");
-	RUN_TEST(test_ft_strlen_empty, "ft_strlen_empty");
-	RUN_TEST(test_ft_strlen_only_one, "ft_strlen_only_one");
-	RUN_TEST(test_ft_strlen_whitespaces, "ft_strlen_whitespaces");
-	RUN_TEST(test_ft_strlen_long_string, "ft_strlen_long_string");
-	RUN_TEST(test_ft_strlen_null_terminated, "ft_strlen_null_terminated");
-	RUN_TEST(test_ft_strlen_special, "ft_strlen_special");
-	RUN_TEST(test_ft_strlen_utf8_character, "ft_strlen_utf8_character");
+	run_test(test_ft_strlen_basic, "ft_strlen_basic");
+	run_test(test_ft_strlen_empty, "ft_strlen_empty");
+	run_test(test_ft_strlen_only_one, "ft_strlen_only_one");
+	run_test(test_ft_strlen_whitespaces, "ft_strlen_whitespaces");
+	run_test(test_ft_strlen_long_string, "ft_strlen_long_string");
+	run_test(test_ft_strlen_null_terminated, "ft_strlen_null_terminated");
+	run_test(test_ft_strlen_special, "ft_strlen_special");
+	run_test(test_ft_strlen_utf8_character, "ft_strlen_utf8_character");
 	return (0);
 }
  */

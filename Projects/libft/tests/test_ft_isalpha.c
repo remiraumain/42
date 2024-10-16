@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 07:51:56 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/15 08:56:20 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:21:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	test_ft_isalpha_upper(void)
 	c = 'H';
 	expected = isalpha(c);
 	actual = ft_isalpha(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test lowercase characters.
@@ -37,7 +37,7 @@ void	test_ft_isalpha_lower(void)
 	c = 'h';
 	expected = isalpha(c);
 	actual = ft_isalpha(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test digit characters.
@@ -50,7 +50,7 @@ void	test_ft_isalpha_digit(void)
 	c = '9';
 	expected = isalpha(c);
 	actual = ft_isalpha(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test symbol characters.
@@ -63,7 +63,7 @@ void	test_ft_isalpha_symbol(void)
 	c = '@';
 	expected = isalpha(c);
 	actual = ft_isalpha(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test punctuation characters.
@@ -76,7 +76,7 @@ void	test_ft_isalpha_punctuation(void)
 	c = '.';
 	expected = isalpha(c);
 	actual = ft_isalpha(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test whitespace characters.
@@ -89,7 +89,7 @@ void	test_ft_isalpha_whitespace(void)
 	c = ' ';
 	expected = isalpha(c);
 	actual = ft_isalpha(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test boundery characters.
@@ -102,7 +102,7 @@ void	test_ft_isalpha_boundery(void)
 	c = '`';
 	expected = isalpha(c);
 	actual = ft_isalpha(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test non-ASCII characters.
@@ -115,7 +115,7 @@ void	test_ft_isalpha_non_ascii(void)
 	c = -87;
 	expected = isalpha(c);
 	actual = ft_isalpha(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test special characters.
@@ -128,7 +128,7 @@ void	test_ft_isalpha_special(void)
 	c = EOF;
 	expected = isalpha(c);
 	actual = ft_isalpha(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test null characters.
@@ -141,7 +141,7 @@ void	test_ft_isalpha_null(void)
 	c = '\0';
 	expected = isalpha(c);
 	actual = ft_isalpha(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test extended characters.
@@ -161,25 +161,25 @@ void	test_ft_isalpha_extended(void)
 		expected = isalpha(c);
 		actual = ft_isalpha(c);
 		if (expected != actual)
-			ASSERT_EQ(expected, actual);
+			assert_eq(expected, actual);
 		start++;
 	}
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 int	main(void)
 {
-	RUN_TEST(test_ft_isalpha_upper, "ft_isalpha_upper");
-	RUN_TEST(test_ft_isalpha_lower, "ft_isalpha_lower");
-	RUN_TEST(test_ft_isalpha_digit, "ft_isalpha_digit");
-	RUN_TEST(test_ft_isalpha_symbol, "ft_isalpha_symbol");
-	RUN_TEST(test_ft_isalpha_punctuation, "ft_isalpha_punctuation");
-	RUN_TEST(test_ft_isalpha_whitespace, "ft_isalpha_whitespace");
-	RUN_TEST(test_ft_isalpha_boundery, "ft_isalpha_boundery");
-	RUN_TEST(test_ft_isalpha_non_ascii, "ft_isalpha_non_ascii");
-	RUN_TEST(test_ft_isalpha_special, "ft_isalpha_special");
-	RUN_TEST(test_ft_isalpha_null, "ft_isalpha_null");
-	RUN_TEST(test_ft_isalpha_extended, "ft_isalpha_extended");
+	run_test(test_ft_isalpha_upper, "ft_isalpha_upper");
+	run_test(test_ft_isalpha_lower, "ft_isalpha_lower");
+	run_test(test_ft_isalpha_digit, "ft_isalpha_digit");
+	run_test(test_ft_isalpha_symbol, "ft_isalpha_symbol");
+	run_test(test_ft_isalpha_punctuation, "ft_isalpha_punctuation");
+	run_test(test_ft_isalpha_whitespace, "ft_isalpha_whitespace");
+	run_test(test_ft_isalpha_boundery, "ft_isalpha_boundery");
+	run_test(test_ft_isalpha_non_ascii, "ft_isalpha_non_ascii");
+	run_test(test_ft_isalpha_special, "ft_isalpha_special");
+	run_test(test_ft_isalpha_null, "ft_isalpha_null");
+	run_test(test_ft_isalpha_extended, "ft_isalpha_extended");
 	return (0);
 }
  */

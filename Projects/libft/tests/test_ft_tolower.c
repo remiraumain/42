@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 09:06:52 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/15 10:23:18 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:21:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	test_ft_tolower_upper(void)
 	c = 'H';
 	expected = tolower(c);
 	actual = ft_tolower(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test lowercase characters.
@@ -37,7 +37,7 @@ void	test_ft_tolower_lower(void)
 	c = 'h';
 	expected = tolower(c);
 	actual = ft_tolower(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test digit characters.
@@ -50,7 +50,7 @@ void	test_ft_tolower_digit(void)
 	c = '9';
 	expected = tolower(c);
 	actual = ft_tolower(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test symbol characters.
@@ -63,7 +63,7 @@ void	test_ft_tolower_symbol(void)
 	c = '@';
 	expected = tolower(c);
 	actual = ft_tolower(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test punctuation characters.
@@ -76,7 +76,7 @@ void	test_ft_tolower_punctuation(void)
 	c = '.';
 	expected = tolower(c);
 	actual = ft_tolower(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test whitespace characters.
@@ -89,7 +89,7 @@ void	test_ft_tolower_whitespace(void)
 	c = ' ';
 	expected = tolower(c);
 	actual = ft_tolower(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test boundery characters.
@@ -102,7 +102,7 @@ void	test_ft_tolower_boundery(void)
 	c = '`';
 	expected = tolower(c);
 	actual = ft_tolower(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test non-ASCII characters.
@@ -115,7 +115,7 @@ void	test_ft_tolower_non_ascii(void)
 	c = -87;
 	expected = tolower(c);
 	actual = ft_tolower(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test special characters.
@@ -128,7 +128,7 @@ void	test_ft_tolower_special(void)
 	c = EOF;
 	expected = tolower(c);
 	actual = ft_tolower(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test null characters.
@@ -141,7 +141,7 @@ void	test_ft_tolower_null(void)
 	c = '\0';
 	expected = tolower(c);
 	actual = ft_tolower(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test extended characters.
@@ -161,25 +161,25 @@ void	test_ft_tolower_extended(void)
 		expected = tolower(c);
 		actual = ft_tolower(c);
 		if (expected != actual)
-			ASSERT_EQ(expected, actual);
+			assert_eq(expected, actual);
 		start++;
 	}
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 int	main(void)
 {
-	RUN_TEST(test_ft_tolower_upper, "ft_tolower_upper");
-	RUN_TEST(test_ft_tolower_lower, "ft_tolower_lower");
-	RUN_TEST(test_ft_tolower_digit, "ft_tolower_digit");
-	RUN_TEST(test_ft_tolower_symbol, "ft_tolower_symbol");
-	RUN_TEST(test_ft_tolower_punctuation, "ft_tolower_punctuation");
-	RUN_TEST(test_ft_tolower_whitespace, "ft_tolower_whitespace");
-	RUN_TEST(test_ft_tolower_boundery, "ft_tolower_boundery");
-	RUN_TEST(test_ft_tolower_non_ascii, "ft_tolower_non_ascii");
-	RUN_TEST(test_ft_tolower_special, "ft_tolower_special");
-	RUN_TEST(test_ft_tolower_null, "ft_tolower_null");
-	RUN_TEST(test_ft_tolower_extended, "ft_tolower_extended");
+	run_test(test_ft_tolower_upper, "ft_tolower_upper");
+	run_test(test_ft_tolower_lower, "ft_tolower_lower");
+	run_test(test_ft_tolower_digit, "ft_tolower_digit");
+	run_test(test_ft_tolower_symbol, "ft_tolower_symbol");
+	run_test(test_ft_tolower_punctuation, "ft_tolower_punctuation");
+	run_test(test_ft_tolower_whitespace, "ft_tolower_whitespace");
+	run_test(test_ft_tolower_boundery, "ft_tolower_boundery");
+	run_test(test_ft_tolower_non_ascii, "ft_tolower_non_ascii");
+	run_test(test_ft_tolower_special, "ft_tolower_special");
+	run_test(test_ft_tolower_null, "ft_tolower_null");
+	run_test(test_ft_tolower_extended, "ft_tolower_extended");
 	return (0);
 }
  */

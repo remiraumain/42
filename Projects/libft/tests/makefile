@@ -8,7 +8,7 @@ OBJDIR := obj
 TEST_SRCS := $(SRCDIR)/test_ft_strlen.c $(SRCDIR)/test_ft_isalpha.c					\
 			$(SRCDIR)/test_ft_isdigit.c $(SRCDIR)/test_ft_tolower.c					\
 			$(SRCDIR)/test_ft_toupper.c $(SRCDIR)/test_ft_isalnum.c					\
-			$(SRCDIR)/test_ft_isascii.c
+			$(SRCDIR)/test_ft_isascii.c $(SRCDIR)/test_ft_atoi.c
 
 TESTY_SRCS := $(TESTYDIR)/assertions.c $(TESTYDIR)/test_macros.c
 

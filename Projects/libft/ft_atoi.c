@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 11:27:49 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/11 11:16:10 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:03:54 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,25 @@ int	ft_atoi(const char *nptr)
 {
 	int	i;
 	int	res;
+	int	sign;
 
 	i = 0;
 	res = 0;
-	while (nptr[i])
-	{
-		if (!(nptr[i] >= '0' && nptr[i] <= '9'))
-			return (res);
-		res = res * 10 + (nptr[i] - 48);
+	sign = 1;
+	if (!nptr)
+		return (0);
+	while (nptr[i] == ' ' || nptr[i] == '\t' || nptr[i] == '\n'
+		|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == '\r')
 		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
+		if (nptr[i] == '-' || nptr[i] == '+')
+			return (0);
 	}
-	return (res);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+		res = res * 10 + (nptr[i++] - '0');
+	return (res * sign);
 }
