@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:50:31 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/16 12:21:05 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:15:12 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,11 @@ void	assert_fail(char *message)
  *
  * @param expected Chaîne attendue.
  * @param actual Chaîne obtenue.
+ * @param n Nombre d'octets à comparer.
  */
-void	asser_cmp_buf(const char *expected, const char *actual)
+void	asser_cmp_buf(const char *expected, const char *actual, size_t n)
 {
-	if (strcmp(expected, actual) != 0)
+	if (memcmp(expected, actual, n) != 0)
 	{
 		printf("❌ Expected \"%s\", got \"%s\"\n", expected, actual);
 	}
