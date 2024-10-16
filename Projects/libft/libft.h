@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 09:11:10 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/16 16:28:40 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:30:39 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+char	*ft_strchr(const char *s, int c);
 int		ft_atoi(const char *nptr);
