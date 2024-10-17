@@ -15,7 +15,7 @@ TEST_SRCS := $(SRCDIR)/test_ft_strlen.c $(SRCDIR)/test_ft_isalpha.c					\
 			$(SRCDIR)/test_ft_memmove.c $(SRCDIR)/test_ft_strchr.c					\
 			$(SRCDIR)/test_ft_strrchr.c $(SRCDIR)/test_ft_strncmp.c					\
 			$(SRCDIR)/test_ft_memchr.c $(SRCDIR)/test_ft_memcmp.c					\
-			$(SRCDIR)/test_ft_strnstr.c
+			$(SRCDIR)/test_ft_strnstr.c $(SRCDIR)/test_ft_calloc.c
 
 TESTY_SRCS := $(TESTYDIR)/assertions.c $(TESTYDIR)/test_macros.c
 
@@ -25,7 +25,8 @@ LIB_SRCS := $(LIBDIR)/ft_strlen.c $(LIBDIR)/ft_atoi.c $(LIBDIR)/ft_bzero.c 			\
 			$(LIBDIR)/ft_memset.c $(LIBDIR)/ft_tolower.c $(LIBDIR)/ft_toupper.c		\
 			$(LIBDIR)/ft_strlcpy.c $(LIBDIR)/ft_strlcat.c $(LIBDIR)/ft_memmove.c	\
 			$(LIBDIR)/ft_strchr.c $(LIBDIR)/ft_strrchr.c $(LIBDIR)/ft_strncmp.c		\
-			$(LIBDIR)/ft_memchr.c $(LIBDIR)/ft_memcmp.c $(LIBDIR)/ft_strnstr.c
+			$(LIBDIR)/ft_memchr.c $(LIBDIR)/ft_memcmp.c $(LIBDIR)/ft_strnstr.c		\
+			$(LIBDIR)/ft_calloc.c
 
 SRCS := $(TEST_SRCS) $(LIB_SRCS) $(TESTY_SRCS)
 
@@ -39,7 +40,7 @@ INCLUDES := -I$(TESTYDIR) -I$(LIBDIR) -I$(SRCDIR)
 all: $(NAME)
  
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -g -lbsd -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -g -o $(NAME)
 
 $(OBJDIR)/%.o:
 	@mkdir -p $(OBJDIR)

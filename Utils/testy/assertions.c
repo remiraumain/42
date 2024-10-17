@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:50:31 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/16 14:15:12 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/17 10:28:50 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	assert_str_eq(char *expected, char *actual)
  */
 void	assert_fail(char *message)
 {
-	printf("%s", message);
+	printf("❌ %s", message);
 }
 
 /**

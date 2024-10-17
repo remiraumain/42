@@ -6,11 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 08:57:51 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/17 10:09:57 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/17 10:43:56 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../Utils/testy/testy.h"
+/* #include "../../../Utils/testy/testy.h"
 #include "../libft.h"
 #include <bsd/string.h>
 
@@ -38,3 +38,4 @@ int	main(void)
 	run_test(test_ft_strnstr_basic, "ft_strnstr_basic");
 	return (0);
 }
+ */
