@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 16:59:58 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/17 09:56:00 by rraumain         ###   ########.fr       */
+/*   Created: 2024/10/17 08:06:22 by rraumain          #+#    #+#             */
+/*   Updated: 2024/10/17 09:02:55 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
-	char	*last;
+	size_t	j;
 
 	i = 0;
-	last = NULL;
-	while (s[i])
+	while (big[i])
 	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			last = (char *)&s[i];
-		i++;
+		j = 0;
+		while(big[j + i] == little[j])
+		{
+			if (little[j] == '\0' || j == len)
+				return (&big[i]);
+			j++;
+		}
+		i = j + 1;
 	}
-	if ((unsigned char)s[i] == (unsigned char)c)
-		return ((char *)&s[i]);
-	return (last);
+	return (NULL);
 }
