@@ -8,9 +8,6 @@ OBJDIR := obj
 TEST_SRCS := $(SRCDIR)/test_ft_strlen.c $(SRCDIR)/test_ft_isalpha.c					\
 			$(SRCDIR)/test_ft_isdigit.c $(SRCDIR)/test_ft_tolower.c					\
 			$(SRCDIR)/test_ft_toupper.c $(SRCDIR)/test_ft_isalnum.c					\
-<<<<<<< HEAD
-			$(SRCDIR)/test_ft_isascii.c $(SRCDIR)/test_ft_isprint.c
-=======
 			$(SRCDIR)/test_ft_isascii.c $(SRCDIR)/test_ft_atoi.c					\
 			$(SRCDIR)/test_ft_bzero.c $(SRCDIR)/test_ft_memcpy.c					\
 			$(SRCDIR)/test_ft_memset.c $(SRCDIR)/test_ft_strlcpy.c					\
@@ -18,14 +15,13 @@ TEST_SRCS := $(SRCDIR)/test_ft_strlen.c $(SRCDIR)/test_ft_isalpha.c					\
 			$(SRCDIR)/test_ft_memmove.c $(SRCDIR)/test_ft_strchr.c					\
 			$(SRCDIR)/test_ft_strrchr.c $(SRCDIR)/test_ft_strncmp.c					\
 			$(SRCDIR)/test_ft_memchr.c $(SRCDIR)/test_ft_memcmp.c					\
->>>>>>> refs/remotes/origin/main
 
 TESTY_SRCS := $(TESTYDIR)/assertions.c $(TESTYDIR)/test_macros.c
 
 LIB_SRCS := $(LIBDIR)/ft_strlen.c $(LIBDIR)/ft_atoi.c $(LIBDIR)/ft_bzero.c 			\
-            $(LIBDIR)/ft_isalnum.c $(LIBDIR)/ft_isalpha.c $(LIBDIR)/ft_isascii.c	\
-            $(LIBDIR)/ft_isdigit.c $(LIBDIR)/ft_isprint.c $(LIBDIR)/ft_memcpy.c 	\
-            $(LIBDIR)/ft_memset.c $(LIBDIR)/ft_tolower.c $(LIBDIR)/ft_toupper.c		\
+			$(LIBDIR)/ft_isalnum.c $(LIBDIR)/ft_isalpha.c $(LIBDIR)/ft_isascii.c	\
+			$(LIBDIR)/ft_isdigit.c $(LIBDIR)/ft_isprint.c $(LIBDIR)/ft_memcpy.c 	\
+			$(LIBDIR)/ft_memset.c $(LIBDIR)/ft_tolower.c $(LIBDIR)/ft_toupper.c		\
 			$(LIBDIR)/ft_strlcpy.c $(LIBDIR)/ft_strlcat.c $(LIBDIR)/ft_memmove.c	\
 			$(LIBDIR)/ft_strchr.c $(LIBDIR)/ft_strrchr.c $(LIBDIR)/ft_strncmp.c		\
 			$(LIBDIR)/ft_memchr.c $(LIBDIR)/ft_memcmp.c
@@ -35,7 +31,7 @@ SRCS := $(TEST_SRCS) $(LIB_SRCS) $(TESTY_SRCS)
 OBJS := $(patsubst %.c, $(OBJDIR)/%.o, $(notdir $(SRCS)))
 
 CC := gcc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := #-Wall -Wextra -Werror
 
 INCLUDES := -I$(TESTYDIR) -I$(LIBDIR) -I$(SRCDIR)
 

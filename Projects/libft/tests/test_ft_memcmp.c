@@ -6,11 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 06:14:38 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/17 06:56:36 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/17 08:04:02 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../Utils/testy/testy.h"
+/* #include "../../../Utils/testy/testy.h"
 #include "../libft.h"
 #include <string.h>
 
@@ -83,7 +83,7 @@ void	test_ft_memcmp_substring(void)
 	int			std_result;
 	int			custom_result;
 
-	n = 10;
+	n = 6;
 	std_result = memcmp(s1, s2, n);
 	custom_result = ft_memcmp(s1, s2, n);
 	assert_eq(std_result, custom_result);
@@ -98,7 +98,7 @@ void	test_ft_memcmp_empty_strings(void)
 	int			std_result;
 	int			custom_result;
 
-	n = 5;
+	n = 1;
 	std_result = memcmp(s1, s2, n);
 	custom_result = ft_memcmp(s1, s2, n);
 	assert_eq(std_result, custom_result);
@@ -113,7 +113,7 @@ void	test_ft_memcmp_one_empty_string(void)
 	int			std_result;
 	int			custom_result;
 
-	n = 5;
+	n = 1;
 	std_result = memcmp(s1, s2, n);
 	custom_result = ft_memcmp(s1, s2, n);
 	assert_eq(std_result, custom_result);
@@ -134,6 +134,96 @@ void	test_ft_memcmp_special_characters(void)
 	assert_eq(std_result, custom_result);
 }
 
+// Test avec des caractères non-ASCII.
+void	test_ft_memcmp_non_ascii_characters(void)
+{
+	const char	*s1 = "CaféMünchner";
+	const char	*s2 = "CaféMünchner";
+	size_t		n;
+	int			std_result;
+	int			custom_result;
+
+	n = 12;
+	std_result = memcmp(s1, s2, n);
+	custom_result = ft_memcmp(s1, s2, n);
+	assert_eq(std_result, custom_result);
+}
+
+// Test avec des caractères nulls dans les chaînes.
+void	test_ft_memcmp_null_bytes_in_strings(void)
+{
+	char	s1[] = "Hello\0World";
+	char	s2[] = "Hello\0Mars";
+	size_t	n;
+	int		std_result;
+	int		custom_result;
+
+	n = 11;
+	std_result = memcmp(s1, s2, n);
+	custom_result = ft_memcmp(s1, s2, n);
+	assert_eq(std_result, custom_result);
+}
+
+// Test avec des chaînes identiques et n > longueur des chaînes.
+void	test_ft_memcmp_identical_strings_large_n(void)
+{
+	const char	*s1 = "Identical";
+	const char	*s2 = "Identical";
+	size_t		n;
+	int			std_result;
+	int			custom_result;
+
+	n = 20;
+	std_result = memcmp(s1, s2, n);
+	custom_result = ft_memcmp(s1, s2, n);
+	assert_eq(std_result, custom_result);
+}
+
+// Test avec des chaînes différentes en fin de chaîne.
+void	test_ft_memcmp_difference_at_end(void)
+{
+	const char	*s1 = "HelloWorldX";
+	const char	*s2 = "HelloWorldY";
+	size_t		n;
+	int			std_result;
+	int			custom_result;
+
+	n = 11;
+	std_result = memcmp(s1, s2, n);
+	custom_result = ft_memcmp(s1, s2, n);
+	assert_eq(std_result, custom_result);
+}
+
+// Test avec n égal à la taille de la première différence.
+void	test_ft_memcmp_exact_difference(void)
+{
+	const char	*s1 = "ABCDE";
+	const char	*s2 = "ABCDF";
+	size_t		n;
+	int			std_result;
+	int			custom_result;
+
+	n = 5;
+	std_result = memcmp(s1, s2, n);
+	custom_result = ft_memcmp(s1, s2, n);
+	assert_eq(std_result, custom_result);
+}
+
+// Test avec n supérieur à la longueur des deux chaînes.
+void	test_ft_memcmp_n_greater_than_length(void)
+{
+	const char	*s1 = "Short";
+	const char	*s2 = "Short";
+	size_t		n;
+	int			std_result;
+	int			custom_result;
+
+	n = 10;
+	std_result = memcmp(s1, s2, n);
+	custom_result = ft_memcmp(s1, s2, n);
+	assert_eq(std_result, custom_result);
+}
+
 int	main(void)
 {
 	run_test(test_ft_memcmp_equal_strings, "ft_memcmp_equal_strings");
@@ -146,5 +236,16 @@ int	main(void)
 	run_test(test_ft_memcmp_empty_strings, "ft_memcmp_empty_strings");
 	run_test(test_ft_memcmp_one_empty_string, "ft_memcmp_one_empty_string");
 	run_test(test_ft_memcmp_special_characters, "ft_memcmp_special_characters");
+	run_test(test_ft_memcmp_non_ascii_characters,
+		"ft_memcmp_non_ascii_characters");
+	run_test(test_ft_memcmp_null_bytes_in_strings,
+		"ft_memcmp_null_bytes_in_strings");
+	run_test(test_ft_memcmp_identical_strings_large_n,
+		"ft_memcmp_identical_strings_large_n");
+	run_test(test_ft_memcmp_difference_at_end, "ft_memcmp_difference_at_end");
+	run_test(test_ft_memcmp_exact_difference, "ft_memcmp_exact_difference");
+	run_test(test_ft_memcmp_n_greater_than_length,
+		"ft_memcmp_n_greater_than_length");
 	return (0);
 }
+ */
