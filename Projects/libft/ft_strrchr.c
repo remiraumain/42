@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testy.h                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 12:28:23 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/16 15:47:17 by rraumain         ###   ########.fr       */
+/*   Created: 2024/10/16 16:59:58 by rraumain          #+#    #+#             */
+/*   Updated: 2024/10/16 17:48:04 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTY_H
-# define TESTY_H
+#include "libft.h"
 
-# include <stdio.h>
+char	*ft_strrchr(const char *s, int c)
+{
+	size_t	i;
+	char	*last;
 
-// MACROS
-void	run_test(void (*test)(void), const char *test_name);
-
-// ASSERTIONS
-void	assert_eq(int expected, int actual);
-void	assert_str_eq(char *expected, char *actual);
-void	assert_fail(char *message);
-int		asser_cmp_buf(const char *expected, const char *actual, size_t n);
-
-#endif
+	i = 0;
+	last = NULL;
+	while (s[i])
+	{
+		if ((unsigned char)s[i] == (unsigned char)c)
+			last = (char *)&s[i];
+		i++;
+	}
+	if ((unsigned char)s[i] == (unsigned char)c)
+		return ((char *)&s[i]);
+	return (last);
+}

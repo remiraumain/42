@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testy.h                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 12:28:23 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/16 15:47:17 by rraumain         ###   ########.fr       */
+/*   Created: 2024/10/17 06:07:48 by rraumain          #+#    #+#             */
+/*   Updated: 2024/10/17 06:25:37 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTY_H
-# define TESTY_H
+#include "libft.h"
 
-# include <stdio.h>
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	size_t	i;
+	char	*ptr1;
+	char	*ptr2;
 
-// MACROS
-void	run_test(void (*test)(void), const char *test_name);
-
-// ASSERTIONS
-void	assert_eq(int expected, int actual);
-void	assert_str_eq(char *expected, char *actual);
-void	assert_fail(char *message);
-int		asser_cmp_buf(const char *expected, const char *actual, size_t n);
-
-#endif
+	if (!n)
+		return (0);
+	i = 0;
+	ptr1 = (char *)s1;
+	ptr2 = (char *)s2;
+	while (i < n && ptr1[i])
+	{
+		if (ptr1[i] != ptr2[i])
+			return (ptr1[i] - ptr2[i]);
+		i++;
+	}
+	return (ptr1[i] - ptr2[i]);
+}

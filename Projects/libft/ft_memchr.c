@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testy.h                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 12:28:23 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/16 15:47:17 by rraumain         ###   ########.fr       */
+/*   Created: 2024/10/16 19:58:30 by rraumain          #+#    #+#             */
+/*   Updated: 2024/10/16 20:30:14 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTY_H
-# define TESTY_H
+#include "libft.h"
 
-# include <stdio.h>
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*ptr;
 
-// MACROS
-void	run_test(void (*test)(void), const char *test_name);
-
-// ASSERTIONS
-void	assert_eq(int expected, int actual);
-void	assert_str_eq(char *expected, char *actual);
-void	assert_fail(char *message);
-int		asser_cmp_buf(const char *expected, const char *actual, size_t n);
-
-#endif
+	i = 0;
+	ptr = (unsigned char *)s;
+	while (i < n)
+	{
+		if (ptr[i] == (unsigned char)c)
+			return ((void *)&ptr[i]);
+		i++;
+	}
+	return (NULL);
+}

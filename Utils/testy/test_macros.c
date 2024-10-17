@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:43:28 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/15 07:44:51 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:19:48 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,15 @@
  * @param test The test function to run.
  * @param test_name The name of the test function to run.
  *
- * @note Do not use, this function was made only for the `RUN_TEST` macro.
+ * @code
+ * --- Example usage ---
+ *
+ * int main(void)
+ * {
+ *     run_test(my_test_function, my_test_function_name);
+ *     return (0);
+ * }
+ * @endcode
  */
 void	run_test(void (*test)(void), const char *test_name)
 {

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 10:42:13 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/15 10:44:43 by rraumain         ###   ########.fr       */
+/*   Created: 2024/10/16 15:07:13 by rraumain          #+#    #+#             */
+/*   Updated: 2024/10/17 06:55:02 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,172 +14,58 @@
 #include "../libft.h"
 #include <ctype.h>
 
-// Test uppercase characters.
-void	test_ft_isprint_upper(void)
+// Test des caractères imprimables.
+void	test_ft_isprint_printable(void)
 {
-	char	c;
-	size_t	expected;
-	size_t	actual;
-
-	c = 'H';
-	expected = isprint(c);
-	actual = ft_isprint(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(isprint('A'), ft_isprint('A'));
+	assert_eq(isprint('a'), ft_isprint('a'));
+	assert_eq(isprint('0'), ft_isprint('0'));
+	assert_eq(isprint('!'), ft_isprint('!'));
+	assert_eq(isprint(' '), ft_isprint(' '));
+	assert_eq(isprint('~'), ft_isprint('~'));
 }
 
-// Test lowercase characters.
-void	test_ft_isprint_lower(void)
+// Test des caractères non imprimables.
+void	test_ft_isprint_non_printable(void)
 {
-	char	c;
-	size_t	expected;
-	size_t	actual;
-
-	c = 'h';
-	expected = isprint(c);
-	actual = ft_isprint(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(isprint('\n'), ft_isprint('\n'));
+	assert_eq(isprint('\t'), ft_isprint('\t'));
+	assert_eq(isprint('\0'), ft_isprint('\0'));
+	assert_eq(isprint('\r'), ft_isprint('\r'));
+	assert_eq(isprint('\v'), ft_isprint('\v'));
+	assert_eq(isprint('\f'), ft_isprint('\f'));
 }
 
-// Test digit characters.
-void	test_ft_isprint_digit(void)
+// Test des cas limites.
+void	test_ft_isprint_edge_cases(void)
 {
-	char	c;
-	size_t	expected;
-	size_t	actual;
-
-	c = '9';
-	expected = isprint(c);
-	actual = ft_isprint(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(isprint(31), ft_isprint(31));
+	assert_eq(isprint(32), ft_isprint(32));
+	assert_eq(isprint(126), ft_isprint(126));
+	assert_eq(isprint(127), ft_isprint(127));
+	assert_eq(isprint(128), ft_isprint(128));
+	assert_eq(isprint(255), ft_isprint(255));
 }
 
-// Test symbol characters.
-void	test_ft_isprint_symbol(void)
+// Test de tous les caractères ASCII.
+void	test_ft_isprint_all_ascii(void)
 {
-	char	c;
-	size_t	expected;
-	size_t	actual;
+	size_t	i;
 
-	c = '@';
-	expected = isprint(c);
-	actual = ft_isprint(c);
-	ASSERT_EQ(expected, actual);
-}
-
-// Test punctuation characters.
-void	test_ft_isprint_punctuation(void)
-{
-	char	c;
-	size_t	expected;
-	size_t	actual;
-
-	c = '.';
-	expected = isprint(c);
-	actual = ft_isprint(c);
-	ASSERT_EQ(expected, actual);
-}
-
-// Test whitespace characters.
-void	test_ft_isprint_whitespace(void)
-{
-	char	c;
-	size_t	expected;
-	size_t	actual;
-
-	c = ' ';
-	expected = isprint(c);
-	actual = ft_isprint(c);
-	ASSERT_EQ(expected, actual);
-}
-
-// Test boundery characters.
-void	test_ft_isprint_boundery(void)
-{
-	char	c;
-	size_t	expected;
-	size_t	actual;
-
-	c = '`';
-	expected = isprint(c);
-	actual = ft_isprint(c);
-	ASSERT_EQ(expected, actual);
-}
-
-// Test non-ASCII characters.
-void	test_ft_isprint_non_ascii(void)
-{
-	char	c;
-	size_t	expected;
-	size_t	actual;
-
-	c = -87;
-	expected = isprint(c);
-	actual = ft_isprint(c);
-	ASSERT_EQ(expected, actual);
-}
-
-// Test special characters.
-void	test_ft_isprint_special(void)
-{
-	char	c;
-	size_t	expected;
-	size_t	actual;
-
-	c = EOF;
-	expected = isprint(c);
-	actual = ft_isprint(c);
-	ASSERT_EQ(expected, actual);
-}
-
-// Test null characters.
-void	test_ft_isprint_null(void)
-{
-	char	c;
-	size_t	expected;
-	size_t	actual;
-
-	c = '\0';
-	expected = isprint(c);
-	actual = ft_isprint(c);
-	ASSERT_EQ(expected, actual);
-}
-
-// Test extended characters.
-void	test_ft_isprint_extended(void)
-{
-	char	c;
-	int		start;
-	int		end;
-	size_t	expected;
-	size_t	actual;
-
-	start = 128;
-	end = 255;
-	while (start <= end)
+	i = 0;
+	while (i < 256)
 	{
-		c = start;
-		expected = isprint(c);
-		actual = ft_isprint(c);
-		if (expected != actual)
-			ASSERT_EQ(expected, actual);
-		start++;
+		assert_eq(isprint(i), ft_isprint(i));
+		i++;
 	}
-	ASSERT_EQ(expected, actual);
 }
 
 int	main(void)
 {
-	RUN_TEST(test_ft_isprint_upper, "ft_isprint_upper");
-	RUN_TEST(test_ft_isprint_lower, "ft_isprint_lower");
-	RUN_TEST(test_ft_isprint_digit, "ft_isprint_digit");
-	RUN_TEST(test_ft_isprint_symbol, "ft_isprint_symbol");
-	RUN_TEST(test_ft_isprint_punctuation, "ft_isprint_punctuation");
-	RUN_TEST(test_ft_isprint_whitespace, "ft_isprint_whitespace");
-	RUN_TEST(test_ft_isprint_boundery, "ft_isprint_boundery");
-	RUN_TEST(test_ft_isprint_non_ascii, "ft_isprint_non_ascii");
-	RUN_TEST(test_ft_isprint_special, "ft_isprint_special");
-	RUN_TEST(test_ft_isprint_null, "ft_isprint_null");
-	RUN_TEST(test_ft_isprint_extended, "ft_isprint_extended");
+	run_test(test_ft_isprint_printable, "ft_isprint_printable");
+	run_test(test_ft_isprint_non_printable, "ft_isprint_non_printable");
+	run_test(test_ft_isprint_edge_cases, "ft_isprint_edge_cases");
+	run_test(test_ft_isprint_all_ascii, "ft_isprint_all_ascii");
 	return (0);
 }
  */

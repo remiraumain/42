@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:47:33 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/15 09:04:34 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:21:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	test_ft_isdigit_digit(void)
 	c = '9';
 	expected = isdigit(c);
 	actual = ft_isdigit(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test uppercase characters.
@@ -37,7 +37,7 @@ void	test_ft_isdigit_upper(void)
 	c = 'H';
 	expected = isdigit(c);
 	actual = ft_isdigit(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test lowercase characters.
@@ -50,7 +50,7 @@ void	test_ft_isdigit_lower(void)
 	c = 'h';
 	expected = isdigit(c);
 	actual = ft_isdigit(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test symbol characters.
@@ -63,7 +63,7 @@ void	test_ft_isdigit_symbol(void)
 	c = '@';
 	expected = isdigit(c);
 	actual = ft_isdigit(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test punctuation characters.
@@ -76,7 +76,7 @@ void	test_ft_isdigit_punctuation(void)
 	c = '.';
 	expected = isdigit(c);
 	actual = ft_isdigit(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test whitespace characters.
@@ -89,7 +89,7 @@ void	test_ft_isdigit_whitespace(void)
 	c = ' ';
 	expected = isdigit(c);
 	actual = ft_isdigit(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test boundery characters.
@@ -102,7 +102,7 @@ void	test_ft_isdigit_boundery(void)
 	c = '`';
 	expected = isdigit(c);
 	actual = ft_isdigit(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test non-ASCII characters.
@@ -115,7 +115,7 @@ void	test_ft_isdigit_non_ascii(void)
 	c = -87;
 	expected = isdigit(c);
 	actual = ft_isdigit(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test special characters.
@@ -128,7 +128,7 @@ void	test_ft_isdigit_special(void)
 	c = EOF;
 	expected = isdigit(c);
 	actual = ft_isdigit(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test null characters.
@@ -141,7 +141,7 @@ void	test_ft_isdigit_null(void)
 	c = '\0';
 	expected = isdigit(c);
 	actual = ft_isdigit(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test extended characters.
@@ -161,25 +161,25 @@ void	test_ft_isdigit_extended(void)
 		expected = isdigit(c);
 		actual = ft_isdigit(c);
 		if (expected != actual)
-			ASSERT_EQ(expected, actual);
+			assert_eq(expected, actual);
 		start++;
 	}
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 int	main(void)
 {
-	RUN_TEST(test_ft_isdigit_digit, "ft_isdigit_digit");
-	RUN_TEST(test_ft_isdigit_upper, "ft_isdigit_upper");
-	RUN_TEST(test_ft_isdigit_lower, "ft_isdigit_lower");
-	RUN_TEST(test_ft_isdigit_symbol, "ft_isdigit_symbol");
-	RUN_TEST(test_ft_isdigit_punctuation, "ft_isdigit_punctuation");
-	RUN_TEST(test_ft_isdigit_whitespace, "ft_isdigit_whitespace");
-	RUN_TEST(test_ft_isdigit_boundery, "ft_isdigit_boundery");
-	RUN_TEST(test_ft_isdigit_non_ascii, "ft_isdigit_non_ascii");
-	RUN_TEST(test_ft_isdigit_special, "ft_isdigit_special");
-	RUN_TEST(test_ft_isdigit_null, "ft_isdigit_null");
-	RUN_TEST(test_ft_isdigit_extended, "ft_isdigit_extended");
+	run_test(test_ft_isdigit_digit, "ft_isdigit_digit");
+	run_test(test_ft_isdigit_upper, "ft_isdigit_upper");
+	run_test(test_ft_isdigit_lower, "ft_isdigit_lower");
+	run_test(test_ft_isdigit_symbol, "ft_isdigit_symbol");
+	run_test(test_ft_isdigit_punctuation, "ft_isdigit_punctuation");
+	run_test(test_ft_isdigit_whitespace, "ft_isdigit_whitespace");
+	run_test(test_ft_isdigit_boundery, "ft_isdigit_boundery");
+	run_test(test_ft_isdigit_non_ascii, "ft_isdigit_non_ascii");
+	run_test(test_ft_isdigit_special, "ft_isdigit_special");
+	run_test(test_ft_isdigit_null, "ft_isdigit_null");
+	run_test(test_ft_isdigit_extended, "ft_isdigit_extended");
 	return (0);
 }
  */

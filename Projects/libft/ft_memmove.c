@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testy.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 12:28:23 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/16 15:47:17 by rraumain         ###   ########.fr       */
+/*   Created: 2024/10/16 15:17:26 by rraumain          #+#    #+#             */
+/*   Updated: 2024/10/16 15:46:31 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTY_H
-# define TESTY_H
+#include "libft.h"
 
-# include <stdio.h>
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	size_t	i;
+	char	*ptr_src;
+	char	*ptr_dest;
 
-// MACROS
-void	run_test(void (*test)(void), const char *test_name);
-
-// ASSERTIONS
-void	assert_eq(int expected, int actual);
-void	assert_str_eq(char *expected, char *actual);
-void	assert_fail(char *message);
-int		asser_cmp_buf(const char *expected, const char *actual, size_t n);
-
-#endif
+	i = 0;
+	ptr_src = (char *)src;
+	ptr_dest = (char *)dest;
+	if (!dest || !src)
+		return (NULL);
+	while (i < n)
+	{
+		if (dest > src)
+			ptr_dest[n - i - 1] = ptr_src[n - i - 1];
+		else
+			ptr_dest[i] = ptr_src[i];
+		i++;
+	}
+	return (dest);
+}

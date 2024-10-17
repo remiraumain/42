@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:26:35 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/15 10:32:53 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:21:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	test_ft_toupper_upper(void)
 	c = 'H';
 	expected = toupper(c);
 	actual = ft_toupper(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test lowercase characters.
@@ -37,7 +37,7 @@ void	test_ft_toupper_lower(void)
 	c = 'h';
 	expected = toupper(c);
 	actual = ft_toupper(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test digit characters.
@@ -50,7 +50,7 @@ void	test_ft_toupper_digit(void)
 	c = '9';
 	expected = toupper(c);
 	actual = ft_toupper(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test symbol characters.
@@ -63,7 +63,7 @@ void	test_ft_toupper_symbol(void)
 	c = '@';
 	expected = toupper(c);
 	actual = ft_toupper(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test punctuation characters.
@@ -76,7 +76,7 @@ void	test_ft_toupper_punctuation(void)
 	c = '.';
 	expected = toupper(c);
 	actual = ft_toupper(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test whitespace characters.
@@ -89,7 +89,7 @@ void	test_ft_toupper_whitespace(void)
 	c = ' ';
 	expected = toupper(c);
 	actual = ft_toupper(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test boundery characters.
@@ -102,7 +102,7 @@ void	test_ft_toupper_boundery(void)
 	c = '`';
 	expected = toupper(c);
 	actual = ft_toupper(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test non-ASCII characters.
@@ -115,7 +115,7 @@ void	test_ft_toupper_non_ascii(void)
 	c = -87;
 	expected = toupper(c);
 	actual = ft_toupper(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test special characters.
@@ -128,7 +128,7 @@ void	test_ft_toupper_special(void)
 	c = EOF;
 	expected = toupper(c);
 	actual = ft_toupper(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test null characters.
@@ -141,7 +141,7 @@ void	test_ft_toupper_null(void)
 	c = '\0';
 	expected = toupper(c);
 	actual = ft_toupper(c);
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 // Test extended characters.
@@ -161,25 +161,25 @@ void	test_ft_toupper_extended(void)
 		expected = toupper(c);
 		actual = ft_toupper(c);
 		if (expected != actual)
-			ASSERT_EQ(expected, actual);
+			assert_eq(expected, actual);
 		start++;
 	}
-	ASSERT_EQ(expected, actual);
+	assert_eq(expected, actual);
 }
 
 int	main(void)
 {
-	RUN_TEST(test_ft_toupper_upper, "ft_toupper_upper");
-	RUN_TEST(test_ft_toupper_lower, "ft_toupper_lower");
-	RUN_TEST(test_ft_toupper_digit, "ft_toupper_digit");
-	RUN_TEST(test_ft_toupper_symbol, "ft_toupper_symbol");
-	RUN_TEST(test_ft_toupper_punctuation, "ft_toupper_punctuation");
-	RUN_TEST(test_ft_toupper_whitespace, "ft_toupper_whitespace");
-	RUN_TEST(test_ft_toupper_boundery, "ft_toupper_boundery");
-	RUN_TEST(test_ft_toupper_non_ascii, "ft_toupper_non_ascii");
-	RUN_TEST(test_ft_toupper_special, "ft_toupper_special");
-	RUN_TEST(test_ft_toupper_null, "ft_toupper_null");
-	RUN_TEST(test_ft_toupper_extended, "ft_toupper_extended");
+	run_test(test_ft_toupper_upper, "ft_toupper_upper");
+	run_test(test_ft_toupper_lower, "ft_toupper_lower");
+	run_test(test_ft_toupper_digit, "ft_toupper_digit");
+	run_test(test_ft_toupper_symbol, "ft_toupper_symbol");
+	run_test(test_ft_toupper_punctuation, "ft_toupper_punctuation");
+	run_test(test_ft_toupper_whitespace, "ft_toupper_whitespace");
+	run_test(test_ft_toupper_boundery, "ft_toupper_boundery");
+	run_test(test_ft_toupper_non_ascii, "ft_toupper_non_ascii");
+	run_test(test_ft_toupper_special, "ft_toupper_special");
+	run_test(test_ft_toupper_null, "ft_toupper_null");
+	run_test(test_ft_toupper_extended, "ft_toupper_extended");
 	return (0);
 }
  */
