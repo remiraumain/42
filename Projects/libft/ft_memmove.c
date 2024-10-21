@@ -6,26 +6,38 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:17:26 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/16 15:46:31 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:06:47 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Copy n bytes from a source to a destination.
+ *
+ * The ft_memmove() function copies len bytes from string src to string dst.
+ * 	The two strings may overlap; the copy is always done in a non-destructive
+ * 	manner.
+ *
+ * @param dest Pointer of the destination.
+ * @param src Pointer of the source that is being copied.
+ * @param n Number of bytes to copy.
+ * @return A pointer to dest.
+ */
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;
-	char	*ptr_src;
 	char	*ptr_dest;
+	char	*ptr_src;
 
 	i = 0;
-	ptr_src = (char *)src;
 	ptr_dest = (char *)dest;
-	if (!dest || !src)
+	ptr_src = (char *)src;
+	if (!dest && !src)
 		return (NULL);
 	while (i < n)
 	{
-		if (dest > src)
+		if (ptr_dest > ptr_src)
 			ptr_dest[n - i - 1] = ptr_src[n - i - 1];
 		else
 			ptr_dest[i] = ptr_src[i];
