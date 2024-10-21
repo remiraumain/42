@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:54:31 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/11 17:32:12 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:57:38 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	ptr_src = (char *)src;
 	ptr_dest = (char *)dest;
-	if (!dest || !src)
+	if (!dest && !src)
 		return (NULL);
 	while (i < n)
 	{
