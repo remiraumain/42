@@ -44,8 +44,8 @@ $(NAME): $(OBJS)
 
 $(OBJDIR)/%.o:
 	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -g -lbsd -c $(filter %/$*.c, $(SRCS)) -o $@
-
+	$(CC) $(CFLAGS) $(INCLUDES) -g -c $(filter %/$*.c, $(SRCS)) -o $@
+#-lbsd
 clean:
 	rm -rf $(OBJDIR)
 
