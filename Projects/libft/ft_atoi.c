@@ -6,9 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 11:27:49 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/22 10:55:53 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/22 11:54:07 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 /**
  * @brief Convert a string to an integer.
@@ -28,8 +30,6 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	res = 0;
 	sign = 1;
-	if (!nptr)
-		return (0);
 	while (nptr[i] == ' ' || nptr[i] == '\t' || nptr[i] == '\n'
 		|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == '\r')
 		i++;
@@ -38,10 +38,10 @@ int	ft_atoi(const char *nptr)
 		if (nptr[i] == '-')
 			sign = -1;
 		i++;
-		if (nptr[i] == '-' || nptr[i] == '+')
-			return (0);
 	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
 		res = res * 10 + (nptr[i++] - '0');
+	}
 	return (res * sign);
 }
