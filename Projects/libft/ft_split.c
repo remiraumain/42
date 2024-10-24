@@ -6,30 +6,50 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 06:00:48 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/24 06:25:35 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/24 08:32:16 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-size_t	count_part(char const *s, char c)
+/**
+ * @brief Return an array of the split strings.
+ * 
+ * Allocates (with malloc(3)) and returns an array of strings obtained by 
+ * splitting ’s’ using the character ’c’ as a delimiter. The array must end 
+ * with a NULL pointer.
+ * 
+ * @param s String  string to be split.
+ * @param start Delimiter characte.
+ * 
+ * @return The array of new strings resulting from the split.NULL if the 
+ * allocation fails.
+ */
+static size_t	count_part(char const *s, char c)
 {
 	size_t	i;
 	size_t	count;
+	int		was_in_part;
 
 	i = 0;
-	count = 1;
+	count = 0;
+	was_in_part = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (!was_in_part && s[i] != c)
+		{
 			count++;
+			was_in_part = 1;
+		}
+		if (was_in_part && s[i] == c)
+			was_in_part = 0;
 		i++;
 	}
 	return (count);
 }
 
-size_t	partlen(char const *s_j, char c)
+static size_t	partlen(char const *s_j, char c)
 {
 	size_t	i;
 
@@ -39,66 +59,62 @@ size_t	partlen(char const *s_j, char c)
 	return (i);
 }
 
-char	**ft_split(char const *s, char c)
+static void	clean(char **arr)
 {
-	char	**arr;
-	size_t	size;
+	size_t	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		i--;
+		free(arr[i]);
+	}
+	free(arr);
+}
+
+static size_t	fill_part(char **arr, const char *s, size_t len)
+{
 	size_t	i;
 	size_t	j;
 	size_t	k;
-	size_t	len;
 
 	i = 0;
 	j = 0;
-	size = count_part(s, c);
-	arr = malloc(size * sizeof(char *) + 1);
+	k = 0;
+	while (k < len)
+	{
+		arr[i][k] = s[j];
+		k++;
+		j++;
+	}
+	arr[i][k] = '\0';
+	return (k);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**arr;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	arr = malloc((count_part(s, c) + 1) * sizeof(char *));
 	if (!arr)
 		return (NULL);
-	while (i < size)
+	while (i < count_part(s, c))
 	{
-		len = partlen(&s[j], c);
-		arr[i] = malloc(len * sizeof(char) + 1);
+		while (s[j] == c)
+			j++;
+		arr[i] = malloc(partlen(&s[j], c) * sizeof(char) + 1);
 		if (!arr[i])
 		{
-			while (0 < i)
-			{
-				i--;
-				free(arr[i]);
-			}
-			free(arr);
+			clean(arr);
 			return (NULL);
 		}
-		k = 0;
-		while (k < len)
-		{
-			arr[i][k] = s[j];
-			k++;
-			j++;
-		}
-		arr[i][k] = '\0';
+		j += fill_part(&arr[i], &s[j], partlen(&s[j], c));
 		i++;
 	}
-	arr[size] = 0;
+	arr[i] = 0;
 	return (arr);
-}
-#include <stdio.h>
-
-int	main(void)
-{
-	char s[] = "Hello world and younes";
-	int i = 0;
-	char **arr = ft_split(s, ' ');
-	while (arr[i])
-	{
-		printf("%s", arr[i]);
-		i++;
-	}
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-	return (0);
 }
