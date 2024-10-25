@@ -6,103 +6,97 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:35:54 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/24 11:37:03 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/25 09:19:28 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
+static void	int_min(char *a)
+{
+	char	*min;
+	int		i;
+
+	a[0] = '-';
+	min = "2147483648";
+	i = 10;
+	while (0 <= i)
+	{
+		a[i + 1] = min[i];
+		i--;
+	}
+}
+
+static void	negative(int n, char *a, int size)
+{
+	a[0] = '-';
+	a[size] = '\0';
+	size -= 1;
+	n = n * -1;
+	while (0 < size)
+	{
+		a[size] = n % 10 + '0';
+		n = n / 10;
+		size--;
+	}
+}
+
+static void	positive(int n, char *a, int size)
+{
+	a[size] = '\0';
+	size -= 1;
+	while (0 <= size)
+	{
+		a[size] = n % 10 + '0';
+		n = n / 10;
+		size--;
+	}
+}
+
 static int	get_size(int n)
 {
-	int	i;
+	int	size;
 
-	i = 0;
+	size = 0;
 	if (n == 0)
 		return (1);
 	if (n < 0)
 	{
+		if (n == -2147483648)
+			return (11);
+		size++;
 		n = n * -1;
-		i++;
 	}
-	while (0 < n)
+	while (n > 0)
 	{
+		size++;
 		n = n / 10;
-		i++;
 	}
-	return (i);
+	return (size);
 }
-
-// static	int	power(int multi)
-// {
-// 	int	p;
-
-// 	p = 1;
-// 	while (0 < multi)
-// 	{
-// 		p = p * 10;
-// 		multi--;
-// 	}
-// 	return (p);
-// }
 
 char	*ft_itoa(int n)
 {
-	int	size;
-	char	*res;
+	int		size;
+	char	*a;
 
 	size = get_size(n);
-	res = malloc(size * sizeof(char) + 1);
-	if (!res)
+	a = malloc(size * sizeof(char) + 1);
+	if (!a)
 		return (NULL);
-	res[size] = '\0';
-	if (n == -2147483648)
-		return ("-2147483648");
-	if(n < 0)
-		{
-			res[0] = '-';
-			n = n * -1;
-		}
-	while (0 < n)
+	a[0] = '\0';
+	if (n == 0)
+		a[0] = '0';
+	if (n < 0)
 	{
-		
-			size--;
-			res[size] = (n % 10) + '0';
-			n = n / 10;
+		if (n == -2147483648)
+			int_min(a);
+		else
+			negative(n, a, size);
 	}
-	return (res);
+	if (n > 0)
+		positive(n, a, size);
+	a[size] = '\0';
+	return (a);
 }
-
-// int	main(void)
-// {
-// 	char *test = ft_itoa(-2147483647 -1);
-// 	free(test);
-// 	return (0);
-// }
-
-// char	*ft_itoa(int n)
-// {
-// 	int	size;
-// 	int	temp;
-// 	int multi;
-// 	int	i;
-// 	char	*res;
-
-// 	// 123
-// 	i = 0;
-// 	size = get_size(n);
-// 	res = malloc(size * sizeof(char) + 1);
-// 	if (!res)
-// 		return (NULL);
-// 	while (i < size)
-// 	{
-// 		temp = n;
-// 		multi = power(i + 1);
-// 		while (temp >= multi)
-// 			temp = temp / 10;
-// 		res[i] = (temp % 10) + '0';
-// 		i++;
-// 	}
-// 	res[i] = '\0';
-// 	return (res);
-// }
