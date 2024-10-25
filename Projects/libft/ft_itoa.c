@@ -6,27 +6,12 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:35:54 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/25 09:19:28 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/25 10:38:11 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
-static void	int_min(char *a)
-{
-	char	*min;
-	int		i;
-
-	a[0] = '-';
-	min = "2147483648";
-	i = 10;
-	while (0 <= i)
-	{
-		a[i + 1] = min[i];
-		i--;
-	}
-}
 
 static void	negative(int n, char *a, int size)
 {
@@ -63,8 +48,6 @@ static int	get_size(int n)
 		return (1);
 	if (n < 0)
 	{
-		if (n == -2147483648)
-			return (11);
 		size++;
 		n = n * -1;
 	}
@@ -81,6 +64,11 @@ char	*ft_itoa(int n)
 	int		size;
 	char	*a;
 
+	if (n == -2147483648)
+	{
+		a = ft_strdup("-2147483648");
+		return (a);
+	}
 	size = get_size(n);
 	a = malloc(size * sizeof(char) + 1);
 	if (!a)
@@ -89,12 +77,7 @@ char	*ft_itoa(int n)
 	if (n == 0)
 		a[0] = '0';
 	if (n < 0)
-	{
-		if (n == -2147483648)
-			int_min(a);
-		else
-			negative(n, a, size);
-	}
+		negative(n, a, size);
 	if (n > 0)
 		positive(n, a, size);
 	a[size] = '\0';
