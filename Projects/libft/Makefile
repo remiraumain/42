@@ -18,7 +18,7 @@ SRC :=		ft_isalpha.c ft_isdigit.c ft_isalnum.c	\
 OBJ :=		$(patsubst %.c, %.o, $(SRC))
 
 BONUS_SRC :=	ft_lstnew_bonus.c ft_lstadd_front_bonus.c	\
-				ft_lstsize_bonus.c
+				ft_lstsize_bonus.c ft_lstlast_bonus.c
 
 BONUS_OBJ :=	$(patsubst %.c, %.o, $(BONUS_SRC))
 
