@@ -6,12 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:35:54 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/25 10:38:11 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:13:47 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static void	negative(int n, char *a, int size)
 {
