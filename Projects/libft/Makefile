@@ -1,5 +1,7 @@
 NAME := 	libft.a
+
 CFLAGS := 	-Wall -Wextra -Werror
+
 SRC :=		ft_isalpha.c ft_isdigit.c ft_isalnum.c	\
 			ft_isascii.c ft_isprint.c ft_strlen.c	\
 			ft_memset.c ft_bzero.c ft_memcpy.c		\
@@ -15,14 +17,20 @@ SRC :=		ft_isalpha.c ft_isdigit.c ft_isalnum.c	\
 
 OBJ :=		$(patsubst %.c, %.o, $(SRC))
 
-all: $(NAME)
+BONUS_SRC :=	ft_lstnew_bonus.c 
 
-$(NAME): $(SRC)
+BONUS_OBJ :=	$(patsubst %.c, %.o, $(BONUS_SRC))
+
+all: $(SRC)
 	cc $(CFLAGS) $^ -c
-	ar r $@ $(OBJ)
+	ar r $(NAME) $(OBJ)
+
+bonus:	$(BONUS_SRC)
+	cc $(CFLAGS) $^ -c
+	ar r $(NAME) $(BONUS_OBJ)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
 	rm -f $(NAME)
