@@ -20,7 +20,7 @@ OBJ :=		$(patsubst %.c, %.o, $(SRC))
 BONUS_SRC :=	ft_lstnew_bonus.c ft_lstadd_front_bonus.c	\
 				ft_lstsize_bonus.c ft_lstlast_bonus.c		\
 				ft_lstadd_back_bonus.c ft_lstdelone_bonus.c	\
-				
+				ft_lstclear_bonus.c
 
 BONUS_OBJ :=	$(patsubst %.c, %.o, $(BONUS_SRC))
 
