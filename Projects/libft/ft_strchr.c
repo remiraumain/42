@@ -6,37 +6,33 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:30:49 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/22 09:42:43 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:30:20 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Locate a character in a string.
- * 
- * The ft_strstr() function  returns  a  pointer to the first occurrence of 
- * 	the character c in the string s.
-
- * @param s Pointer of the string to search.
- * @param c Character for the occurence.
- * @return Return a pointer to the matched character or NULL if  the character 
- * 	is  not found. The terminating null byte is considered part of the string, 
- * 	so that if c is specified as '\0', these functions return a pointer to the 
- * 	terminator.
+ * @brief Find the first occurrence of a character in a string.
+ *
+ * Searches the string `s` for the first occurrence of the character `c`.
+ * The search includes the null terminator, so if `c` is `\0`, the function
+ * returns a pointer to the null terminator at the end of `s`.
+ *
+ * @param s The string to search within.
+ * @param c The character to locate, interpreted as an unsigned char.
+ * @return A pointer to the first occurrence of `c` in `s`, or NULL if `c` is
+ * not found.
  */
 char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
+	while (*s)
 	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
-		i++;
+		if ((unsigned char)*s == (unsigned char)c)
+			return ((char *)s);
+		s++;
 	}
-	if ((unsigned char)s[i] == (unsigned char)c)
-		return ((char *)&s[i]);
+	if ((unsigned char)*s == (unsigned char)c)
+		return ((char *)s);
 	return (NULL);
 }
