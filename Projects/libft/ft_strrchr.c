@@ -6,26 +6,34 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:59:58 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/17 09:56:00 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:23:18 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Find the last occurrence of a character in a string.
+ *
+ * Searches the string `s` for the last occurrence of the character `c`.
+ *
+ * @param s The string to search in.
+ * @param c The character to find (converted to unsigned char).
+ * @return A pointer to the last occurrence of `c` in `s`, or NULL if `c` is not
+ * found.
+ */
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
 	char	*last;
 
-	i = 0;
 	last = NULL;
-	while (s[i])
+	while (*s)
 	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			last = (char *)&s[i];
-		i++;
+		if ((unsigned char)*s == (unsigned char)c)
+			last = (char *)s;
+		s++;
 	}
-	if ((unsigned char)s[i] == (unsigned char)c)
-		return ((char *)&s[i]);
+	if ((unsigned char)*s == (unsigned char)c)
+		last = (char *)s;
 	return (last);
 }
