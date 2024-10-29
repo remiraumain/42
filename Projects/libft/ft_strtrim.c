@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:25:18 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 14:36:20 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:05:52 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static int	is_in_set(char const c, char const *set)
  *
  * @param s1 String to be trimmed.
  * @param set Reference set of characters to trim.
- *
  * @return The trimmed string. NULL if the allocation fails.
  */
 char	*ft_strtrim(char const *s1, char const *set)

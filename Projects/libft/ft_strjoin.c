@@ -6,12 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:42:40 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 14:50:16 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:05:54 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 /**
  * @brief Return the concatenated string.
