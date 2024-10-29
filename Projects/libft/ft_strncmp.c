@@ -6,47 +6,41 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 19:38:01 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/22 06:05:54 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/29 17:43:34 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Compare two strings not more than n characters.
+ * @brief Compare two strings up to a specified length.
  *
- * The ft_strncmp() functions lexicographically compare the null-terminated
- * 	string1 and string2.
+ * Compares up to `n` characters of the strings `s1` and `s2`. The comparison
+ * stops if a null character is encountered or if the characters differ.
  *
- * The ft_strncmp() function compares not more than n characters.  Because
- * 	ft_strncmp() is designed for comparing strings rather than binary data,
- * 	characters that appear after a ‘\0’ character are not compared.
- *
- * @param string1 Pointer of the first string.
- * @param string2 Pointer of the second string.
- * @return Return an integer greater than, equal to, or less than 0, according
- * 	as the string1 is greater than, equal to, or less than the string2.
- * 	The comparison is done using unsigned characters, so that ‘\200’ is
- * 	greater than ‘\0’.
+ * @param s1 The first string to compare.
+ * @param s2 The second string to compare.
+ * @param n Maximum number of characters to compare.
+ * @return An integer less than, equal to, or greater than zero if `s1` is
+ * found to be less than, equal to, or greater than `s2`.
  */
-int	ft_strncmp(const char *string1, const char *string2, size_t count)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t				i;
-	const unsigned char	*s1;
-	const unsigned char	*s2;
+	unsigned char	c1;
+	unsigned char	c2;
 
-	i = 0;
-	s1 = (const unsigned char *)string1;
-	s2 = (const unsigned char *)string2;
-	if (!count)
+	if (!n)
 		return (0);
-	while (i < count && s1[i])
+	while (n--)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-		if (!(i < count))
-			return (s1[i - 1] - s2[i - 1]);
+		c1 = (unsigned char)*s1;
+		c2 = (unsigned char)*s2;
+		if (c1 != c2)
+			return (c1 - c2);
+		if (c1 == '\0')
+			return (0);
+		s1++;
+		s2++;
 	}
-	return (s1[i] - s2[i]);
+	return (0);
 }
