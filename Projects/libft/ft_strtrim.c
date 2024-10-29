@@ -6,12 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:25:18 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/23 14:14:40 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/29 14:36:20 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static int	is_in_set(char const c, char const *set)
 {
@@ -40,28 +39,18 @@ static int	is_in_set(char const c, char const *set)
  */
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*res;
 	size_t	start;
 	size_t	end;
-	size_t	i;
+	char	*res;
 
-	start = 0;
-	end = 0;
-	i = 0;
-	while (is_in_set(s1[start], set))
-		start++;
-	while (s1[end])
-		end++;
-	while (end - start && is_in_set(s1[end - 1], set))
-		end--;
-	res = malloc((end - start) * sizeof(char) + 1);
-	if (!res)
+	if (!s1 || !set)
 		return (NULL);
-	while (i < (end - start))
-	{
-		res[i] = s1[start + i];
-		i++;
-	}
-	res[i] = '\0';
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && is_in_set(s1[start], set))
+		start++;
+	while (end > start && is_in_set(s1[end - 1], set))
+		end--;
+	res = ft_substr(s1, start, end - start);
 	return (res);
 }
