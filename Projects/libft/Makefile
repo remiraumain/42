@@ -6,12 +6,12 @@
 #    By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 08:53:02 by rraumain          #+#    #+#              #
-#    Updated: 2024/10/29 08:59:35 by rraumain         ###   ########.fr        #
+#    Updated: 2024/10/29 10:33:53 by rraumain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 	libft.a
-CC = cc
+NAME = 		libft.a
+CC = 		cc
 CFLAGS = 	-Wall -Wextra -Werror
 
 CSRC =		ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
@@ -34,6 +34,12 @@ all: $(NAME)
 $(NAME): $(OSRC)
 	$(CC) -c $(CFLAGS) $(CSRC)
 	ar -rcs $@ $(OSRC)
+
+# DELETE HERE
+so:
+	$(CC) -nostartfiles -fPIC -c $(CFLAGS) $(CSRC) $(CBONUS)
+	gcc -nostartfiles -shared -o libft.so $(OSRC) $(OBONUS)
+# DELETE HERE
 
 bonus:	$(OBONUS)
 	$(CC) -c $(CFLAGS) $(CBONUS)
