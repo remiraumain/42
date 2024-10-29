@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:35:54 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/25 11:13:47 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:29:30 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	negative(int n, char *a, int size)
 {
 	a[0] = '-';
 	a[size] = '\0';
-	size -= 1;
+	size--;
 	n = n * -1;
 	while (0 < size)
 	{
@@ -29,7 +29,7 @@ static void	negative(int n, char *a, int size)
 static void	positive(int n, char *a, int size)
 {
 	a[size] = '\0';
-	size -= 1;
+	size--;
 	while (0 <= size)
 	{
 		a[size] = n % 10 + '0';
@@ -58,6 +58,15 @@ static int	get_size(int n)
 	return (size);
 }
 
+/**
+ * @brief Alloate and return as a string the integer.
+ * 
+ * Allocates (with malloc(3)) and returns a string representing the integer 
+ * received as an argument. 
+ * 
+ * @param n the integer to convert.
+ * @return The string representing the integer. NULL if the allocation fails.
+ */
 char	*ft_itoa(int n)
 {
 	int		size;
