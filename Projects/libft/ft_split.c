@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 06:00:48 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/30 10:26:06 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:19:49 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static int	fill_arr(char **arr, int word_count, char const *s, char c)
  *
  * @param s string to be split.
  * @param start Delimiter characte.
- * @return The array of new strings resulting from the split. NULL if the
+ * @return The array of new strings resulting from the split. `NULL` if the
  * allocation fails.
  */
 char	**ft_split(char const *s, char c)

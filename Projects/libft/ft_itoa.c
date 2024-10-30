@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:35:54 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 10:29:30 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:20:09 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ static int	get_size(int n)
  * Allocates (with malloc(3)) and returns a string representing the integer 
  * received as an argument. 
  * 
- * @param n the integer to convert.
- * @return The string representing the integer. NULL if the allocation fails.
+ * @param n The integer to convert.
+ * @return The string representing the integer. `NULL` if the allocation fails.
  */
 char	*ft_itoa(int n)
 {

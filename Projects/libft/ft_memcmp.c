@@ -6,14 +6,14 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 06:07:48 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 15:53:50 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:19:55 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Compares two memory blocks.
+ * @brief Compare two memory blocks.
  *
  * Compares the first `n` bytes of memory areas `s1` and `s2`. Returns an
  * integer less than, equal to, or greater than zero if `s1` is found to be

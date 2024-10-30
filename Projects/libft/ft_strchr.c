@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:30:49 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 18:30:20 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:19:48 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  *
  * @param s The string to search within.
  * @param c The character to locate, interpreted as an unsigned char.
- * @return A pointer to the first occurrence of `c` in `s`, or NULL if `c` is
+ * @return A pointer to the first occurrence of `c` in `s`, or `NULL` if `c` is
  * not found.
  */
 char	*ft_strchr(const char *s, int c)

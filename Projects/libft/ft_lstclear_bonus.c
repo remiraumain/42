@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:41:49 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 09:47:00 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:20:07 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
  * @brief Delete and free the given node and every successor of that node.
  * 
  * Deletes and frees the given node and every successor of that node, using the 
- * function ’del’ and free(3). Finally, the pointer to the list must be set to 
- * NULL.
+ * function `del` and free(3). Finally, the pointer to the list must be set to 
+ * `NULL`.
  * 
  * @param lst The address of a pointer to a node.
  * @param del The address of the function used to delete the content of the 

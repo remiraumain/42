@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:18:19 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/30 09:43:21 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:20:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * @brief Apply the function on the content of each node.
  *
- * Iterates the list ’lst’ and applies the function ’f’ on the content of each
+ * Iterates the list `lst` and applies the function `f` on the content of each
  * node.
  *
  * @param lst The address of a pointer to a node.

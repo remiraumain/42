@@ -6,14 +6,14 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 08:06:22 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 15:45:39 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:19:41 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Finds a substring within a string up to a limit.
+ * @brief Find a substring within a string up to a limit.
  *
  * Searches for the first occurrence of the null-terminated `needle` within
  * `haystack`, up to `len` characters. Stops searching after any '\0'.
@@ -21,7 +21,7 @@
  * @param haystack The string to search in.
  * @param needle The substring to find.
  * @param len Maximum characters to search in haystack.
- * @return Pointer to the first occurrence of needle, or NULL if not found.
+ * @return Pointer to the first occurrence of needle, or `NULL` if not found.
  * Returns haystack if needle is empty.
  */
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)

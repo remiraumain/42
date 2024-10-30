@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:42:40 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 15:05:54 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:19:46 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
  * @brief Return the concatenated string.
  *
  * Allocates (with malloc(3)) and returns a new string, which is the result of
- * the concatenation of ’s1’ and ’s2’.
+ * the concatenation of `s1` and `s2`.
  *
  * @param s1 The prefix string.
  * @param s2 The suffix string.
- * @return The new string. NULL if the allocation fails.
+ * @return The new string. `NULL` if the allocation fails.
  */
 char	*ft_strjoin(char const *s1, char const *s2)
 {

@@ -6,12 +6,12 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:11:47 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 20:19:15 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:19:37 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @brief Converts a lowercase letter to uppercase.
+ * @brief Convert a lowercase letter to uppercase.
  *
  * If `c` is a lowercase letter, converts it to the corresponding uppercase
  * letter. If `c` is not a lowercase letter, it is returned unchanged.
