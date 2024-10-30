@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:43:02 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/30 07:29:33 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 08:43:01 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@
  *
  * @param dst The destination string to append to.
  * @param src The source string to append.
- * @param size The total size of the destination buffer.
+ * @param dstsize The total size of the destination buffer.
  * @return The initial length of `dst` plus the length of `src`.
  */
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	dstlen;
 	size_t	srclen;
 
 	srclen = ft_strlen(src);
-	if (!size)
+	if (!dstsize)
 		return (srclen);
 	dstlen = ft_strlen(dst);
-	if (size <= dstlen)
-		return (size + srclen);
-	if (size > dstlen + 1)
-		ft_strlcpy(dst + dstlen, src, size - dstlen);
+	if (dstsize <= dstlen)
+		return (dstsize + srclen);
+	if (dstsize > dstlen + 1)
+		ft_strlcpy(dst + dstlen, src, dstsize - dstlen);
 	return (dstlen + srclen);
 }
