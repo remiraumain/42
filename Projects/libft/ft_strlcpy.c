@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:25:13 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/30 09:07:20 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 09:11:16 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * @brief Copy a string to another with size limit.
  *
- * Copy up to size - 1 characters from the NUL-terminated string src to dst, 
+ * Copy up to size - 1 characters from the NUL-terminated string src to dst,
  * NUL-terminating the result.
  *
  * @param dst The destination string to copy to.

@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:17:26 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/21 17:06:47 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:12:11 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 /**
  * @brief Copy n bytes from a source to a destination.
  *
- * The ft_memmove() function copies len bytes from string src to string dst.
- * 	The two strings may overlap; the copy is always done in a non-destructive
- * 	manner.
+ * Copies len bytes from string src to string dst. The two strings may overlap;
+ * the copy is always done in a non-destructive manner.
  *
  * @param dest Pointer of the destination.
  * @param src Pointer of the source that is being copied.
@@ -33,6 +32,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	i = 0;
 	ptr_dest = (char *)dest;
 	ptr_src = (char *)src;
+	if (dest == src || !n)
+		return (dest);
 	if (!dest && !src)
 		return (NULL);
 	while (i < n)
