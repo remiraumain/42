@@ -6,14 +6,14 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:23:31 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 10:05:09 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:26:34 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Output the character ’c’ to the given file descriptor.
+ * @brief Output the character `c` to the given file descriptor.
  * 
  * @param c The character to output.
  * @param fd The file descriptor on which to write.

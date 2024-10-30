@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:15:44 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/11 11:16:01 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:27:06 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /**
  * @brief Calculate the length of a string.
  *
- * The  ft_strlen() function calculates the length of the string pointed to by
- *  s, excluding the terminating null byte ('\0').
+ * Calculates the length of the string pointed to by `s`, excluding the
+ * terminating null byte ('\0').
  *
- * @param s Pointer of the string's first character (or the starting point).
+ * @param s Pointer of the string.
  * @return The lenght of the string (number of bytes) pointed by s.
  */
 size_t	ft_strlen(const char *s)

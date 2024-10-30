@@ -6,14 +6,14 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:38:22 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 10:01:43 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:26:24 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Output the integer ’n’ to the given file descriptor.
+ * @brief Output the integer `n` to the given file descriptor.
  * 
  * @param n The integer to output.
  * @param fd The file descriptor on which to write.

@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 06:00:48 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 15:06:30 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:26:06 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ static int	fill_arr(char **arr, int word_count, char const *s, char c)
  * @brief Return an array of the split strings.
  *
  * Allocates (with malloc(3)) and returns an array of strings obtained by
- * splitting ’s’ using the character ’c’ as a delimiter. The array must end
+ * splitting `s` using the character `c` as a delimiter. The array must end
  * with a NULL pointer.
  *
- * @param s String  string to be split.
+ * @param s string to be split.
  * @param start Delimiter characte.
  * @return The array of new strings resulting from the split. NULL if the
  * allocation fails.

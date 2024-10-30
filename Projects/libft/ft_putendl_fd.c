@@ -6,14 +6,14 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:34:02 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/29 09:53:10 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:26:28 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Output the string ’s’ to the given file descriptor followed by a 
+ * @brief Output the string `s` to the given file descriptor followed by a 
  * newline.
  * 
  * @param s The string to output.
