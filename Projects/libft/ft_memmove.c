@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:17:26 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/30 11:19:54 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:22:48 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /**
  * @brief Copy `n` bytes from a `src` to a `dest`.
  *
- * Copies `n` bytes from string `src` to string `dst`. The two strings may overlap;
- * the copy is always done in a non-destructive manner.
+ * Copies `n` bytes from string `src` to string `dst`. The two strings may
+ * overlap; the copy is always done in a non-destructive manner.
  *
  * @param dest Pointer of the destination.
  * @param src Pointer of the source that is being copied.
