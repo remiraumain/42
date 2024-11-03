@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:49:53 by rraumain          #+#    #+#             */
-/*   Updated: 2024/10/30 11:20:17 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/03 13:29:39 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,10 @@
  */
 void	ft_bzero(void *s, size_t n)
 {
-	char	*ptr;
-
-	ptr = (char *)s;
 	while (n)
 	{
-		*ptr = '\0';
-		ptr++;
+		*(char *)s = '\0';
+		s++;
 		n--;
 	}
 }
