@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_selector.c                               :+:      :+:    :+:   */
+/*   ft_selector.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:58:35 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/04 21:26:18 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:01:45 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_selector(char selector, va_list args)
+int	ft_selector(char selector, va_list args)
 {
 	if (selector == 'c')
 		return (ft_putchar(va_arg(args, int)));

@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:11:34 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/04 21:16:13 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:02:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,8 @@
  */
 int	ft_putunbr(unsigned int n)
 {
-	int	len;
-
-	len = 0;
 	if (n > 9)
-	{
 		ft_putunbr(n / 10);
-		len++;
-	}
 	n = n % 10 + '0';
-	write(1, &n, 1);
-	return (len);
+	return (write(1, &n, 1));
 }

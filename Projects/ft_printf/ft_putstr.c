@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:00:52 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/04 21:24:29 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:02:14 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ int	ft_putstr(char *s)
 	i = 0;
 	while (s[i])
 		i++;
-	write(1, s, i);
-	return (i);
+	return (write(1, s, i));
 }

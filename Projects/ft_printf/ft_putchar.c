@@ -6,11 +6,12 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:00:46 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/04 21:24:07 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:07:41 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 /**
  * @brief Output the character `c`.
@@ -20,6 +21,5 @@
  */
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
