@@ -6,12 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 10:12:13 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/03 13:29:42 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/04 08:03:00 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
 /**
  * @brief Allocate and zero-initialize an array.
@@ -30,7 +29,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	if (!nmemb || !size)
 		return (malloc(0));
-	if (nmemb > SIZE_MAX / size)
+	if (nmemb > (size_t) - 1 / size)
 		return (NULL);
 	len = nmemb * size;
 	ptr = malloc(len);
