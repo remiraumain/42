@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 13:58:35 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/04 17:47:22 by rraumain         ###   ########.fr       */
+/*   Created: 2024/11/04 19:44:22 by rraumain          #+#    #+#             */
+/*   Updated: 2024/11/04 21:24:36 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	process_selector(char selector, va_list args)
+int	ft_putptr(void *ptr)
 {
-	if (selector == 'c')
-		return (ft_putchar(va_arg(args, int)));
-	else if (selector == 's')
-		return (ft_putstr(va_arg(args, char *)));
-	else if (selector == 'd')
-		return (ft_putnbr(va_arg(args, int)));
-	else if (selector == '%')
-		return (ft_putchar('%'));
-	return (-1);
+	int	count;
+
+	count = 0;
+	if (!ptr)
+		return (ft_putstr("(nil)"));
+	count += ft_putstr("0x");
+	count += ft_puthex((unsigned long)ptr, 0);
+	return (count);
 }

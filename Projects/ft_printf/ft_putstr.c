@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:00:52 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/04 17:38:38 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/04 21:24:29 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  */
 int	ft_putstr(char *s)
 {
-	int i;
+	int	i;
 
 	if (!s)
 		return (-1);

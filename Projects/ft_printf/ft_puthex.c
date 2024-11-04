@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 21:23:23 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/04 21:26:02 by rraumain         ###   ########.fr       */
+/*   Created: 2024/11/04 21:21:23 by rraumain          #+#    #+#             */
+/*   Updated: 2024/11/04 21:24:20 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_puthex(unsigned long n, int is_upper)
 {
-	int		len;
-	va_list	args;
+	char	*base;
+	int		count;
 
-	va_start(args, format);
-	len = 0;
-	while (*format)
-	{
-		if (*format == '%' && *(format + 1))
-		{
-			format++;
-			len += ft_printf_selector(*format, args);
-		}
-		else
-			len += ft_putchar(*format);
-		format++;
-	}
-	va_end(args);
-	return (len);
+	if (is_upper)
+		base = "0123456789ABCDEF";
+	else
+		base = "0123456789abcdef";
+	count = 0;
+	if (n >= 16)
+		count += ft_puthex(n / 16, is_upper);
+	count += ft_putchar(base[n % 16]);
+	return (count);
 }

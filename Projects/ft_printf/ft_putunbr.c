@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 21:23:23 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/04 21:26:02 by rraumain         ###   ########.fr       */
+/*   Created: 2024/11/04 21:11:34 by rraumain          #+#    #+#             */
+/*   Updated: 2024/11/04 21:16:13 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+/**
+ * @brief Output the unsigned integer `n`.
+ *
+ * @param n The unsigned integer to output.
+ * @return The length of the nbr.
+ */
+int	ft_putunbr(unsigned int n)
 {
-	int		len;
-	va_list	args;
+	int	len;
 
-	va_start(args, format);
 	len = 0;
-	while (*format)
+	if (n > 9)
 	{
-		if (*format == '%' && *(format + 1))
-		{
-			format++;
-			len += ft_printf_selector(*format, args);
-		}
-		else
-			len += ft_putchar(*format);
-		format++;
+		ft_putunbr(n / 10);
+		len++;
 	}
-	va_end(args);
+	n = n % 10 + '0';
+	write(1, &n, 1);
 	return (len);
 }
