@@ -6,13 +6,15 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:00:49 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/04 14:09:10 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:39:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+
 /**
  * @brief Output the integer `n`.
- * 
+ *
  * @param n The integer to output.
  * @return The length of the nbr.
  */
@@ -34,7 +36,7 @@ int	ft_putnbr(int n)
 	}
 	if (n > 9)
 	{
-		ft_putnbr_fd(n / 10);
+		ft_putnbr(n / 10);
 		len++;
 	}
 	n = n % 10 + '0';

@@ -6,16 +6,21 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:58:35 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/04 16:20:30 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:47:22 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	process_selector(char *format)
+int	process_selector(char selector, va_list args)
 {
-	if (format == 'c')
-		return (ft_putchar(va_arg(arg)));
-	else if (format == 's')
-		return (ft_putstr(format));
+	if (selector == 'c')
+		return (ft_putchar(va_arg(args, int)));
+	else if (selector == 's')
+		return (ft_putstr(va_arg(args, char *)));
+	else if (selector == 'd')
+		return (ft_putnbr(va_arg(args, int)));
+	else if (selector == '%')
+		return (ft_putchar('%'));
+	return (-1);
 }
