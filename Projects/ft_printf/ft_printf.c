@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:23:23 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/05 10:30:03 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:11:38 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * @brief Print ARGUMENT(s) according to FORMAT.
- * 
+ *
  * @param format The format string.
  * @param args The content to output (variadic variable).
  * @return The lenght of the output.
@@ -25,6 +25,8 @@ int	ft_printf(const char *format, ...)
 	int		len;
 	va_list	args;
 
+	if (!format)
+		return (-1);
 	va_start(args, format);
 	len = 0;
 	while (*format)
