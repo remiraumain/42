@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:23:23 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/05 07:20:23 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/05 07:26:16 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_printf(const char *format, ...)
 
 // int	main(void)
 // {
-// 	ft_printf("ft_printf: %p \n", NULL);
-// 	printf("printf: %p ", NULL);
+// 	ft_printf("ft_printf: %d \n", -10);
+// 	printf("printf: %d ", -10);
 // 	return (0);
 // }
