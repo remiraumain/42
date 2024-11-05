@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 19:44:22 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/05 10:32:59 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:46:16 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ static int	convert_hex(size_t n)
  */
 int	ft_putptr(void *ptr)
 {
-	int	count;
+	int	len;
 
 	if (!ptr)
 		return (ft_putstr("(nil)"));
-	count = 0;
-	count += ft_putstr("0x");
-	count += convert_hex((size_t)ptr);
-	return (count);
+	len = 0;
+	len += ft_putstr("0x");
+	len += convert_hex((size_t)ptr);
+	return (len);
 }
