@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 19:44:22 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/05 10:29:14 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:32:59 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int	convert_hex(size_t n)
 	count += ft_putchar(base[n % 16]);
 	return (count);
 }
+
 /**
  * @brief Output the address of the pointer.
  *
