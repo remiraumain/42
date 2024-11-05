@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:00:52 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/05 07:17:24 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:29:35 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /**
  * @brief Output the string `s`.
  *
- * @param s The string to output.
- * @return The length of `s`.
+ * @param s The string.
+ * @return The length of `s`. (null) if NULL.
  */
 int	ft_putstr(char *s)
 {

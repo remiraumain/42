@@ -6,13 +6,20 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:21:23 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/04 21:24:20 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:03:35 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthex(unsigned long n, int is_upper)
+/**
+ * @brief Output the int `n` in base 16.
+ *
+ * @param n The integer to convert.
+ * @param is_upper Bool `1` for uppercase. `0` for lowercase.
+ * @return The lenght of the output.
+ */
+int	ft_puthex(unsigned int n, int is_upper)
 {
 	char	*base;
 	int		count;
