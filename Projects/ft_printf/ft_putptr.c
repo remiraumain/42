@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 19:44:22 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/05 10:46:16 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:58:36 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 static int	convert_hex(size_t n)
 {
 	char	*base;
-	int		count;
+	int		len;
 
 	base = "0123456789abcdef";
-	count = 0;
+	len = 0;
 	if (n >= 16)
-		count += convert_hex(n / 16);
-	count += ft_putchar(base[n % 16]);
-	return (count);
+		len += convert_hex(n / 16);
+	len += ft_putchar(base[n % 16]);
+	return (len);
 }
 
 /**

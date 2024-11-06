@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:21:23 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/05 10:03:35 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:09:50 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@
 int	ft_puthex(unsigned int n, int is_upper)
 {
 	char	*base;
-	int		count;
+	int		len;
 
 	if (is_upper)
 		base = "0123456789ABCDEF";
 	else
 		base = "0123456789abcdef";
-	count = 0;
+	len = 0;
 	if (n >= 16)
-		count += ft_puthex(n / 16, is_upper);
-	count += ft_putchar(base[n % 16]);
-	return (count);
+		len += ft_puthex(n / 16, is_upper);
+	len += ft_putchar(base[n % 16]);
+	return (len);
 }
