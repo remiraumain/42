@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:25:02 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/06 11:37:36 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/07 14:24:20 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,24 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-
 # include <stdlib.h>
 # include <unistd.h>
 
 typedef struct s_fd_buffer
 {
-	int			fd;
-	char		*buffer;
-	t_fd_buffer	*next;
+	int					fd;
+	char				*buffer;
+	struct s_fd_buffer	*next;
 }	t_fd_buffer;
 
-char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
+char		*get_next_line(int fd);
+void		read_to_buffer(char **buffer, int fd);
+t_fd_buffer	*get_node(int fd, t_fd_buffer **fd_nodes);
+//void		clean_node(t_fd_buffer *node, t_fd_buffer **fd_nodes);
+void		clean_buffer(char *buffer, size_t start);
+char		*get_line(char *buffer);
+int			has_newline(char *buffer);
+void		*ft_realloc(void *ptr, size_t size);
+size_t		ft_strclen(char *s, char c);
 
 #endif
