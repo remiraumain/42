@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:51:20 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/17 20:07:33 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:36:23 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ char *get_linex(char **buffer)
 {
     char *line;
     size_t len;
-    size_t i;
 
     if (buffer == NULL || *buffer == NULL)
         return (NULL);
@@ -67,19 +66,12 @@ char *get_linex(char **buffer)
     line = malloc(len + 1);
     if (!line)
         return (NULL);
-
-    i = 0;
-    while (i < len)
-    {
-        line[i] = (*buffer)[i];
-        i++;
-    }
-    line[i] = '\0';
+    ft_strlcpy(line, *buffer, len + 1);
     clean_buffer(buffer, len);
     return (line);
 }
 
-void read_to_buffer(char **buffer, int fd)
+int read_to_buffer(char **buffer, int fd)
 {
     ssize_t bytes_read;
     char *temp_buffer;
@@ -88,17 +80,23 @@ void read_to_buffer(char **buffer, int fd)
 
     temp_buffer = malloc(BUFFER_SIZE + 1);
     if (!temp_buffer)
-        return;
-    bytes_read = 0;
-	while (!has_newline(*buffer) && (bytes_read = read(fd, temp_buffer, BUFFER_SIZE)) > 0)
+        return (1);
+    bytes_read = 1;
+	while (!has_newline(*buffer) && bytes_read > 0)
     {
+		bytes_read = read(fd, temp_buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
+    	{
+        	free(temp_buffer);
+        	return (1);
+    	}
         temp_buffer[bytes_read] = '\0';
         buffer_len = ft_strclen(*buffer, '\0');
         *buffer = ft_realloc(*buffer, buffer_len + bytes_read + 1);
         if (!(*buffer))
         {
             free(temp_buffer);
-            return;
+            return (1);
         }
         i = 0;
         while (i < (size_t)bytes_read)
@@ -108,12 +106,8 @@ void read_to_buffer(char **buffer, int fd)
         }
         (*buffer)[buffer_len + i] = '\0';
     }
-    if (bytes_read == -1)
-    {
-        free(temp_buffer);
-        return;
-    }
     free(temp_buffer);
+	return (0);
 }
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)

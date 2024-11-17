@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:25:06 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/17 20:09:42 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:38:14 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,19 @@ char *get_next_line(int fd)
     if (!node)
         return (NULL);
     if (!has_newline(node->buffer))
-        read_to_buffer(&node->buffer, fd);
+	{
+		if (read_to_buffer(&node->buffer, fd))
+		{
+			if (node->buffer)
+        	{
+            	free(node->buffer);
+           		node->buffer = NULL;
+        	}
+			delete_node(fd, &fd_nodes);
+			return (NULL);
+		}
+	}
+        
     line = get_linex(&node->buffer);
     if (!line)
     {
