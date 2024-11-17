@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:25:06 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/17 19:43:33 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:09:42 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // 	int fd;
 // 	char *line;
 
-// 	fd = open("nl.txt", O_RDONLY);
+// 	fd = open("mnl.txt", O_RDONLY);
 // 	if (fd == -1)
 // 	{
 // 		printf("Erreur on open");
@@ -68,7 +68,7 @@ char	*ft_realloc(char *ptr, size_t new_size)
 	if (!ptr)
 		return (malloc(new_size));
 	new_ptr = malloc(new_size);
-	if (!ptr)
+	if (!new_ptr)
 	{
 		free(ptr);
 		return (NULL);

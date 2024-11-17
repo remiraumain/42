@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:51:20 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/17 19:37:57 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:07:33 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,6 @@ void clean_buffer(char **buffer, size_t len)
     size_t remaining_length;
     char *new_buffer;
 	
-	if ((*buffer)[len] == '\n')
-	    len++;
     remaining_length = ft_strclen(*buffer + len, '\0');
     if (remaining_length == 0)
     {
