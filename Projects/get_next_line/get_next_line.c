@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:25:06 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/07 14:33:47 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/17 19:13:40 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	int fd;
 	char *line;
 
-	fd = open("hello.txt", O_RDONLY);
+	fd = open("1char.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		printf("Erreur on open");
@@ -40,12 +40,16 @@ char	*get_next_line(int fd)
 	t_fd_buffer			*node;
 	char				*line;
 
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	node = get_node(fd, &fd_nodes);
 	if (!node)
 		return (NULL);
+		
 	if (!has_newline(node->buffer))
 		read_to_buffer(&node->buffer, fd);
-	line = get_line(node->buffer);
+
+	line = get_linex(&node);
 	if (!line)
 		{
 			if (!fd_nodes || !node)
@@ -61,44 +65,32 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-void	*ft_realloc(void *ptr, size_t size)
+char	*ft_realloc(char *ptr, size_t new_size)
 {
-	void	*temp_ptr;
-	size_t	i;			
+	char	*new_ptr;
 
-	if (!ptr && size)
-		return (ptr = malloc(size));
-	else if (!size && ptr)
-		free(ptr);
-	else if (!ptr && !size)
-		return (NULL);
-	temp_ptr = malloc(sizeof(void *) * size);
-	i = 0;
-	while (i < size)
+	if (!ptr)
+		return (malloc(new_size));
+	new_ptr = malloc(new_size);
+	if (!ptr)
 	{
-		if (((char *)ptr)[i])
-			((char *)temp_ptr)[i] = ((char *)ptr)[i];
-		((char *)temp_ptr)[i] = 0;
-		i++;
+		free(ptr);
+		return (NULL);
 	}
+	//new_ptr[0] = '\0';
+	ft_strlcpy(new_ptr, ptr, new_size);
 	free(ptr);
-	((char *)temp_ptr)[i] = 0;
-	ptr = temp_ptr;
-	return (ptr);
+	return (new_ptr);
 }
 
 size_t	ft_strclen(char *s, char c)
 {
-	size_t	i;
+	size_t	len;
 
 	if (!s)
 		return (0);
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			return (i + 1);
-		i++;
-	}
-	return (0);
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (len);
 }

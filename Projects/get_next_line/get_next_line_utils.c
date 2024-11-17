@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:51:20 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/07 14:36:48 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/17 19:03:36 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,27 @@
 
 t_fd_buffer	*get_node(int fd, t_fd_buffer **fd_nodes)
 {
-	t_fd_buffer	*node;
+	t_fd_buffer	*current;
 	
-	node = malloc(sizeof(t_fd_buffer));
-		if (!node)
-			return (NULL);
-	node->fd = fd;
-	node->buffer = NULL;
-	if (!(*fd_nodes))
-		fd_nodes = &node;
-	else
+	if (!fd_nodes)
+		return (NULL);
+	current = *fd_nodes;
+	while (current)
 	{
-		while ((*fd_nodes)->next != node && !((*fd_nodes)->next))
-			*fd_nodes = (*fd_nodes)->next;
-		(*fd_nodes)->next = node;
+		if (current->fd == fd)
+			return (current);
+		current = current->next;
 	}
-	return (node);
+	if (current)
+		return (current);
+	current = malloc(sizeof(t_fd_buffer));
+	if (!current)
+		return (NULL);
+	current->fd = fd;
+	current->buffer = NULL;
+	current->next = *fd_nodes;
+	*fd_nodes = current;
+	return (current);
 }
 
 int	has_newline(char *buffer)
@@ -45,16 +50,19 @@ int	has_newline(char *buffer)
 	return (0);
 }
 
-char	*get_line(char *buffer)
+char	*get_linex(t_fd_buffer **node)
 {
 	char	*line;
 	size_t	len;
 	size_t	i;
  
-	if (has_newline(buffer))
-		len = ft_strclen(buffer, '\n');
+	if (!node && !(*node)->buffer)
+		return (NULL);
+
+	if (has_newline((*node)->buffer))
+		len = ft_strclen((*node)->buffer, '\n');
 	else
-		len = ft_strclen(buffer, '\0');
+		len = ft_strclen((*node)->buffer, '\0');
 	if (!len)
 		return (NULL);
 	line = malloc(len + 1);
@@ -63,11 +71,11 @@ char	*get_line(char *buffer)
 	i = 0;
 	while (i < len)
 	{
-		line[i] = buffer[i];
+		line[i] = (*node)->buffer[i];
 		i++;
 	}
 	line[i] = '\0';
-	clean_buffer(buffer, len);
+	clean_buffer(&(*node)->buffer, len);
 	return (line);
 }
 
@@ -85,7 +93,7 @@ void	read_to_buffer(char	**buffer, int fd)
 	while (!has_newline(*buffer) && !bytes_read)
 	{
 		bytes_read = read(fd, temp_buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
+		if (bytes_read <= 0)
 		{
 			free(temp_buffer);
 			return ;
@@ -104,23 +112,54 @@ void	read_to_buffer(char	**buffer, int fd)
 	free(temp_buffer);
 }
 
-void	clean_buffer(char *buffer, size_t start)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t	new_size;
-	char	*temp_buffer;
-	size_t	i;
-
-	new_size = ft_strclen(&buffer[start], '\0');
-	temp_buffer = malloc(new_size + 1);
-	if (temp_buffer)
-		return ;
-	i = 0;
-	while (i < new_size)
+	size_t i = 0;
+	if (!dst || !src)
+		return (0);
+	if (dstsize > 0)
 	{
-		temp_buffer[i] = buffer[start + i];
-		i++;
+		while (src[i] && i < dstsize - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	temp_buffer[i] = '\0';
-	free(buffer);
-	buffer = temp_buffer;
+	i = 0;
+	while (src[i])
+		i++;
+	return (i);
+}
+
+void	clean_buffer(char **buffer, size_t len)
+{
+	size_t	new_len;
+	char	*new_buffer;
+
+	if (!buffer)
+		return ;
+
+	if ((*buffer)[len] == '\n')
+		len++;
+
+	new_len = ft_strclen(*buffer + len, '\0');
+
+	if (!new_len)
+	{
+		free(*buffer);
+		*buffer = NULL;
+		return ;
+	}
+	new_buffer = malloc(new_len + 1);
+	if (!new_buffer)
+	{
+		free(*buffer);
+		*buffer = NULL;
+		return ;
+	}
+		
+	ft_strlcpy(new_buffer, *buffer + len, new_len + 1);
+	free(*buffer);
+	*buffer = new_buffer;
 }
