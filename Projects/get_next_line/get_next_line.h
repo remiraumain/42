@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:25:02 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/17 20:30:45 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:23:22 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ typedef struct s_fd_buffer
 {
 	int					fd;
 	char				*buffer;
+	ssize_t				bytes_read;
 	struct s_fd_buffer	*next;
 }	t_fd_buffer;
 
 char		*get_next_line(int fd);
-int		read_to_buffer(char **buffer, int fd);
+void		read_to_buffer(t_fd_buffer **node, int fd);
 t_fd_buffer	*get_node(int fd, t_fd_buffer **fd_nodes);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void delete_node(int fd, t_fd_buffer **fd_nodes);

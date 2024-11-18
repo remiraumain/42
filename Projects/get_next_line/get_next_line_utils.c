@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:51:20 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/17 20:36:23 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:30:33 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_fd_buffer	*get_node(int fd, t_fd_buffer **fd_nodes)
 		return (NULL);
 	current->fd = fd;
 	current->buffer = NULL;
+	current->bytes_read = 1;
 	current->next = *fd_nodes;
 	*fd_nodes = current;
 	return (current);
@@ -65,49 +66,34 @@ char *get_linex(char **buffer)
         return (NULL);
     line = malloc(len + 1);
     if (!line)
-        return (NULL);
+		return (NULL);
     ft_strlcpy(line, *buffer, len + 1);
     clean_buffer(buffer, len);
     return (line);
 }
 
-int read_to_buffer(char **buffer, int fd)
+void	read_to_buffer(t_fd_buffer **node, int fd)
 {
-    ssize_t bytes_read;
     char *temp_buffer;
     size_t buffer_len;
-    size_t i;
 
     temp_buffer = malloc(BUFFER_SIZE + 1);
     if (!temp_buffer)
-        return (1);
-    bytes_read = 1;
-	while (!has_newline(*buffer) && bytes_read > 0)
+		return ;
+	temp_buffer[0] = '\0';
+	while (!has_newline(temp_buffer) && (*node)->bytes_read > 0)
     {
-		bytes_read = read(fd, temp_buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
-    	{
-        	free(temp_buffer);
-        	return (1);
-    	}
-        temp_buffer[bytes_read] = '\0';
-        buffer_len = ft_strclen(*buffer, '\0');
-        *buffer = ft_realloc(*buffer, buffer_len + bytes_read + 1);
-        if (!(*buffer))
-        {
-            free(temp_buffer);
-            return (1);
-        }
-        i = 0;
-        while (i < (size_t)bytes_read)
-        {
-            (*buffer)[buffer_len + i] = temp_buffer[i];
-            i++;
-        }
-        (*buffer)[buffer_len + i] = '\0';
+		(*node)->bytes_read = read(fd, temp_buffer, BUFFER_SIZE);
+		if ((*node)->bytes_read == -1)
+        	return (free(temp_buffer));
+        temp_buffer[(*node)->bytes_read] = '\0';
+        buffer_len = ft_strclen((*node)->buffer, '\0');
+        (*node)->buffer = ft_realloc((*node)->buffer, buffer_len + (*node)->bytes_read + 1);
+        if (!(*node)->buffer)
+            return (free(temp_buffer));
+		ft_strlcpy(&(*node)->buffer[buffer_len], temp_buffer, (*node)->bytes_read + 1);
     }
     free(temp_buffer);
-	return (0);
 }
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
