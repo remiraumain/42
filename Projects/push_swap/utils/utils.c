@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:01:53 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/27 11:15:56 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:30:03 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,28 @@ int	get_sign(char c)
 		return (1);
 	if (c == '-')
 		return (-1);
+	return (0);
+}
+
+int	cmp_word(const char *s1, const char *s2, int start, int end)
+{
+	int	i;
+	int	j;
+
+	if (!start || !end)
+		return (0);
+	i = 0;
+	while (s1[i])
+	{
+		if (i >= start)
+			i = end;
+		j = 0;
+		while (j < end && ((unsigned char)s1[i] == (unsigned char)s2[j]))
+			j++;
+		if (j == end)
+			return (1);
+		i++;
+		}
 	return (0);
 }
 

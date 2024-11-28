@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:49:34 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/27 11:15:54 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:52:25 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,30 +85,23 @@ static int	in_range(const char *input)
 	}
 	return (1);
 }
-
+// "42 33 12 33 56"
 static int	has_dup(const char *input)
 {
-	int	i;
-	int j;
+	int	end;
 	int	start;
 
-	i = 0;
-	while (input[i])
+	end = 0;
+	while (input[end])
 	{
-		j = 0;
-		while (input[i] == ' ')
-			i++;
-		start = i;
-		while (is_digit(input[i] || get_sign(input[i])))
-			i++;
-		while(input[j] && input[j + i])
-		{
-			if (j == start)
-				j = i;
-			
-		}
-		
+		start = end;
+		while (is_digit(input[end] || get_sign(input[end])))
+			end++;
+		if (cmp_word(input, &input[start], start, end))
+			return (1);
+		end++;
 	}
+	return (0);
 }
 
 // static int	normalize(t_stack *stack)
@@ -145,7 +138,7 @@ static int	has_dup(const char *input)
 //     return (1);
 // }
 
-int	is_input_correct(const char *input, t_stack **a)
+int	is_input_correct(const char *input)
 {
 	if (!input || !input[0])
 		return (0);

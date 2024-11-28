@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:22:09 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/26 23:13:09 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:35:36 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-int	parse(const char *input, t_stack **a);
 int	is_digit(char c);
 int	get_sign(char c);
-int extract_number(const char *str, t_stack **stack);
+int	cmp_word(const char *s1, const char *s2, int start, int end);
+int	is_input_correct(const char *input);
 
 #endif

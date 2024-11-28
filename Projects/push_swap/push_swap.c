@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:21:59 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/26 23:02:47 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:36:36 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int	main(int argc, char **argv)
 {
 	argv[1] = "5 1 2 3 4";
 	argc = 2;
-	t_stack	*a;
+	// t_stack	*a;
 	// t_stack	*b;
 
-	a = NULL;
+	// a = NULL;
 	// b = NULL;
 	if (argc != 2)
 		return (1);
-	if (!parse(argv[1], &a))
+	if (!is_input_correct(argv[1]))
 		return (1); // return error\n
 	
 	// fill_stack(a);
