@@ -6,11 +6,34 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:21:59 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/28 13:36:36 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:01:45 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/** 
+ * This should work
+ * 
+ * ./push_swap "1 2 4 3"
+ * ./push_swap "-2147483648 2147483647"
+ * 
+ * This should not (return "error\n")
+ * 
+ * ./push_swap "1 2 1"
+ * ./push_swap 1 2 1
+ * ./push_swap " 1 2"
+ * ./push_swap 2147483 	6481902020983
+ * ./push_swap
+ * ./push_swap " "
+ * ./push_swap 2147483647 10 0
+ * ./push_swap "1 2 4 3" 76 90 "348 05 (half string half number)
+ * 
+ * Check 
+ * 
+ * ./push_swap " 1"
+ * ./push_swap "1  2"
+ */
 
 // static void	push_swap(t_stack **a, t_stack **b, int stack_size)
 // {
@@ -31,7 +54,7 @@
 
 int	main(int argc, char **argv)
 {
-	argv[1] = "5 1 2 3 4";
+	argv[1] = "5 1 2 3";
 	argc = 2;
 	// t_stack	*a;
 	// t_stack	*b;

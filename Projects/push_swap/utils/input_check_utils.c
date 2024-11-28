@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   input_check_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:01:53 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/28 13:30:03 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:02:57 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,47 +28,30 @@ int	get_sign(char c)
 	return (0);
 }
 
-int	cmp_word(const char *s1, const char *s2, int start, int end)
+int	cmp_word(const char *s1, const char *s2, int s2_len)
 {
-	int	i;
 	int	j;
+	int	count;
+	int	word_len;
 
-	if (!start || !end)
+	if (!s1 || !s2 || !s2_len)
 		return (0);
-	i = 0;
-	while (s1[i])
+	count = 0;
+	while (*s1)
 	{
-		if (i >= start)
-			i = end;
+		word_len = 0;
+		while (is_digit(s1[word_len]) || get_sign(s1[word_len]))
+			word_len++;
 		j = 0;
-		while (j < end && ((unsigned char)s1[i] == (unsigned char)s2[j]))
+		while ((unsigned char)s1[j] == (unsigned char)s2[j] && j < s2_len)
 			j++;
-		if (j == end)
-			return (1);
-		i++;
+		if (j == s2_len && word_len == s2_len)
+		{
+			count++;
+			if (count == 2)
+				return (1);
 		}
+		s1 += word_len + 1;
+	}
 	return (0);
 }
-
-// int extract_number(const char *str, t_stack **stack)
-// {
-//     int sign;
-
-//     (*stack)->value = 0;
-//     while (*str == ' ')
-//         str++;
-//     sign = get_sign(*str);
-//     if (sign != 0)
-//         str++;
-// 	else
-// 		sign = 1;
-//     while (is_digit(*str))
-//     {
-//         (*stack)->value = (*stack)->value * 10 + (*str - '0');
-//         str++;
-//     }
-//     (*stack)->value = (*stack)->value * sign;
-//     if (sign != 0 || (*stack)->value != 0)
-//         return 1;
-//     return 0;
-// }

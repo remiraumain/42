@@ -6,32 +6,9 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:49:34 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/28 13:52:25 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:02:52 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/** 
- * This should work
- * 
- * ./push_swap "1 2 4 3"
- * ./push_swap "-2147483648 2147483647"
- * 
- * This should not (return "error\n")
- * 
- * ./push_swap "1 2 1"
- * ./push_swap 1 2 1
- * ./push_swap " 1 2"
- * ./push_swap 2147483 	6481902020983
- * ./push_swap
- * ./push_swap " "
- * ./push_swap 2147483647 10 0
- * ./push_swap "1 2 4 3" 76 90 "348 05 (half string half number)
- * 
- * Check 
- * 
- * ./push_swap " 1"
- * ./push_swap "1  2"
- */
 
 #include "push_swap.h"
 
@@ -46,11 +23,14 @@ static int	type_check(const char *input)
 			return (0);
 		if (get_sign(input[0]) && !is_digit(input[i + 1]))
 			return (0);
-		if (input[i] != ' ' && !get_sign(input[i]) && !is_digit(input[i]))
+		if (input[i] != ' ' 
+			&& !get_sign(input[i]) && !is_digit(input[i]))
 			return (0);
-		if (input[i] == ' ' && !(is_digit(input[i + 1]) || get_sign(input[i + 1])))
+		if (input[i] == ' ' 
+			&& !(is_digit(input[i + 1]) || get_sign(input[i + 1])))
 			return (0);
-		if (get_sign(input[i]) && !(is_digit(input[i + 1]) && input[i - 1] == ' '))
+		if (get_sign(input[i]) 
+			&& !(is_digit(input[i + 1]) && input[i - 1] == ' '))
 			return (0);
 		i++;
 	}
@@ -85,7 +65,7 @@ static int	in_range(const char *input)
 	}
 	return (1);
 }
-// "42 33 12 33 56"
+
 static int	has_dup(const char *input)
 {
 	int	end;
@@ -95,48 +75,14 @@ static int	has_dup(const char *input)
 	while (input[end])
 	{
 		start = end;
-		while (is_digit(input[end] || get_sign(input[end])))
+		while (is_digit(input[end]) || get_sign(input[end]))
 			end++;
-		if (cmp_word(input, &input[start], start, end))
+		if (cmp_word(input, &input[start], end - start))
 			return (1);
 		end++;
 	}
 	return (0);
 }
-
-// static int	normalize(t_stack *stack)
-// {
-
-// }
-
-// static int	fill_stack(const char *input, t_stack **stack)
-// {
-// 	t_stack	*last;
-
-// 	last = NULL;
-//     while (*input)
-//     {
-// 		while (*input == ' ')
-// 			input++;
-// 		stack = malloc(sizeof(t_stack **));
-// 		if (!stack)
-// 			return 0;
-//         if (!extract_number(input, stack))
-//         {
-//             free(stack);
-//             return (0);
-//         }
-// 		else 
-// 		{
-// 			(*stack)->prev = last;
-// 			(*stack)->next = NULL;
-// 			last = *stack;
-// 		}
-// 		while (*input != ' ' && *input)
-// 			input++;
-//     }
-//     return (1);
-// }
 
 int	is_input_correct(const char *input)
 {
@@ -146,10 +92,7 @@ int	is_input_correct(const char *input)
 		return (0);
 	if (!in_range(input))
 		return (0);
-	// if (!fill_stack(input, a))
-	// 	return (0);
 	if (has_dup(input))
 		return (0);
-	
 	return (1);
 }
