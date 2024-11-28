@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:21:59 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/28 16:01:45 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:37:01 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,17 @@
 // 	if (stack_size == 2)
 // 		return (do_sa(a)); // Todo
 // 	else if (stack_size == 3)
-// 		hard_sort(a); // Todo hard coded sort
+// 		return sort_three(a); // Todo hard coded sort
 // 	else if (stack_size == 4 || stack_size == 5)
-// 		hard_sort_op(a); // Todo
-// 	else if (stack_size >= 6 && stack_size < 100)
-// 		insert_sort(a); // Todo
-// 	else
-// 		radix_sort(a, b); // Todo
+// 		sort_five(a); // Todo
+// 	else 
+// 		sort_big(a); // Todo
 // 	free_stack(b);
 // }
 
 int	main(int argc, char **argv)
 {
-	argv[1] = "5 1 2 3";
+	argv[1] = "2";
 	argc = 2;
 	// t_stack	*a;
 	// t_stack	*b;
@@ -63,11 +61,11 @@ int	main(int argc, char **argv)
 	// b = NULL;
 	if (argc != 2)
 		return (1);
-	if (!is_input_correct(argv[1]))
+	if (!is_input_valid(argv[1]))
 		return (1); // return error\n
-	
-	// fill_stack(a);
-	// push_swap(a, b, get_size(a));
+	// if (!fill_stack(a, argv[1]))
+	// 	return (1); // return error\n
+	// push_swap(a, b);
 	// free_stack(a);
 	return (0);
 }

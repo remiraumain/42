@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:01:53 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/28 16:02:57 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:34:00 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	get_sign(char c)
 	return (0);
 }
 
-int	cmp_word(const char *s1, const char *s2, int s2_len)
+int	cmp_word(const char *s1, const char *s2, unsigned long s2_len)
 {
-	int	j;
-	int	count;
-	int	word_len;
+	unsigned long	i;
+	unsigned long	count;
+	unsigned long	word_len;
 
 	if (!s1 || !s2 || !s2_len)
 		return (0);
@@ -42,10 +42,10 @@ int	cmp_word(const char *s1, const char *s2, int s2_len)
 		word_len = 0;
 		while (is_digit(s1[word_len]) || get_sign(s1[word_len]))
 			word_len++;
-		j = 0;
-		while ((unsigned char)s1[j] == (unsigned char)s2[j] && j < s2_len)
-			j++;
-		if (j == s2_len && word_len == s2_len)
+		i = 0;
+		while ((unsigned char)s1[i] == (unsigned char)s2[i] && i < s2_len)
+			i++;
+		if (i == s2_len && word_len == s2_len)
 		{
 			count++;
 			if (count == 2)
