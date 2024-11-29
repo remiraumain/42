@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:21:59 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/28 16:37:01 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:27:38 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,17 @@
 
 int	main(int argc, char **argv)
 {
-	argv[1] = "2";
-	argc = 2;
-	// t_stack	*a;
+	t_stack	*a;
 	// t_stack	*b;
 
-	// a = NULL;
+	a = NULL;
 	// b = NULL;
 	if (argc != 2)
 		return (1);
 	if (!is_input_valid(argv[1]))
 		return (1); // return error\n
-	// if (!fill_stack(a, argv[1]))
-	// 	return (1); // return error\n
+	 if (!init_stack(&a, argv[1]))
+	 	return (1); // return error\n
 	// push_swap(a, b);
 	// free_stack(a);
 	return (0);
