@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_mng_utils.c                                  :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 18:09:49 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/29 18:55:50 by rraumain         ###   ########.fr       */
+/*   Created: 2024/10/08 09:11:10 by rraumain          #+#    #+#             */
+/*   Updated: 2024/12/10 14:56:55 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-void	free_stack(t_stack *stack)
-{
-	t_stack	*next;
+# include <stdlib.h>
+# include <unistd.h>
 
-	next = NULL;
-	while (stack)
-	{
-		next = stack->next;
-		stack->value = 0;
-		stack->actions_nb = 0;
-		stack->prev = NULL;
-		stack->next = NULL;
-		stack = NULL;
-		free(stack);
-		stack = next;
-	}
-}
+int		ft_atoi(const char *nptr);
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char	*ft_strdup(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	**ft_split(char const *s, char c);
+
+#endif
