@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 10:11:09 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/11 09:25:13 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/11 10:30:33 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,12 @@ int	parse(int argc, char **argv, t_stack **a)
 		args = argv;
 	if (!init_stack(args, a))
 		return (0);
+	if (has_dup(a))
+	{
+		free_split(&args);
+		stack_clear(a);
+		return (0);
+	}
 	free_split(&args);
 	return (1);
 }
