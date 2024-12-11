@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 10:11:09 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/10 14:56:45 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/11 09:25:13 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,45 @@ static void	free_split(char	***args)
 	free(start);
 }
 
+static int	check_size(char *s)
+{
+	int	len;
+	int	sign;
+
+	sign = 0;
+	len = ft_strlen(s);
+	if (s[0] == '-' || s[0] == '+')
+	{
+		len--;
+		sign++;
+	}
+	if (len > 10 || len < 1)
+		return (0);
+	if (len < 10)
+		return (1);
+	if (s[0 + sign] > '2' 
+	|| (s[0 + sign] == '2' && s[len + sign - 1] > '7' && s[0] != '-'))
+		return (0);
+	if (s[0 + sign] > '2' 
+	|| (s[0 + sign] == '2' && s[len + sign - 1] > '8' && s[0] == '-'))
+		return (0);
+	return (1);
+}		
+
 static int	is_arg_valid(char *arg)
 {
 	int	i;
-	int	sign;
 
 	i = 0;
-	sign = 0;
 	while (arg[i])
 	{
-		if (arg[i] == '-' || arg[i] == '+')
-		{
-			if (sign)
-				return (0);
-			sign++;
-		}
-		else if (!(arg[i] >= '0' && arg[i] <= '9'))
+		if (!(arg[i] >= '0' && arg[i] <= '9') 
+			&& !((arg[i] == '-' || arg[i] == '+') && i == 0))
 			return (0);
 		i++;
 	}
+	if (!check_size(arg))
+		return (0);
 	return (1);
 }
 

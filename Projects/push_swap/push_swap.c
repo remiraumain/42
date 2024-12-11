@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:21:59 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/10 14:55:52 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/11 09:27:44 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 int	main(int argc, char **argv)
 {
 	argc = 2;
-	argv[1] = "5 -4 3";
+	argv[1] = "5    -214748364 3";
 	t_stack	*a;
 
 	a = NULL;
