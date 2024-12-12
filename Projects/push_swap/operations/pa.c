@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   pa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 11:22:09 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/12 11:58:11 by rraumain         ###   ########.fr       */
+/*   Created: 2024/12/12 09:16:34 by rraumain          #+#    #+#             */
+/*   Updated: 2024/12/12 12:11:53 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../push_swap.h"
 
-typedef struct s_stack
+void	pa(t_stack **b, t_stack **a)
 {
-	int				value;
-	int				index;
-	struct s_stack	*next;
-}	t_stack;
+	t_stack	*new_first;
 
-# include "libft/libft.h"
-# include "operations/operations.h"
-# include "utils/utils.h"
-
-int		parse(int argc, char **argv, t_stack **a);
-void	sort(t_stack **a);
-
-#endif
+	new_first = *b;
+	if ((*b)->next)
+		*b = (*b)->next;
+	else
+		*b = NULL;
+	new_first->next = *a;
+	*a = new_first;
+	write(1, "pa\n", 3);
+}

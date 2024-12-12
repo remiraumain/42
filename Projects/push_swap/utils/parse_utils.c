@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 10:19:45 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/12 07:24:20 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:29:35 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ void	set_index(t_stack *stack, int size)
 	t_stack	*current;
 	t_stack	*min_node;
 	int		min_value;
-	int		i;
 
-	i = 0;
-	while (i < size)
+	while (size)
 	{
 		min_node = NULL;
 		min_value = 2147483647;
@@ -55,7 +53,7 @@ void	set_index(t_stack *stack, int size)
 			current = current->next;
 		}
 		if (min_node)
-			min_node->index = i;
-		i++;
+			min_node->index = size;
+		size--;
 	}
 }
