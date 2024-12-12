@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 10:11:09 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/11 10:30:33 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/12 07:31:46 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,10 @@ static int	init_stack(char **args, t_stack **a)
 	while (args[i])
 	{
 		if (!is_arg_valid(args[i]))
-		{
-			free_split(&args);
-			stack_clear(a);
 			return (0);
-		}
 		new = stack_new(ft_atoi(args[i]));
 		if (!new)
-		{
-			free_split(&args);
-			stack_clear(a);
 			return (0);
-		}		
 		stack_add_back(a, new);
 		i++;
 	}
@@ -105,8 +97,14 @@ int	parse(int argc, char **argv, t_stack **a)
 		args = ft_split(argv[1], ' ');
 	else
 		args = argv;
-	if (!init_stack(args, a))
+	if (!args)
 		return (0);
+	if (!init_stack(args, a))
+	{
+		free_split(&args);
+		stack_clear(a);
+		return (0);
+	}
 	if (has_dup(a))
 	{
 		free_split(&args);
@@ -114,5 +112,6 @@ int	parse(int argc, char **argv, t_stack **a)
 		return (0);
 	}
 	free_split(&args);
+	set_index(*a, stack_size(*a));
 	return (1);
 }

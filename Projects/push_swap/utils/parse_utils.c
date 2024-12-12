@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 10:19:45 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/11 10:27:57 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/12 07:24:20 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,32 @@ int	has_dup(t_stack **a)
 		current = current->next;
 	}
 	return (0);
+}
+
+void	set_index(t_stack *stack, int size)
+{
+	t_stack	*current;
+	t_stack	*min_node;
+	int		min_value;
+	int		i;
+
+	i = 0;
+	while (i < size)
+	{
+		min_node = NULL;
+		min_value = 2147483647;
+		current = stack;
+		while (current)
+		{
+			if (current->index == -1 && current->value <= min_value)
+			{
+				min_value = current->value;
+				min_node = current;
+			}
+			current = current->next;
+		}
+		if (min_node)
+			min_node->index = i;
+		i++;
+	}
 }

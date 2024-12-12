@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:22:09 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/11 10:20:58 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/12 07:16:04 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 typedef struct s_stack
 {
 	int				value;
-	int				actions_nb;
-	struct s_stack	*prev;
+	int				index;
 	struct s_stack	*next;
 }	t_stack;
 
 int		parse(int argc, char **argv, t_stack **a);
 int		has_dup(t_stack **a);
+void	set_index(t_stack *stack, int size);
 // utils
 t_stack	*stack_new(int value);
 void	stack_clear(t_stack **stack);

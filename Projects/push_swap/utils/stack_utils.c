@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 18:09:49 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/10 14:53:16 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/12 07:05:40 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ t_stack	*stack_new(int value)
 	if (!new)
 		return (NULL);
 	new->value = value;
-	new->actions_nb = 0;
-	new->prev = NULL;
+	new->index = -1;
 	new->next = NULL;
 	return (new);
 }
@@ -47,9 +46,8 @@ void	stack_delone(t_stack *stack)
 	if (!stack)
 		return ;
 	stack->value = 0;
-	stack->actions_nb = 0;
+	stack->index = 0;
 	stack->next = NULL;
-	stack->prev = NULL;
 	free(stack);
 }
 
