@@ -6,13 +6,13 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 10:11:09 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/12 07:31:46 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:38:20 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	free_split(char	***args)
+static void	free_args(char	***args)
 {
 	char **start;
 
@@ -83,8 +83,46 @@ static int	init_stack(char **args, t_stack **a)
 		stack_add_back(a, new);
 		i++;
 	}
-
 	return (1);
+}
+
+void	del_string(char *s)
+{
+	free(s);
+	s = NULL;
+}
+
+char	**set_args(int argc, char **argv)
+{
+	char	**args;
+	char	*concat_s;
+	char	*temp;
+	int 	i;
+
+	if (argc > 2)
+	{
+		i = 1;
+		concat_s = ft_strdup("");
+		if (!concat_s)
+			return (NULL);
+		while (i < argc)
+		{
+			temp = concat_s;
+			concat_s = ft_strjoin(temp, argv[i]);
+			free(temp);
+			if (!concat_s)
+				return (NULL);
+			i++;
+		}
+		args = ft_split(concat_s, ' ');
+		if (!args)
+			del_string(concat_s);
+		else
+			free(concat_s);
+	}
+	else
+		args = ft_split(argv[1], ' ');
+	return (args);
 }
 
 int	parse(int argc, char **argv, t_stack **a)
@@ -93,25 +131,22 @@ int	parse(int argc, char **argv, t_stack **a)
 
 	if (argc < 2)
 		return (0);
-	else if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	else
-		args = argv;
+	args = set_args(argc, argv);
 	if (!args)
 		return (0);
 	if (!init_stack(args, a))
 	{
-		free_split(&args);
+		free_args(&args);
 		stack_clear(a);
 		return (0);
 	}
 	if (has_dup(a))
 	{
-		free_split(&args);
+		free_args(&args);
 		stack_clear(a);
 		return (0);
 	}
-	free_split(&args);
+	free_args(&args);
 	set_index(*a, stack_size(*a));
 	return (1);
 }
