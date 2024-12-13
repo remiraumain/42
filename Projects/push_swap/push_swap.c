@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:21:59 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/12 18:21:45 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:11:53 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main(int argc, char **argv)
 	a = NULL;
 	if (!parse(argc, argv, &a))
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		return (1);
 	}
 	sort(&a);
