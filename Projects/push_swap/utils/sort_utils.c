@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 07:55:39 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/15 11:40:29 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/15 12:35:53 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,6 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-int	is_col_sorted(t_stack *a, int byte_col)
-{
-	while (a)
-	{
-		if (a->index & (1 << byte_col))
-			return (0);
-		a = a->next;
-	}
-	return (1);
-}
-
 void	radix(t_stack **a)
 {
 	t_stack	*b;
@@ -51,7 +40,7 @@ void	radix(t_stack **a)
 	while (!is_sorted(*a))
 	{
 		j = 0;
-		while (j < size || !is_col_sorted(*a, i))
+		while (j < size)
 		{
 			if ((*a)->index & (1 << i))
 				pb(a, &b);
