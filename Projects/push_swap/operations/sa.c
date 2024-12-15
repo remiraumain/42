@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   sa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 20:55:12 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/15 21:11:55 by rraumain         ###   ########.fr       */
+/*   Created: 2024/12/15 20:59:26 by rraumain          #+#    #+#             */
+/*   Updated: 2024/12/15 21:09:44 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATIONS_H
-# define OPERATIONS_H
+#include "../push_swap.h"
 
-# include "../push_swap.h"
+void	sa(t_stack **a)
+{
+	t_stack	*second;
 
-void	ra(t_stack **a);
-void	rra(t_stack **a);
-void	pa(t_stack **b, t_stack **a);
-void	pb(t_stack **a, t_stack **b);
-void	sa(t_stack **a);
-
-#endif
+	second = (*a)->next;
+	(*a)->next = second->next;
+	second->next = *a;
+	*a = second;
+	write(1, "sa\n", 3);
+}

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   rra.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 20:55:12 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/15 21:11:55 by rraumain         ###   ########.fr       */
+/*   Created: 2024/12/15 21:02:24 by rraumain          #+#    #+#             */
+/*   Updated: 2024/12/15 21:09:46 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATIONS_H
-# define OPERATIONS_H
+#include "../push_swap.h"
 
-# include "../push_swap.h"
+void	rra(t_stack **a)
+{
+	t_stack	*last;
+	t_stack	*second_last;
 
-void	ra(t_stack **a);
-void	rra(t_stack **a);
-void	pa(t_stack **b, t_stack **a);
-void	pb(t_stack **a, t_stack **b);
-void	sa(t_stack **a);
-
-#endif
+	last = stack_last(*a);
+	second_last = get_second_last(*a);
+	second_last->next = NULL;
+	last->next = *a;
+	*a = last;
+	write(1, "rra\n", 4);
+}

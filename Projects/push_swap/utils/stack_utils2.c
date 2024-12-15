@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 20:54:52 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/15 20:54:55 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/15 21:07:55 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,11 @@ unsigned int	stack_size(t_stack *stack)
 		i++;
 	}
 	return (i);
+}
+
+t_stack	*get_second_last(t_stack *stack)
+{
+	while (stack->next->next)
+		stack = stack->next;
+	return (stack);
 }

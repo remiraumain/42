@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 07:55:39 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/15 20:46:44 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/15 21:51:09 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,31 @@ int	is_sorted(t_stack *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+void	sort_three(t_stack **a)
+{
+	int	second;
+	int	third;
+
+	second = (*a)->next->value;
+	third = (*a)->next->next->value;
+	if ((*a)->value < third && third < second)
+	{
+		sa(a);
+		ra(a);
+	}
+	else if (second < (*a)->value && (*a)->value < third)
+		sa(a);
+	else if (second < third && third < (*a)->value)
+		ra(a);
+	else if (third < (*a)->value && (*a)->value < second)
+		rra(a);
+	else if (third < second && second < (*a)->value)
+	{
+		sa(a);
+		rra(a);
+	}
 }
 
 void	radix(t_stack **a)
