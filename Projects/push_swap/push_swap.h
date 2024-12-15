@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:22:09 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/12 11:58:11 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/15 20:43:00 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 typedef struct s_stack
 {
 	int				value;
-	int				index;
+	unsigned int	index;
 	struct s_stack	*next;
 }	t_stack;
 

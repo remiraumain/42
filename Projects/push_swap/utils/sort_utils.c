@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 07:55:39 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/15 12:35:53 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/15 20:46:44 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	is_sorted(t_stack *stack)
 
 void	radix(t_stack **a)
 {
-	t_stack	*b;
-	int	size;
-	int	i;
-	int	j;
+	t_stack			*b;
+	unsigned int	size;
+	unsigned int	i;
+	unsigned int	j;
 
 	b = NULL;
 	i = 0;

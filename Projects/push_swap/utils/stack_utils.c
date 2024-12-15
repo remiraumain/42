@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 18:09:49 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/12 11:57:42 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/15 20:55:25 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_stack	*stack_new(int value)
 	if (!new)
 		return (NULL);
 	new->value = value;
-	new->index = -1;
+	new->index = 0;
 	new->next = NULL;
 	return (new);
 }

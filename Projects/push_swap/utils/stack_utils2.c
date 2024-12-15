@@ -4,15 +4,17 @@
 /*   stack_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+t_listain         ###   ########.fr       */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/15 20:54:52 by rraumain          #+#    #+#             */
+/*   Updated: 2024/12/15 20:54:55 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	stack_size(t_stack *stack)
+unsigned int	stack_size(t_stack *stack)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (stack)
