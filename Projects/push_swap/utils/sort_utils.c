@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 07:55:39 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/15 21:51:09 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/16 09:56:19 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,27 @@ void	sort_three(t_stack **a)
 	{
 		sa(a);
 		rra(a);
+	}
+}
+
+void	sort_five(t_stack **a)
+{
+	t_stack	*b;
+	int		i;
+
+	b = NULL;
+	i = 2;
+	while (i)
+	{
+		bring_to_top(a, get_min_pos(*a));
+		pb(a, &b);
+		i--;
+	}
+	sort_three(a);
+	while (i < 2)
+	{
+		pa(&b, a);
+		i++;
 	}
 }
 

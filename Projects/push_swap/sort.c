@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 10:12:46 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/15 21:14:48 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:19:59 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	sort(t_stack **a)
 		ra(a);
 	else if (stack_len == 3)
 		sort_three(a);
-	// else if (stack_len < 6)
-	// 	sort5(a);
+	else if (stack_len < 6)
+		sort_five(a);
 	else
 		radix(a);
 }
