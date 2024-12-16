@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:21:59 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/16 10:38:50 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/16 10:51:06 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 
+	if (argc == 1)
+		return (1);
 	a = NULL;
 	if (!parse(argc, argv, &a))
 	{
