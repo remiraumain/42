@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 07:55:39 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/16 09:56:19 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:35:30 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,17 @@ void	sort_three(t_stack **a)
 	}
 }
 
-void	sort_five(t_stack **a)
+void	sort_five(t_stack **a, unsigned int len)
 {
-	t_stack	*b;
-	int		i;
+	t_stack			*b;
+	unsigned int	i;
 
 	b = NULL;
-	i = 2;
+	if (len == 5)
+		len = 2;
+	else
+		len = 1;
+	i = len;
 	while (i)
 	{
 		bring_to_top(a, get_min_pos(*a));
@@ -66,7 +70,7 @@ void	sort_five(t_stack **a)
 		i--;
 	}
 	sort_three(a);
-	while (i < 2)
+	while (i < len)
 	{
 		pa(&b, a);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 11:54:59 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/16 10:38:45 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:32:48 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			bring_to_top(t_stack **a, unsigned int pos);
 unsigned int	get_min_pos(t_stack *a);
 int				is_sorted(t_stack *stack);
 void			sort_three(t_stack **a);
-void			sort_five(t_stack **a);
+void			sort_five(t_stack **a, unsigned int len);
 void			radix(t_stack **a);
 
 #endif
