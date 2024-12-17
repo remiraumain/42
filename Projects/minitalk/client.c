@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 21:51:34 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/17 15:58:05 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/17 19:42:18 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	res_handler()
 	res = 1;
 }
 
-void	send_signal(__pid_t pid, char c)
+void	send_signal(pid_t pid, char c)
 {
 	int	bit;
 
@@ -38,8 +38,8 @@ void	send_signal(__pid_t pid, char c)
 int	main(int ac, char **av)
 {
 	unsigned int	i;
-	__pid_t			pid;
-	
+	pid_t			pid;
+
 	if (ac != 3)
 	{
 		ft_printf("Usage: %s <server_pid> <message>\n", av[0]);
