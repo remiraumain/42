@@ -6,18 +6,19 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 21:51:34 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/17 19:42:18 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/17 20:59:44 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	res_handler()
+static void	res_handler(int signum)
 {
-	res = 1;
+	(void)signum;
+	g_res = 1;
 }
 
-void	send_signal(pid_t pid, char c)
+static void	send_signal(pid_t pid, char c)
 {
 	int	bit;
 
@@ -29,9 +30,9 @@ void	send_signal(pid_t pid, char c)
 		else
 			kill(pid, SIGUSR1);
 		bit--;
-		while (!res)
+		while (!g_res)
 			pause();
-		res = 0;
+		g_res = 0;
 	}
 }
 
