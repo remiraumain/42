@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 21:51:36 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/17 21:23:50 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/18 06:52:15 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ static void	signal_handler(int signum, siginfo_t *info, void *context)
 		g_sigbyte.byte = g_sigbyte.byte << 1;
 	else if (signum == SIGUSR2)
 		g_sigbyte.byte = g_sigbyte.byte << 1 | 1;
-	else if (signum == SIGINT)
-		clear_memory(1);
 	g_sigbyte.count++;
 	if (g_sigbyte.count == 8)
 	{
@@ -93,7 +91,6 @@ int	main(void)
 	sigemptyset(&signal_action.sa_mask);
 	sigaction(SIGUSR1, &signal_action, NULL);
 	sigaction(SIGUSR2, &signal_action, NULL);
-	sigaction(SIGINT, &signal_action, NULL);
 	while (1)
 		pause();
 	return (0);
