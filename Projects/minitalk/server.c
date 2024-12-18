@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 21:51:36 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/18 06:52:15 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/18 07:21:20 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ static char	*convert_uchar(unsigned char c)
 static void	clear_memory(int stop_process)
 {
 	if (g_sigbyte.string)
+	{
 		free(g_sigbyte.string);
-	g_sigbyte.string = NULL;
+		g_sigbyte.string = NULL;
+	}
 	g_sigbyte.byte = 0;
 	g_sigbyte.count = 0;
 	if (stop_process)
