@@ -6,15 +6,16 @@
 #    By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 21:26:30 by rraumain          #+#    #+#              #
-#    Updated: 2024/11/18 21:27:45 by rraumain         ###   ########.fr        #
+#    Updated: 2024/11/04 22:04:10 by rraumain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 		get_next_line.a
+NAME = 		libftprintf.a
 CC = 		cc
 CFLAGS = 	-Wall -Wextra -Werror
 
-CSRC =		get_next_line.c get_next_line_utils.c
+CSRC =		ft_printf.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_putunbr.c		\
+			ft_putptr.c ft_puthex.c ft_selector.c
 
 OSRC =		$(CSRC:.c=.o)
 
@@ -25,7 +26,7 @@ $(NAME): $(OSRC)
 	ar -rcs $@ $(OSRC)
 
 clean:
-	rm -f $(OSRC) $(OBONUS)
+	rm -f $(OSRC)
 
 fclean: clean
 	rm -f $(NAME)
