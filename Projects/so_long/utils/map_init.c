@@ -6,13 +6,13 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:16:36 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/19 22:21:21 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/19 22:45:35 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	is_filename_valid(char *filename)
+static int	is_filename_valid(char *filename)
 {
 	unsigned int	len;
 
@@ -20,7 +20,7 @@ int	is_filename_valid(char *filename)
 	return (!ft_strncmp(filename + (len - 4), ".ber", 4));
 }
 
-char	*get_file_content(int fd)
+static char	*get_file_content(int fd)
 {
 	char	*line;
 	char	*new_line;
