@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   cleanups.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 07:58:10 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/19 22:25:08 by rraumain         ###   ########.fr       */
+/*   Created: 2024/12/19 22:18:36 by rraumain          #+#    #+#             */
+/*   Updated: 2024/12/19 22:22:52 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-int	main(int ac, char **av)
+void	str_clear(char *s)
 {
-	char	**map;
+	free(s);
+	s = NULL;
+}
 
-	if (ac != 2)
+void	clear_map(char **map)
+{
+	char	**tmp;
+
+	tmp = map;
+	while (*map)
 	{
-		ft_printf("Error\nInvalid argument: %s <map_filename>\n", av[0]);
-		return (1);
+		free(*map);
+		*map = NULL;
+		map++;
 	}
-	map = get_map(av[1]);
-	if (!map)
-		return (1);
-	clear_map(map);
-	return (0);
+	free(tmp);
 }

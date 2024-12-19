@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:51:20 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/28 22:55:37 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/19 18:44:43 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,36 +86,6 @@ char	*ft_realloc(char *ptr, size_t new_size)
 	ft_strlcpy(new_ptr, ptr, new_size + 1);
 	free(ptr);
 	return (new_ptr);
-}
-
-/**
- * @brief Copy a string to a destination buffer, ensuring NUL-termination.
- *
- * @param dst Destination buffer.
- * @param src Source string.
- * @param dstsize Size of the destination buffer.
- * @return The total length of the source string.
- */
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	i;
-
-	i = 0;
-	if (!dst || !src)
-		return (0);
-	if (dstsize > 0)
-	{
-		while (src[i] && i < dstsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	i = 0;
-	while (src[i])
-		i++;
-	return (i);
 }
 
 /**

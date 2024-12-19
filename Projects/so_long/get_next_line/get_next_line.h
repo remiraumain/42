@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:40:48 by rraumain          #+#    #+#             */
-/*   Updated: 2024/11/28 22:55:40 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/19 18:44:21 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "../libft/libft.h"
 
 typedef struct s_fd_buffer
 {
@@ -30,7 +31,6 @@ typedef struct s_fd_buffer
 
 char		*get_next_line(int fd);
 t_fd_buffer	*get_node(int fd, t_fd_buffer **fd_nodes);
-size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int			has_newline(char *buffer);
 char		*ft_realloc(char *ptr, size_t new_size);
 size_t		ft_strclen(char *s, char c);

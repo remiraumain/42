@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 08:08:18 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/19 09:22:04 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/19 21:30:35 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 # include "get_next_line/get_next_line.h"
-
-typedef struct s_map {
-	int	x;
-	int	y;
-}	t_map;
+# include "utils/utils.h"
 
 #endif
