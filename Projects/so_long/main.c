@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 07:58:10 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/19 22:25:08 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/24 10:06:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Remove -g dans le makefile
 int	main(int ac, char **av)
 {
 	char	**map;
@@ -23,6 +24,8 @@ int	main(int ac, char **av)
 	}
 	map = get_map(av[1]);
 	if (!map)
+		return (1);
+	if (is_map_valid(map))
 		return (1);
 	clear_map(map);
 	return (0);

@@ -6,16 +6,116 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:16:19 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/19 22:43:07 by rraumain         ###   ########.fr       */
+/*   Updated: 2024/12/24 10:52:40 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// check_lines_size
+#include "../so_long.h"
 
-// check_walls_arround
+static int	check_lines_size(char **map)
+{
+	unsigned int	ref_size;
+	unsigned int	i;
 
-// check_allowed_values
+	ref_size = ft_strlen(map[0]);
+	i = 0;
+	while (map[i])
+	{
+		if (ref_size != ft_strlen(map[i]))
+			return (1);
+		i++;
+	}
+	if (i < 3)
+		return (1);
+	return (0);
+}
 
-// check_entities (P: 1, E: 1, C: >=1)
+static int	check_walls_arround(char **map)
+{
+	unsigned int	ref_size;
+	unsigned int	last_line;
+	unsigned int	line;
+	unsigned int	i;
+
+	ref_size = ft_strlen(map[0]);
+	last_line = 0;
+	while (map[last_line])
+		last_line++;
+	last_line--;
+	line = 0;
+	while (map[line])
+	{
+		i = 0;
+		while ((line == last_line || line == 0) && map[line][i] == '1')
+			i++;
+		while (!(line == last_line || line == 0) && map[line][0] == '1'
+			&& map[line][ref_size - 1] == '1' && map[line][i])
+			i++;
+		if (i != ref_size)
+			return (1);
+		line++;
+	}
+	return (0);
+}
+
+static int	check_allowed_values(char **map)
+{
+	unsigned int	i;
+
+	while (*map)
+	{
+		i = 0;
+		while ((*map)[i])
+		{
+			if ((*map)[i] != 'P' && (*map)[i] != 'E'
+				&& (*map)[i] != 'C' && (*map)[i] != '1'
+				&& (*map)[i] != '0')
+				return (1);
+			i++;
+		}
+		map++;
+	}
+	return (0);
+}
+
+static int	check_entities(char **map)
+{
+	t_entities		entities;
+	unsigned int	i;
+
+	entities.p = 0;
+	entities.e = 0;
+	entities.c = 0;
+	while (*map)
+	{
+		i = 0;
+		while ((*map)[i])
+		{
+			if ((*map)[i] == 'P')
+				entities.p++;
+			else if ((*map)[i] == 'E')
+				entities.e++;
+			else if ((*map)[i] == 'C')
+				entities.c++;
+			i++;
+		}
+		map++;
+	}
+	if (!(entities.p == 1 && entities.e == 1 && entities.c > 0))
+		return (1);
+	return (0);
+}
 
 // check_collectible_path
+int	is_map_valid(char **map)
+{
+	if (check_lines_size(map))
+		return (1);
+	if (check_walls_arround(map))
+		return (1);
+	if (check_allowed_values(map))
+		return (1);
+	if (check_entities(map))
+		return (1);
+	return (0);
+}

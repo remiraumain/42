@@ -6,7 +6,7 @@
 #    By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 07:55:28 by rraumain          #+#    #+#              #
-#    Updated: 2024/12/19 23:27:42 by rraumain         ###   ########.fr        #
+#    Updated: 2024/12/19 23:34:59 by rraumain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ UTILS_OBJ := $(UTILS_SRC:%.c=%.o)
 GNL_OBJ := $(GNL_SRC:%.c=%.o)
 
 CC = gcc
-CCFLAGS = -Wextra -Wall -Werror
+CCFLAGS = -Wextra -Wall -Werror -g
 
 MLX_DIR = minilibx-linux
 MLX = $(MLX_DIR)/libmlx.a
