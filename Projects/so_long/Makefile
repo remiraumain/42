@@ -6,7 +6,7 @@
 #    By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 07:55:28 by rraumain          #+#    #+#              #
-#    Updated: 2024/12/19 23:34:59 by rraumain         ###   ########.fr        #
+#    Updated: 2025/01/14 17:17:18 by rraumain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,21 +18,23 @@ GNL_SRC = $(addprefix get_next_line/, get_next_line.c get_next_line_utils.c)
 OBJ := $(SRC:%.c=%.o)
 UTILS_OBJ := $(UTILS_SRC:%.c=%.o)
 GNL_OBJ := $(GNL_SRC:%.c=%.o)
+OBJS := $(OBJ) $(UTILS_OBJ) $(GNL_OBJ)
 
 CC = gcc
 CCFLAGS = -Wextra -Wall -Werror -g
 
-MLX_DIR = minilibx-linux
+MLX_DIR = mlx_linux
 MLX = $(MLX_DIR)/libmlx.a
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11
+
+LIBS_FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft -Lft_printf -lftprintf
 
 all: $(NAME)
 
 $(NAME): libft ft_printf $(MLX) $(GNL_OBJ) $(OBJ) $(UTILS_OBJ)
-	$(CC) $(CCFLAGS) $(GNL_OBJ) $(OBJ) $(UTILS_OBJ) $(MLX_FLAGS) -Llibft -lft -Lft_printf -lftprintf -o $(NAME)
+	$(CC) $(CCFLAGS) $(OBJS) $(LIBS_FLAGS) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CCFLAGS) -Imlx -Iincludes -c $< -o $@
+	$(CC) $(CCFLAGS) -Imlx -Iincludes -O3 -c $< -o $@
 
 libft:
 	@$(MAKE) -C libft

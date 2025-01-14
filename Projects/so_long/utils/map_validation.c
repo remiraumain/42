@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:16:19 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/24 10:52:40 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:47:01 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,24 +82,24 @@ static int	check_entities(char **map)
 {
 	t_entities		entities;
 	unsigned int	i;
+	unsigned int	line;
 
-	entities.p = 0;
-	entities.e = 0;
-	entities.c = 0;
-	while (*map)
+	ft_memset(&entities, 0, sizeof entities);
+	line = 0;
+	while (map[line])
 	{
 		i = 0;
-		while ((*map)[i])
+		while (map[line][i])
 		{
-			if ((*map)[i] == 'P')
+			if (map[line][i] == 'P')
 				entities.p++;
-			else if ((*map)[i] == 'E')
+			else if (map[line][i] == 'E')
 				entities.e++;
-			else if ((*map)[i] == 'C')
+			else if (map[line][i] == 'C')
 				entities.c++;
 			i++;
 		}
-		map++;
+		line++;
 	}
 	if (!(entities.p == 1 && entities.e == 1 && entities.c > 0))
 		return (1);
@@ -110,12 +110,24 @@ static int	check_entities(char **map)
 int	is_map_valid(char **map)
 {
 	if (check_lines_size(map))
+	{
+		error("Invalid map. Inconsistant map lien length");
 		return (1);
+	}
 	if (check_walls_arround(map))
+	{
+		error("Invalid map. Walls (1) shoudl be at every border");
 		return (1);
+	}
 	if (check_allowed_values(map))
+	{
+		error("Invalid map. Illegal character");
 		return (1);
+	}
 	if (check_entities(map))
+	{
+		error("Invalid map. Only 1 Player, 1 Exit and at least 1 Collectible");
 		return (1);
+	}
 	return (0);
 }
