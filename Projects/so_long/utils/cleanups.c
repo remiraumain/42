@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:18:36 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/19 22:22:52 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:46:39 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	clear_map(char **map)
 	tmp = map;
 	while (*map)
 	{
-		free(*map);
-		*map = NULL;
+		str_clear(*map);
 		map++;
 	}
 	free(tmp);

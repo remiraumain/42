@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 07:58:10 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/24 10:06:05 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:43:55 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int	main(int ac, char **av)
 	if (!map)
 		return (1);
 	if (is_map_valid(map))
+	{
+		clear_map(map);
 		return (1);
+	}
 	clear_map(map);
 	return (0);
 }

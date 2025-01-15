@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:16:19 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/14 17:47:01 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:05:02 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,24 +110,14 @@ static int	check_entities(char **map)
 int	is_map_valid(char **map)
 {
 	if (check_lines_size(map))
-	{
-		error("Invalid map. Inconsistant map lien length");
-		return (1);
-	}
+		return (error_int("Invalid map. Inconsistant map lien length"));
 	if (check_walls_arround(map))
-	{
-		error("Invalid map. Walls (1) shoudl be at every border");
-		return (1);
-	}
+		return (error_int("Invalid map. Walls (1) shoudl be at every border"));
 	if (check_allowed_values(map))
-	{
-		error("Invalid map. Illegal character");
-		return (1);
-	}
+		return (error_int("Invalid map. Illegal character"));
 	if (check_entities(map))
-	{
-		error("Invalid map. Only 1 Player, 1 Exit and at least 1 Collectible");
-		return (1);
-	}
+		return (error_int("Invalid map. Only 1 P, 1 E and at least 1 C"));
+	if (check_collectible_path(map))
+		return (error_int("Invalid map. All collectibles must be reachable"));
 	return (0);
 }
