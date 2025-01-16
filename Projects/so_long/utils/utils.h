@@ -6,25 +6,12 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 18:33:37 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/15 11:22:41 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:25:04 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
-
-typedef struct s_entities
-{
-	unsigned int	p;
-	unsigned int	e;
-	unsigned int	c;
-}	t_entities;
-
-typedef struct s_pos
-{
-	unsigned int	y;
-	unsigned int	x;
-}	t_pos;
 
 //	Error
 void			*error(char *message);
@@ -33,6 +20,7 @@ int				error_int(char *message);
 //	Cleanups
 void			str_clear(char *s);
 void			clear_map(char **map);
+int				on_destroy(t_mlx data);
 
 //	Map utils
 char			**dup_map(char **map);
@@ -47,4 +35,7 @@ int				check_collectible_path(char **map);
 
 //	Map validation
 int				is_map_valid(char **map);
+
+//	Controls
+int				on_keypress(int keysym);
 #endif

@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanups.c                                         :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 22:18:36 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 16:21:41 by rraumain         ###   ########.fr       */
+/*   Created: 2025/01/16 16:23:38 by rraumain          #+#    #+#             */
+/*   Updated: 2025/01/16 16:25:16 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#ifndef STRUCT_H
+# define STRUCT_H
 
-void	str_clear(char *s)
+typedef struct s_entities
 {
-	free(s);
-	s = NULL;
-}
+	unsigned int	p;
+	unsigned int	e;
+	unsigned int	c;
+}	t_entities;
 
-void	clear_map(char **map)
+typedef struct s_pos
 {
-	char	**tmp;
+	unsigned int	y;
+	unsigned int	x;
+}	t_pos;
 
-	tmp = map;
-	while (*map)
-	{
-		str_clear(*map);
-		map++;
-	}
-	free(tmp);
-}
-
-int	on_destroy(t_mlx data)
+typedef struct s_mlx
 {
-	mlx_destroy_window(data.mlx, data.win);
-	mlx_destroy_display(data.mlx);
-	free(data.mlx);
-	exit(0);
-	return (0);
-}
+	void *mlx;
+	void *win;
+}	t_mlx;
+
+#endif

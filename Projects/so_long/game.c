@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:33:57 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 09:01:10 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:21:28 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void	render_map(void *mlx, void *win, char **map, int size)
 
 void	start_game(char **map)
 {
-	void	*mlx;
-	void	*win;
+	t_mlx	data;
 	int		size;
 	unsigned int	row;
 	
@@ -61,11 +60,12 @@ void	start_game(char **map)
 	while (map[row])
 		row++;
 	size = 32 *4;
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, ft_strlen(map[0]) * size, row * size, "so_long");
-	render_map(mlx, win, map, size);
-	mlx_loop(mlx);
-	mlx_destroy_window(mlx, win);
-	mlx_destroy_display(mlx);
-	free(mlx);
+	data.mlx = mlx_init();
+	if (!data.mlx)
+		return ;
+	data.win = mlx_new_window(data.mlx, ft_strlen(map[0]) * size, row * size, "so_long");
+	render_map(data.mlx, data.win, map, size);
+	mlx_hook(data.win, KeyRelease, KeyReleaseMask, &on_keypress, (void *){""});
+	mlx_hook(data.win, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
+	mlx_loop(data.mlx);
 }

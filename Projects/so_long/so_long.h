@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 08:08:18 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/15 17:36:30 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:25:25 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <unistd.h>
 # include <fcntl.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include "struct.h"
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 # include "get_next_line/get_next_line.h"
