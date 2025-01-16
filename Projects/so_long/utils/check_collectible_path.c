@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:35:02 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/15 12:06:41 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/15 18:10:55 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,12 @@ void	flood_fill(char **map, t_pos player_pos, unsigned int cells)
 		return ;
 	top = 0;
 	queue[top++] = player_pos;
-	while (top > 0)
+	while (top)
 	{
 		current = queue[--top];
-		if (map[current.y][current.x] != '1'
-			&& map[current.y][current.x] != 'V')
+		if (map[current.y][current.x] != '1')
 		{
-			map[current.y][current.x] = 'V';
+			map[current.y][current.x] = '1';
 			queue[top++] = (t_pos){current.y - 1, current.x};
 			queue[top++] = (t_pos){current.y + 1, current.x};
 			queue[top++] = (t_pos){current.y, current.x - 1};
@@ -49,6 +48,7 @@ void	flood_fill(char **map, t_pos player_pos, unsigned int cells)
 		}
 	}
 	free(queue);
+	queue = NULL;
 }
 
 int	check_collectible_path(char **map)
