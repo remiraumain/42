@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 07:58:10 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 19:02:57 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:11:06 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	start_game(map);
+	clear_map(map);
 	return (0);
 }
