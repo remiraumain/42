@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 18:33:37 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 16:25:04 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:48:28 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ int				error_int(char *message);
 //	Cleanups
 void			str_clear(char *s);
 void			clear_map(char **map);
-int				on_destroy(t_mlx data);
+int				on_destroy(t_game data);
 
 //	Map utils
+unsigned int	map_height(char **map);
 char			**dup_map(char **map);
 unsigned int	count_collectible(char **map);
-t_pos			find_player(char **map);
+t_pos			find(char **map, char type);
+void			update_map(t_game data, t_pos new_pos, t_pos old_pos);
 
 //	Map init
 char			**get_map(char	*filename);
@@ -37,5 +39,9 @@ int				check_collectible_path(char **map);
 int				is_map_valid(char **map);
 
 //	Controls
-int				on_keypress(int keysym);
+int				on_keypress(int keysym, t_game *data);
+
+//	Render
+void	display_image(void *mlx, void *win, t_pos pos, char tile, int size);
+void	render_map(void *mlx, void *win, char **map, int size);
 #endif

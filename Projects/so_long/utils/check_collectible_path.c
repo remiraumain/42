@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:35:02 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/15 18:10:55 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:15:43 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	check_collectible_path(char **map)
 	if (!dup)
 		return (0);
 	*dup = dup_map(map);
-	flood_fill(*dup, find_player(map), count_cells(map));
+	flood_fill(*dup, find(map, 'P'), count_cells(map));
 	invalid_collectible = count_collectible(*dup);
 	clear_map(*dup);
 	free(dup);

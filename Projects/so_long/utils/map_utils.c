@@ -6,11 +6,21 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:49:26 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/15 11:22:13 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:42:04 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+unsigned int	map_height(char **map)
+{
+	unsigned int	row;
+
+	row = 0;
+	while (map[row])
+		row++;
+	return (row);
+}
 
 char	**dup_map(char **map)
 {
@@ -20,9 +30,7 @@ char	**dup_map(char **map)
 
 	if (!map)
 		return (NULL);
-	row = 0;
-	while (map[row])
-		row++;
+	row = map_height(map);
 	dup = malloc((row + 1) * sizeof(char *));
 	if (!dup)
 		return (NULL);
@@ -63,7 +71,7 @@ unsigned int	count_collectible(char **map)
 	return (count);
 }
 
-t_pos	find_player(char **map)
+t_pos	find(char **map, char type)
 {
 	unsigned int	y;
 	unsigned int	x;
@@ -74,11 +82,27 @@ t_pos	find_player(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'P')
+			if (map[y][x] == type)
 				return ((t_pos){y, x});
 			x++;
 		}
 		y++;
 	}
 	return ((t_pos){0, 0});
+}
+
+void	update_map(t_game data, t_pos new_pos, t_pos old_pos)
+{
+	data.map[new_pos.y][new_pos.x] = 'P';
+	display_image(data.mlx, data.win, new_pos, 'P', data.size);
+	if (old_pos.x == data.exit_pos.x && old_pos.y == data.exit_pos.y)
+	{
+		data.map[old_pos.y][old_pos.x] = 'E';
+		display_image(data.mlx, data.win, old_pos, 'E', data.size);
+	}
+	else
+	{
+		data.map[old_pos.y][old_pos.x] = '0';
+		display_image(data.mlx, data.win, old_pos, '0', data.size);
+	}
 }
