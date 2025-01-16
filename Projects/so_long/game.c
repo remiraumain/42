@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:33:57 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 19:10:40 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:32:51 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void	start_game(char **map)
 	data.total_collectible = count_collectible(map);
 	data.collected = 0;
 	data.move_count = 0;
-	data.win = mlx_new_window(data.mlx, ft_strlen(map[0]) * data.size, map_height(map) * data.size, "so_long");
-	render_map(data.mlx, data.win, map, data.size);
+	data.win = mlx_new_window(data.mlx, ft_strlen(map[0]) \
+		* data.size, map_height(map) * data.size, "so_long");
+	render_map(data, map);
 	mlx_hook(data.win, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 	mlx_loop(data.mlx);

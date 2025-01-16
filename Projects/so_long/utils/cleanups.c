@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:18:36 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 19:05:42 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:26:29 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	on_destroy(t_game data)
 		ft_printf("Congratulation !\n");
 	else
 		ft_printf("Almost, you will do better next time !\n");
-	ft_printf("Total collected: %d aliens 👾 in %d spaceship's moves 🚀\n", data.collected, data.move_count);
+	ft_printf("Total collected: %d aliens 👾 in %d spaceship's moves 🚀\n", \
+		data.collected, data.move_count);
 	clear_map(data.map);
 	exit(0);
 	return (0);

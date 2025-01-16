@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:05:34 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 19:13:36 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:32:09 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void	move(t_game *data, int y, int x)
 		data->collected++;
 	update_map(*data, new_player_pos, data->player_pos);
 	data->player_pos = new_player_pos;
-	if (data->total_collectible == data->collected && data->player_pos.x == data->exit_pos.x && data->player_pos.y == data->exit_pos.y)
+	if (data->total_collectible == data->collected \
+		&& data->player_pos.x == data->exit_pos.x \
+		&& data->player_pos.y == data->exit_pos.y)
 		on_destroy(*data);
 }
 

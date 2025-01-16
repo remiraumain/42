@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 18:33:37 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 18:48:28 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:32:44 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ int				is_map_valid(char **map);
 int				on_keypress(int keysym, t_game *data);
 
 //	Render
-void	display_image(void *mlx, void *win, t_pos pos, char tile, int size);
-void	render_map(void *mlx, void *win, char **map, int size);
+void			display_image(t_game data, t_pos pos, char tile, int size);
+void			render_map(t_game data, char **map);
 #endif

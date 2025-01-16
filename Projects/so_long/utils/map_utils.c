@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:49:26 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 18:42:04 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:29:45 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,15 @@ t_pos	find(char **map, char type)
 void	update_map(t_game data, t_pos new_pos, t_pos old_pos)
 {
 	data.map[new_pos.y][new_pos.x] = 'P';
-	display_image(data.mlx, data.win, new_pos, 'P', data.size);
+	display_image(data, new_pos, 'P', data.size);
 	if (old_pos.x == data.exit_pos.x && old_pos.y == data.exit_pos.y)
 	{
 		data.map[old_pos.y][old_pos.x] = 'E';
-		display_image(data.mlx, data.win, old_pos, 'E', data.size);
+		display_image(data, old_pos, 'E', data.size);
 	}
 	else
 	{
 		data.map[old_pos.y][old_pos.x] = '0';
-		display_image(data.mlx, data.win, old_pos, '0', data.size);
+		display_image(data, old_pos, '0', data.size);
 	}
 }
