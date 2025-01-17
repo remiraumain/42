@@ -6,13 +6,13 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:05:34 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 19:32:09 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/17 07:22:42 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	move(t_game *data, int y, int x)
+static void	move(t_game *data, int y, int x)
 {
 	t_pos	new_player_pos;
 

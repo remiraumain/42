@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:16:19 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/15 10:05:02 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/17 07:22:07 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ static int	check_entities(char **map)
 	return (0);
 }
 
-// check_collectible_path
 int	is_map_valid(char **map)
 {
 	if (check_lines_size(map))

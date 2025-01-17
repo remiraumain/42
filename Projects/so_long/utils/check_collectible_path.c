@@ -6,13 +6,13 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:35:02 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 19:25:47 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/17 07:23:10 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-unsigned int	count_cells(char **map)
+static unsigned int	count_cells(char **map)
 {
 	unsigned int	row;
 	unsigned int	col;
@@ -24,7 +24,7 @@ unsigned int	count_cells(char **map)
 	return (row * col);
 }
 
-void	flood_fill(char **map, t_pos player_pos, unsigned int cells)
+static void	flood_fill(char **map, t_pos player_pos, unsigned int cells)
 {
 	unsigned int	top;
 	t_pos			*queue;

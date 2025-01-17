@@ -6,13 +6,12 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 07:58:10 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 19:11:06 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/17 07:20:47 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// Remove -g dans le makefile
 int	main(int ac, char **av)
 {
 	char	**map;

@@ -6,7 +6,7 @@
 #    By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 19:24:48 by rraumain          #+#    #+#              #
-#    Updated: 2025/01/16 19:25:00 by rraumain         ###   ########.fr        #
+#    Updated: 2025/01/17 07:20:43 by rraumain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ GNL_OBJ := $(GNL_SRC:%.c=%.o)
 OBJS := $(OBJ) $(UTILS_OBJ) $(GNL_OBJ)
 
 CC = gcc
-CCFLAGS = -Wextra -Wall -Werror -g
+CCFLAGS = -Wextra -Wall -Werror
 
 MLX_DIR = mlx_linux
 MLX = $(MLX_DIR)/libmlx.a
