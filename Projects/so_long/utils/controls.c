@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:05:34 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/17 07:22:42 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:59:29 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	move(t_game *data, int y, int x)
 	if (data->total_collectible == data->collected \
 		&& data->player_pos.x == data->exit_pos.x \
 		&& data->player_pos.y == data->exit_pos.y)
-		on_destroy(*data);
+		on_destroy(data);
 }
 
 int	on_keypress(int keysym, t_game *data)
@@ -42,6 +42,6 @@ int	on_keypress(int keysym, t_game *data)
 	else if (keysym == 65361)
 		move(data, 0, -1);
 	else if (keysym == 65307)
-		on_destroy(*data);
+		on_destroy(data);
 	return (0);
 }

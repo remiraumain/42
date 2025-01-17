@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 18:33:37 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 19:32:44 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:59:34 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int				error_int(char *message);
 //	Cleanups
 void			str_clear(char *s);
 void			clear_map(char **map);
-int				on_destroy(t_game data);
+int				on_destroy(t_game *data);
 
 //	Map utils
 unsigned int	map_height(char **map);
