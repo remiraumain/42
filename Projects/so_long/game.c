@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:33:57 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/17 13:03:23 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/17 18:10:07 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	start_game(char **map)
 {
 	t_game	data;
 
-	data.size = 32;
+	data.size = 64;
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		return ;

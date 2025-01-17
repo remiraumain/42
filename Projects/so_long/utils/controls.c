@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:05:34 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/17 12:59:29 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/17 18:15:32 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ static void	move(t_game *data, int y, int x)
 	if (data->total_collectible == data->collected \
 		&& data->player_pos.x == data->exit_pos.x \
 		&& data->player_pos.y == data->exit_pos.y)
+	{
+		ft_printf("Congratulation ! 🎉\n");
 		on_destroy(data);
+	}
 }
 
 int	on_keypress(int keysym, t_game *data)
