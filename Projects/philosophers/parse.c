@@ -6,11 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:50:13 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/20 20:12:04 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/20 21:38:59 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 void	add_args_to_data(int arg, int index, t_data *data)
 {
@@ -23,7 +23,7 @@ void	add_args_to_data(int arg, int index, t_data *data)
 	else if (index == 4)
 		data->time_to_sleep = arg;
 	else
-		data->must_eat_count = arg;
+		data->nb_of_meals = arg;
 }
 
 int	parse(int ac, char **av, t_data *data)

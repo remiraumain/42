@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 22:51:37 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/20 21:36:39 by rraumain         ###   ########.fr       */
+/*   Created: 2025/01/20 21:32:36 by rraumain          #+#    #+#             */
+/*   Updated: 2025/01/20 22:09:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "../philo.h"
 
-# include <sys/time.h>
-# include <stddef.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <pthread.h>
-# include "struct.h"
-# include "utils/utils.h"
-
-
-int	parse(int ac, char **av, t_data *data);
-int	init(t_data *data);
-
-#endif
+long	get_time_in_ms(void)
+{
+    struct	timeval	tv;
+	long	time;
+	
+    gettimeofday(&tv, NULL);
+	time = tv.tv_sec * 1000L + tv.tv_usec / 1000L;
+    return (time);
+}

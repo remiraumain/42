@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:58:20 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/20 20:33:34 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/20 22:09:03 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,17 @@ int	my_atoi(char *arg)
 	if (arg[i])
 		return (-1);
 	return (res * sign);
+}
+
+void	*my_memset(void *ptr, int value, unsigned int size)
+{
+    unsigned char	*p;
+	
+	p = (unsigned char *)ptr;
+    while (size--)
+	{
+    	*p = (unsigned char)value;
+		p++;
+	}
+    return (ptr);
 }

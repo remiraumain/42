@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 23:17:43 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 23:23:13 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/20 21:59:29 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,30 @@
 
 # include "philo.h"
 
+typedef struct	s_philo
+{
+	int				id;
+	int				meals_eaten;
+	long			last_meal_time;
+	pthread_t		thread;
+	pthread_mutex_t *left_fork;
+	pthread_mutex_t *right_fork;
+}	t_philo;
+
 typedef struct s_data
 {
 	int				philo_count;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				must_eat_count;
-	int				simulation_end;
-	pthread_mutex_t	print_mutex;
-	pthread_mutex_t	*forks;
+	int				nb_of_meals;
+	int				is_running;
 	long			start_time;
+	t_philo			*philos;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	death_mutex;
+	int				mutex_init;
 }	t_data;
 
 #endif
