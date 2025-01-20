@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:50:13 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/17 00:11:05 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:12:04 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	parse(int ac, char **av, t_data *data)
 	{
 		arg = my_atoi(av[i]);
 		if (arg < 0)
-			return (my_error("args must be positive numbers"));
+			return (my_error("args must be positive numbers (0 to max int)"));
 		add_args_to_data(arg, i, data);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:58:20 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/17 00:02:38 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:33:34 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,21 @@ unsigned int	my_strlen(char *string)
 	return (len);
 }
 
+static int	convert_number(char *arg, unsigned int *i)
+{
+	int	res;
+
+	res = 0;
+	while (arg[*i] >= '0' && arg[*i] <= '9')
+	{
+		if (res > (res * 10 + (arg[*i] - '0')))
+			return (-1);
+		res = res * 10 + (arg[*i] - '0');
+		(*i)++;
+	}
+	return (res);
+}
+
 int	my_atoi(char *arg)
 {
 	unsigned int	i;
@@ -27,7 +42,6 @@ int	my_atoi(char *arg)
 	int				sign;
 
 	i = 0;
-	res = 0;
 	sign = 1;
 	while (arg[i] == ' ')
 		i++;
@@ -39,11 +53,7 @@ int	my_atoi(char *arg)
 	}
 	while (arg[i] == '0')
 		i++;
-	while (arg[i] >= '0' && arg[i] <= '9')
-	{
-		res = res * 10 + (arg[i] - '0');
-		i++;
-	}
+	res = convert_number(arg, &i);
 	if (arg[i])
 		return (-1);
 	return (res * sign);
