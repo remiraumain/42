@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 23:29:51 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/21 10:41:55 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:49:37 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 static void	print_action(t_philo *philo, char *action)
 {
 	pthread_mutex_lock(&philo->data->print_mutex);
-    if (!philo->data->is_running)
-		printf("%ld %d %s\n", get_time_in_ms(), philo->id, action);
+	printf("%ld %d %s\n", get_time_in_ms() - philo->data->start_time, philo->id, action);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
