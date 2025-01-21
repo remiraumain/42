@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:53:31 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 19:32:37 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:37:00 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ void	display_image(t_game data, t_pos pos, char tile, int size)
 			&size, &size);
 	else
 		return ;
-	mlx_put_image_to_window(data.mlx, data.win, img, \
+	if (img)
+	{
+		mlx_put_image_to_window(data.mlx, data.win, img, \
 		pos.x * size, pos.y * size);
-	mlx_destroy_image(data.mlx, img);
+		mlx_destroy_image(data.mlx, img);
+	}
 }
 
 void	render_map(t_game data, char **map)
