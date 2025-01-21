@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 23:29:51 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/21 01:12:09 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:41:55 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 static void	print_action(t_philo *philo, char *action)
 {
 	pthread_mutex_lock(&philo->data->print_mutex);
-    if (!philo->data->is_running) 
-	{
-		printf("%ld %d %s\n", get_time_in_ms() - philo->data->start_time, philo->id, action);
-    }
+    if (!philo->data->is_running)
+		printf("%ld %d %s\n", get_time_in_ms(), philo->id, action);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
@@ -38,6 +36,8 @@ void	drop_forks(t_philo *philo)
 
 void	eat(t_philo *philo)
 {
+	if (!(philo->left_fork && philo->right_fork))
+		return ;
 	print_action(philo, "is eating");
 	usleep(philo->data->time_to_eat);
 	philo->meals_eaten++;

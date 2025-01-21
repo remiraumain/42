@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/21 01:11:59 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/21 11:23:16 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,16 @@
 static void	*routine(void *arg)
 {
 	t_philo *philo;
+	int		running;
 
 	philo = (t_philo *)arg;
+	// pthread_mutex_lock(&philo->data->is_running);
+	running = philo->data->is_running;
+	// pthread_mutex_unlock(&philo->data->is_running);
 	if (philo->id % 2 == 0)
 		usleep(1000);
-	while (philo->data->is_running) {
+	while (running && philo->meals_eaten < philo->data->nb_of_meals)
+	{
         take_forks(philo);
         eat(philo);
         drop_forks(philo);
@@ -49,10 +54,10 @@ static void	*monitor_routine(void *arg)
 	long	since_last_meal;
 
 	data = (t_data *)arg;
-	i = 0;
     while (data->is_running)
 	{
 		data->is_running = has_eaten_enough(data);
+		i = 0;
 		while (i < data->philo_count)
 		{
 			since_last_meal = get_time_in_ms() - data->philos[i].last_meal_time;
@@ -80,10 +85,11 @@ int	create_threads(t_data *data)
 	while (i < data->philo_count)
 	{
 		philo = data->philos[i];
-        if (pthread_create(&philo.thread, NULL, routine, &philo) != 0)
-			return (my_error("an error occured while creating a thread"));
+        if (pthread_create(&data->philos[i].thread, NULL, routine, &data->philos[i]) != 0)
+			return (my_error("an error occured while creating a philo thread"));
 		i++;
 	}
-	monitor_routine(data);
+	if (pthread_create(&data->monitoring_thread, NULL, monitor_routine, &data) != 0)
+			return (my_error("an error occured while creating a monitoring thread"));
 	return (0);
 }
