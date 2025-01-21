@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/21 14:48:45 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:33:21 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static void	monitor_routine(t_data *data)
 		while (i < data->philo_count)
 		{
 			since_last_meal = get_time_in_ms() - data->philos[i].last_meal_time;
+			// printf("%ld / %d diead : %d\n", since_last_meal, data->time_to_die, since_last_meal > data->time_to_die);
 			if (since_last_meal > data->time_to_die)
 			{
 				pthread_mutex_lock(&data->print_mutex);
