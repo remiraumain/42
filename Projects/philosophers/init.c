@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:41:39 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/20 22:07:42 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/21 01:08:04 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	init(t_data *data)
         data->philos[i].right_fork = &data->forks[(i + 1) % data->philo_count];
         data->philos[i].last_meal_time = get_time_in_ms();
         data->philos[i].meals_eaten = 0;
+		data->philos[i].data = data;
 		pthread_mutex_init(&data->forks[i], NULL);
 		i++;
 	}

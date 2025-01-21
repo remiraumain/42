@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 23:17:43 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/20 21:59:29 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/21 00:16:00 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define STRUCT_H
 
 # include "philo.h"
+
+typedef struct s_data t_data;
 
 typedef struct	s_philo
 {
@@ -23,6 +25,7 @@ typedef struct	s_philo
 	pthread_t		thread;
 	pthread_mutex_t *left_fork;
 	pthread_mutex_t *right_fork;
+	t_data			*data;
 }	t_philo;
 
 typedef struct s_data
