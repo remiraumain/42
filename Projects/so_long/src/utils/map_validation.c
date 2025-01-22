@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:16:19 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/17 07:22:07 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 00:30:35 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static int	check_lines_size(char **map)
 			return (1);
 		i++;
 	}
-	if (i < 3)
-		return (1);
 	return (0);
 }
 
@@ -109,7 +107,7 @@ static int	check_entities(char **map)
 int	is_map_valid(char **map)
 {
 	if (check_lines_size(map))
-		return (error_int("Invalid map. Inconsistant map lien length"));
+		return (error_int("Invalid map. Inconsistant map line length"));
 	if (check_walls_arround(map))
 		return (error_int("Invalid map. Walls (1) shoudl be at every border"));
 	if (check_allowed_values(map))

@@ -6,19 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:16:36 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/22 22:40:19 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 00:20:32 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-static int	is_filename_valid(char *filename)
-{
-	unsigned int	len;
-
-	len = ft_strlen(filename);
-	return (!ft_strncmp(filename + (len - 4), ".ber", 4));
-}
 
 static char	*get_file_content(int fd)
 {
@@ -48,26 +40,21 @@ char	**get_map(char	*filename)
 {
 	int		fd;
 	char	*path;
-	char	*prefix;
 	char	**map;
 	char	*content;
 
-	if (!is_filename_valid(filename))
-		return (error("Invalid file extension. Expected: .ber"));
-	prefix = ft_strdup("src/maps/");
-	if (!prefix)
-		return (error(""));
-	path = ft_strjoin(prefix, filename);
-	str_clear(prefix);
+	path = ft_strjoin("src/maps/", filename);
 	if (!path)
-		return (error(""));
+		return (error("Allocation failed"));
 	fd = open(path, O_RDONLY);
 	str_clear(path);
 	if (fd == -1)
-		return (error("File not found. Place your map inside: ./maps/"));
+		return (error("Map file not found"));
 	content = get_file_content(fd);
 	map = ft_split(content, '\n');
 	str_clear(content);
 	close(fd);
+	if (!map)
+		return (error("Invalid map"));
 	return (map);
 }
