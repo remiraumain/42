@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 21:51:34 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/17 20:59:44 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:34:54 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ int	main(int ac, char **av)
 	}
 	i = 0;
 	pid = ft_atoi(av[1]);
+	if (pid < 1)
+	{
+		ft_printf("<server_pid> is invalid\n", av[0]);
+		return (1);
+	}
 	signal(SIGUSR1, res_handler);
 	while (av[2][i])
 	{
