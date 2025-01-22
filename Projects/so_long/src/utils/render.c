@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:53:31 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/21 12:37:00 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/22 22:46:41 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ void	display_image(t_game data, t_pos pos, char tile, int size)
 	void	*img;
 
 	if (tile == '1')
-		img = mlx_xpm_file_to_image(data.mlx, "textures/wall.xpm", \
+		img = mlx_xpm_file_to_image(data.mlx, "src/textures/wall.xpm", \
 			&size, &size);
 	else if (tile == '0')
-		img = mlx_xpm_file_to_image(data.mlx, "textures/floor.xpm", \
+		img = mlx_xpm_file_to_image(data.mlx, "src/textures/floor.xpm", \
 			&size, &size);
 	else if (tile == 'C')
-		img = mlx_xpm_file_to_image(data.mlx, "textures/collectible.xpm", \
+		img = mlx_xpm_file_to_image(data.mlx, "src/textures/collectible.xpm", \
 			&size, &size);
 	else if (tile == 'E')
-		img = mlx_xpm_file_to_image(data.mlx, "textures/exit.xpm", \
+		img = mlx_xpm_file_to_image(data.mlx, "src/textures/exit.xpm", \
 			&size, &size);
 	else if (tile == 'P')
-		img = mlx_xpm_file_to_image(data.mlx, "textures/player.xpm", \
+		img = mlx_xpm_file_to_image(data.mlx, "src/textures/player.xpm", \
 			&size, &size);
 	else
 		return ;
-	if (img)
+	if (img != NULL)
 	{
 		mlx_put_image_to_window(data.mlx, data.win, img, \
 		pos.x * size, pos.y * size);

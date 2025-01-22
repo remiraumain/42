@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:16:36 by rraumain          #+#    #+#             */
-/*   Updated: 2024/12/19 22:45:35 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/22 22:40:19 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**get_map(char	*filename)
 
 	if (!is_filename_valid(filename))
 		return (error("Invalid file extension. Expected: .ber"));
-	prefix = ft_strdup("maps/");
+	prefix = ft_strdup("src/maps/");
 	if (!prefix)
 		return (error(""));
 	path = ft_strjoin(prefix, filename);

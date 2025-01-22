@@ -6,13 +6,13 @@
 #    By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 19:24:48 by rraumain          #+#    #+#              #
-#    Updated: 2025/01/21 13:57:09 by rraumain         ###   ########.fr        #
+#    Updated: 2025/01/22 22:37:22 by rraumain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-SRC = main.c game.c
-UTILS_SRC = $(addprefix utils/, cleanups.c error.c map_init.c map_validation.c map_utils.c check_collectible_path.c controls.c render.c)
+SRC = $(addprefix src/, main.c game.c)
+UTILS_SRC = $(addprefix src/utils/, cleanups.c error.c map_init.c map_validation.c map_utils.c check_collectible_path.c controls.c render.c)
 GNL_SRC = $(addprefix get_next_line/, get_next_line.c get_next_line_utils.c)
 
 OBJ := $(SRC:%.c=%.o)
