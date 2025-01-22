@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:35:02 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/22 17:45:49 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:49:26 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	check_collectible_path(char **map)
 {
 	char			**dup;
 	unsigned int	invalid_collectible;
-	
+
 	dup = dup_map(map);
 	flood_fill(&dup, find(map, 'P'), count_cells(map));
 	invalid_collectible = count_collectible(dup);
