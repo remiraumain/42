@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/23 10:56:12 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:05:11 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ static void	monitor_routine(t_data *data)
 			if (get_time_in_ms() - data->philos[i].last_meal_time \
 			> data->time_to_die)
 			{
-				pthread_mutex_lock(&data->print_mutex);
 				pthread_mutex_lock(&data->death_mutex);
 				if (data->is_running)
 					printf("%ld %d died\n", get_time_in_ms() \
 					- data->start_time, data->philos[i].id);
+				pthread_mutex_lock(&data->print_mutex);
 				data->is_running = 0;
-				pthread_mutex_unlock(&data->death_mutex);
 				pthread_mutex_unlock(&data->print_mutex);
+				pthread_mutex_unlock(&data->death_mutex);
 				return ;
 			}
 			i++;
@@ -77,14 +77,13 @@ static void	monitor_routine(t_data *data)
 int	create_threads(t_data *data)
 {
 	int		i;
-	t_philo	philo;
 
 	i = 0;
 	data->start_time = get_time_in_ms();
 	while (i < data->philo_count)
 	{
-		philo = data->philos[i];
-		if (pthread_create(&philo.thread, NULL, routine, &philo) != 0)
+		if (pthread_create(&data->philos[i].thread, NULL, routine, \
+		&data->philos[i]) != 0)
 			return (my_error("an error occured while creating a philo thread"));
 		i++;
 	}
