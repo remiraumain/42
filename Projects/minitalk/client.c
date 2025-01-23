@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 21:51:34 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/22 15:00:52 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:43:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 	}
 	i = 0;
 	pid = ft_atoi(av[1]);
-	if (pid < 1)
+	if (pid < 1 || kill(pid, 0))
 	{
 		ft_printf("<server_pid> is invalid\n", av[0]);
 		return (1);
