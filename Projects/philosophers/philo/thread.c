@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/23 01:42:05 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 02:22:01 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	*routine(void *arg)
 {
-	t_philo *philo;
+	t_philo	*philo;
 	int		*running;
 
 	philo = (t_philo *)arg;
@@ -23,11 +23,11 @@ static void	*routine(void *arg)
 		usleep(philo->data->time_to_eat * 1000);
 	while (*running)
 	{
-        take_forks(philo);
-        eat(philo);
-        drop_forks(philo);
-        sleep_and_think(philo);
-    }
+		take_forks(philo);
+		eat(philo);
+		drop_forks(philo);
+		sleep_and_think(philo);
+	}
 	return (NULL);
 }
 
@@ -38,7 +38,6 @@ static int	has_eaten_enough(t_data *data)
 	i = 0;
 	while (i < data->philo_count)
 	{
-		// printf("%ld %d meals eaten: %d\n", get_time_in_ms() - data->start_time, data->philos[i].id, data->philos[i].meals_eaten);
 		if (data->philos[i].meals_eaten < data->nb_of_meals)
 			return (1);
 		i++;
@@ -49,21 +48,21 @@ static int	has_eaten_enough(t_data *data)
 static void	monitor_routine(t_data *data)
 {
 	int		i;
-	long	since_last_meal;
 
-    while (data->is_running)
+	while (data->is_running)
 	{
 		data->is_running = has_eaten_enough(data);
 		i = 0;
 		while (i < data->philo_count)
 		{
-			since_last_meal = get_time_in_ms() - data->philos[i].last_meal_time;
-			if (since_last_meal > data->time_to_die)
+			if (get_time_in_ms() - data->philos[i].last_meal_time \
+			> data->time_to_die)
 			{
 				pthread_mutex_lock(&data->print_mutex);
 				pthread_mutex_lock(&data->death_mutex);
 				if (data->is_running)
-					printf("%ld %d died\n", get_time_in_ms() - data->start_time, data->philos[i].id);
+					printf("%ld %d died\n", get_time_in_ms() \
+					- data->start_time, data->philos[i].id);
 				data->is_running = 0;
 				pthread_mutex_unlock(&data->death_mutex);
 				pthread_mutex_unlock(&data->print_mutex);
@@ -85,7 +84,8 @@ int	create_threads(t_data *data)
 	while (i < data->philo_count)
 	{
 		philo = data->philos[i];
-        if (pthread_create(&data->philos[i].thread, NULL, routine, &data->philos[i]) != 0)
+		if (pthread_create(&data->philos[i].thread, NULL, \
+		routine, &data->philos[i]) != 0)
 			return (my_error("an error occured while creating a philo thread"));
 		i++;
 	}

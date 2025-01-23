@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:57:39 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/21 14:51:35 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 02:30:49 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 static void	clear_philos(t_data *data)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (i < data->philo_count)
 	{
 		pthread_join(data->philos[i].thread, NULL);
@@ -44,7 +46,7 @@ int	clear(t_data *data)
 
 	i = 0;
 	if (!data)
-        return (1);
+		return (1);
 	if (data->philos)
 		clear_philos(data);
 	if (data->mutex_init)

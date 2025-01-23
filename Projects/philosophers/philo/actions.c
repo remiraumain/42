@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 23:29:51 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/23 01:39:52 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 02:23:07 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static void	print_action(t_philo *philo, char *action)
 {
 	pthread_mutex_lock(&philo->data->print_mutex);
 	if (philo->data->is_running)
-		printf("%ld %d %s\n", get_time_in_ms() - philo->data->start_time, philo->id, action);
+		printf("%ld %d %s\n", get_time_in_ms() \
+		- philo->data->start_time, philo->id, action);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
@@ -31,7 +32,7 @@ void	take_forks(t_philo *philo)
 void	drop_forks(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->left_fork);
-    pthread_mutex_unlock(philo->right_fork);
+	pthread_mutex_unlock(philo->right_fork);
 }
 
 void	eat(t_philo *philo)
@@ -50,4 +51,3 @@ void	sleep_and_think(t_philo *philo)
 	usleep(philo->data->time_to_sleep * 1000);
 	print_action(philo, "is thinking");
 }
-
