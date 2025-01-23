@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:05:34 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/17 18:15:32 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:42:55 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void	move(t_game *data, int y, int x)
 		&& data->player_pos.y == data->exit_pos.y)
 	{
 		ft_printf("Congratulation ! 🎉\n");
+		ft_printf("Total collected: %d aliens 👾 in %d spaceship's moves 🚀\n",
+			data->collected, data->move_count);
 		on_destroy(data);
 	}
 }

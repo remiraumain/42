@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:33:57 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/17 18:10:07 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:55:01 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	start_game(char **map)
 	data.size = 64;
 	data.mlx = mlx_init();
 	if (!data.mlx)
+	{
+		error("MLX init failed");
 		return ;
+	}
 	data.map = map;
 	data.exit_pos = find(map, 'E');
 	data.player_pos = find(map, 'P');
