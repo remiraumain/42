@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/23 02:22:01 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 10:56:12 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ int	create_threads(t_data *data)
 	while (i < data->philo_count)
 	{
 		philo = data->philos[i];
-		if (pthread_create(&data->philos[i].thread, NULL, \
-		routine, &data->philos[i]) != 0)
+		if (pthread_create(&philo.thread, NULL, routine, &philo) != 0)
 			return (my_error("an error occured while creating a philo thread"));
 		i++;
 	}
