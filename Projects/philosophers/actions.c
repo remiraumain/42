@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 23:29:51 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/21 17:49:19 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 01:39:52 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 
 static void	print_action(t_philo *philo, char *action)
 {
-	int	*running;
-
-	pthread_mutex_lock(&philo->data->is_running_mutex);
-	running = &philo->data->is_running;
-	pthread_mutex_unlock(&philo->data->is_running_mutex);
 	pthread_mutex_lock(&philo->data->print_mutex);
-	if (*running)
+	if (philo->data->is_running)
 		printf("%ld %d %s\n", get_time_in_ms() - philo->data->start_time, philo->id, action);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
@@ -44,7 +39,7 @@ void	eat(t_philo *philo)
 	if (!(philo->left_fork && philo->right_fork))
 		return ;
 	print_action(philo, "is eating");
-	usleep(philo->data->time_to_eat);
+	usleep(philo->data->time_to_eat * 1000);
 	philo->meals_eaten++;
 	philo->last_meal_time = get_time_in_ms();
 }
@@ -52,7 +47,7 @@ void	eat(t_philo *philo)
 void	sleep_and_think(t_philo *philo)
 {
 	print_action(philo, "is sleeping");
-	usleep(philo->data->time_to_sleep);
+	usleep(philo->data->time_to_sleep * 1000);
 	print_action(philo, "is thinking");
 }
 

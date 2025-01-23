@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/21 17:33:21 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/23 01:42:05 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ static void	*routine(void *arg)
 	int		*running;
 
 	philo = (t_philo *)arg;
-	pthread_mutex_lock(&philo->data->is_running_mutex);
 	running = &philo->data->is_running;
-	pthread_mutex_unlock(&philo->data->is_running_mutex);
 	if (philo->id % 2 == 0)
-		usleep(philo->data->time_to_eat);
+		usleep(philo->data->time_to_eat * 1000);
 	while (*running)
 	{
         take_forks(philo);
@@ -52,34 +50,28 @@ static void	monitor_routine(t_data *data)
 {
 	int		i;
 	long	since_last_meal;
-	int		*running;
 
-	pthread_mutex_lock(&data->is_running_mutex);
-	running = &data->is_running;
-	pthread_mutex_unlock(&data->is_running_mutex);
-    while (*running)
+    while (data->is_running)
 	{
-		pthread_mutex_lock(&data->is_running_mutex);
-		*running = has_eaten_enough(data);
-		pthread_mutex_unlock(&data->is_running_mutex);
+		data->is_running = has_eaten_enough(data);
 		i = 0;
 		while (i < data->philo_count)
 		{
 			since_last_meal = get_time_in_ms() - data->philos[i].last_meal_time;
-			// printf("%ld / %d diead : %d\n", since_last_meal, data->time_to_die, since_last_meal > data->time_to_die);
 			if (since_last_meal > data->time_to_die)
 			{
 				pthread_mutex_lock(&data->print_mutex);
-				printf("%ld %d died\n", get_time_in_ms() - data->start_time, data->philos[i].id);
+				pthread_mutex_lock(&data->death_mutex);
+				if (data->is_running)
+					printf("%ld %d died\n", get_time_in_ms() - data->start_time, data->philos[i].id);
+				data->is_running = 0;
+				pthread_mutex_unlock(&data->death_mutex);
 				pthread_mutex_unlock(&data->print_mutex);
-				pthread_mutex_lock(&data->is_running_mutex);
-				*running = 0;
-				pthread_mutex_unlock(&data->is_running_mutex);
 				return ;
 			}
 			i++;
 		}
-		usleep(data->time_to_eat);
+		usleep(1000);
 	}
 }
 
