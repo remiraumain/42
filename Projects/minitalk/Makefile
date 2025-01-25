@@ -6,7 +6,7 @@
 #    By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 21:26:30 by rraumain          #+#    #+#              #
-#    Updated: 2025/01/22 16:51:59 by rraumain         ###   ########.fr        #
+#    Updated: 2025/01/25 06:26:29 by rraumain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,9 @@ CLIENT_BONUS_OBJ =	$(CLIENT_BONUS_SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): libft ft_printf server client
+$(NAME): server client
 
-bonus: libft ft_printf server_bonus client_bonus
+bonus: server_bonus client_bonus
 
 server: $(SERVER_OBJ) libft ft_printf
 	$(CC) $(CFLAGS) $(SERVER_OBJ) -Llibft -lft -Lft_printf -lftprintf -o server
@@ -42,11 +42,11 @@ server_bonus: $(SERVER_BONUS_OBJ) libft ft_printf
 client_bonus: $(CLIENT_BONUS_OBJ) libft ft_printf
 	$(CC) $(CFLAGS) $(CLIENT_BONUS_OBJ) -Llibft -lft -Lft_printf -lftprintf -o client_bonus
 
-libft:
-	@$(MAKE) -C libft
+libft: libft/libft.a
+	@$(MAKE) -C libft --no-print-directory all
 
-ft_printf:
-	@$(MAKE) -C ft_printf
+ft_printf: ft_printf/libftprintf.a
+	@$(MAKE) -C ft_printf --no-print-directory all
 
 clean:
 	@$(MAKE) clean -C libft
@@ -60,4 +60,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re server client libft ft_printf
+.PHONY: all clean fclean re libft/libft.a ft_printf/libftprintf.a
