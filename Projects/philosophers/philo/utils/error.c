@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:55:53 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/16 23:51:44 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/25 11:11:46 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int	my_error(char *message)
 	write(1, "Error: ", 7);
 	write(1, message, len);
 	write(1, "\n", 1);
-	return (1);
+	return (2);
 }

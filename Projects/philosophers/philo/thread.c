@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/23 12:05:11 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/25 11:11:37 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 static void	*routine(void *arg)
 {
 	t_philo	*philo;
-	int		*running;
 
 	philo = (t_philo *)arg;
-	running = &philo->data->is_running;
 	if (philo->id % 2 == 0)
 		usleep(philo->data->time_to_eat * 1000);
-	while (*running)
+	while (philo->data->is_running)
 	{
 		take_forks(philo);
 		eat(philo);
@@ -51,30 +49,30 @@ static void	monitor_routine(t_data *data)
 
 	while (data->is_running)
 	{
-		data->is_running = has_eaten_enough(data);
 		i = 0;
-		while (i < data->philo_count)
+		while (i++ < data->philo_count)
 		{
-			if (get_time_in_ms() - data->philos[i].last_meal_time \
+			pthread_mutex_lock(&data->print_mutex);
+			if (get_time_in_ms() - data->philos[i - 1].last_meal_time \
 			> data->time_to_die)
 			{
 				pthread_mutex_lock(&data->death_mutex);
 				if (data->is_running)
 					printf("%ld %d died\n", get_time_in_ms() \
-					- data->start_time, data->philos[i].id);
-				pthread_mutex_lock(&data->print_mutex);
+					- data->start_time, data->philos[i - 1].id);
 				data->is_running = 0;
-				pthread_mutex_unlock(&data->print_mutex);
 				pthread_mutex_unlock(&data->death_mutex);
+				pthread_mutex_unlock(&data->print_mutex);
 				return ;
 			}
-			i++;
+			pthread_mutex_unlock(&data->print_mutex);
 		}
+		data->is_running = has_eaten_enough(data);
 		usleep(1000);
 	}
 }
 
-int	create_threads(t_data *data)
+int	start_simu(t_data *data)
 {
 	int		i;
 
@@ -84,9 +82,15 @@ int	create_threads(t_data *data)
 	{
 		if (pthread_create(&data->philos[i].thread, NULL, routine, \
 		&data->philos[i]) != 0)
+		{
+			data->is_running = 0;
 			return (my_error("an error occured while creating a philo thread"));
+		}
 		i++;
 	}
 	monitor_routine(data);
+	while (i--)
+		printf("Philo %d ate %d meals (time between last meal: %ld)\n", data->philos[i].id, \
+		data->philos[i].meals_eaten, get_time_in_ms() - data->philos[i].last_meal_time);
 	return (0);
 }
