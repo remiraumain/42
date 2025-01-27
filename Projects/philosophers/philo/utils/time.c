@@ -6,11 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:32:36 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/23 02:29:19 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:19:28 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 long	get_time_in_ms(void)
 {

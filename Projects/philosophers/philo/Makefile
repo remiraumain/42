@@ -6,7 +6,7 @@
 #    By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 21:26:30 by rraumain          #+#    #+#              #
-#    Updated: 2025/01/25 11:11:51 by rraumain         ###   ########.fr        #
+#    Updated: 2025/01/27 10:00:41 by rraumain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c parse.c init.c thread.c actions.c
 SRC_UTILS = $(addprefix utils/, cleanup.c error.c string.c time.c)
-INCLUDES = -I/utils
+INCLUDES = -Iutils -I.
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o) $(SRC_UTILS:.c=.o))

@@ -6,11 +6,11 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:57:39 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/27 09:52:14 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:19:40 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 static void	clear_philos(t_data *data)
 {
@@ -47,6 +47,6 @@ int	clear(t_data *data)
 		clear_philos(data);
 	if (data->mutex_init)
 		clear_mutex(data);
-	my_memset(data, 0, sizeof(t_data));
+	memset(data, 0, sizeof(t_data));
 	return (1);
 }

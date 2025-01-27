@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:50:13 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/20 21:38:59 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:07:31 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	parse(int ac, char **av, t_data *data)
 	int	arg;
 
 	if (ac < 5 || ac > 6)
-		return (my_error("invalid number of args."));
+		return (my_error("invalid args: ./philo nb_philos time_to_die time_to_eat \
+time_to_sleep [nb_meals]"));
 	i = 1;
 	while (av[i])
 	{
