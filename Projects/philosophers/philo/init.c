@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:41:39 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/23 02:22:31 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:51:46 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	init(t_data *data)
 		i++;
 	}
 	pthread_mutex_init(&data->print_mutex, NULL);
-	pthread_mutex_init(&data->death_mutex, NULL);
 	data->mutex_init = 1;
 	data->is_running = 1;
 	return (0);

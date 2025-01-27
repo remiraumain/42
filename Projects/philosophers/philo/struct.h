@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 23:17:43 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/23 02:28:13 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:50:40 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_data
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex;
-	pthread_mutex_t	death_mutex;
 	int				mutex_init;
 }	t_data;
 

@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:57:39 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/23 10:56:57 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:52:14 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	clear_mutex(t_data *data)
 	}
 	free(data->forks);
 	pthread_mutex_destroy(&data->print_mutex);
-	pthread_mutex_destroy(&data->death_mutex);
 }
 
 int	clear(t_data *data)
