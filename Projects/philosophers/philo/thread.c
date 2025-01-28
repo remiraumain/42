@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/27 17:23:35 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/28 21:34:15 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
 		usleep(philo->data->time_to_eat * 1000);
-	while (philo->data->is_running)
+	while (philo->data->is_running && philo->data->philo_count > 1)
 	{
 		take_forks(philo);
 		eat(philo);
@@ -56,8 +56,7 @@ static void	monitor_routine(t_data *data)
 			if (get_time_in_ms() - data->philos[i].last_meal_time \
 			> data->time_to_die)
 			{
-				if (data->is_running)
-					printf("%ld %d died\n", get_time_in_ms() \
+				printf("%ld %d died\n", get_time_in_ms() \
 					- data->start_time, data->philos[i].id);
 				data->is_running = 0;
 				pthread_mutex_unlock(&data->print_mutex);
@@ -65,8 +64,10 @@ static void	monitor_routine(t_data *data)
 			}
 			i++;
 		}
-		pthread_mutex_unlock(&data->print_mutex);
 		data->is_running = has_eaten_enough(data);
+		pthread_mutex_unlock(&data->print_mutex);
+		if (data->is_running == 0)
+			return ;
 		usleep(1000);
 	}
 }
@@ -83,7 +84,6 @@ int	start_simu(t_data *data)
 		&data->philos[i]) != 0)
 		{
 			data->is_running = 0;
-			
 			return (my_error("an error occured while creating a philo thread"));
 		}
 		i++;

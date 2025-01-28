@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:50:13 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/27 10:07:31 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:55:03 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ time_to_sleep [nb_meals]"));
 		add_args_to_data(arg, i, data);
 		i++;
 	}
+	if (ac == 5)
+		data->nb_of_meals = 1;
 	if (data->philo_count < 1)
 		return (my_error("must have at least one philosopher"));
 	return (0);
