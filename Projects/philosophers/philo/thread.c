@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/27 09:54:30 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:23:35 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static void	monitor_routine(t_data *data)
 	while (data->is_running)
 	{
 		i = 0;
+		pthread_mutex_lock(&data->print_mutex);
 		while (i < data->philo_count)
 		{
-			pthread_mutex_lock(&data->print_mutex);
 			if (get_time_in_ms() - data->philos[i].last_meal_time \
 			> data->time_to_die)
 			{
@@ -63,9 +63,9 @@ static void	monitor_routine(t_data *data)
 				pthread_mutex_unlock(&data->print_mutex);
 				return ;
 			}
-			pthread_mutex_unlock(&data->print_mutex);
 			i++;
 		}
+		pthread_mutex_unlock(&data->print_mutex);
 		data->is_running = has_eaten_enough(data);
 		usleep(1000);
 	}
@@ -83,6 +83,7 @@ int	start_simu(t_data *data)
 		&data->philos[i]) != 0)
 		{
 			data->is_running = 0;
+			
 			return (my_error("an error occured while creating a philo thread"));
 		}
 		i++;
