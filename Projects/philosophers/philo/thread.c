@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/28 21:34:15 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/01/29 03:36:29 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@ static void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	if (philo->id % 2 == 0)
-		usleep(philo->data->time_to_eat * 1000);
-	while (philo->data->is_running && philo->data->philo_count > 1)
+	while (philo->data->philo_count > 1)
 	{
+		pthread_mutex_lock(&philo->data->print_mutex);
+		if (!philo->data->is_running)
+		{
+			pthread_mutex_unlock(&philo->data->print_mutex);
+			return (NULL);
+		}
+		pthread_mutex_unlock(&philo->data->print_mutex);
 		take_forks(philo);
 		eat(philo);
 		drop_forks(philo);
@@ -29,18 +34,24 @@ static void	*routine(void *arg)
 	return (NULL);
 }
 
-static int	has_eaten_enough(t_data *data)
+static int	is_finished(t_data *data)
 {
 	int	i;
 
 	i = 0;
+	pthread_mutex_lock(&data->print_mutex);
 	while (i < data->philo_count)
 	{
 		if (data->philos[i].meals_eaten < data->nb_of_meals)
-			return (1);
+		{
+			pthread_mutex_unlock(&data->print_mutex);
+			return (0);
+		}
 		i++;
 	}
-	return (0);
+	data->is_running = 0;
+	pthread_mutex_unlock(&data->print_mutex);
+	return (1);
 }
 
 static void	monitor_routine(t_data *data)
@@ -64,9 +75,8 @@ static void	monitor_routine(t_data *data)
 			}
 			i++;
 		}
-		data->is_running = has_eaten_enough(data);
 		pthread_mutex_unlock(&data->print_mutex);
-		if (data->is_running == 0)
+		if (is_finished(data))
 			return ;
 		usleep(1000);
 	}
