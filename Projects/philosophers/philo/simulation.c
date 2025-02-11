@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/02/11 12:14:21 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:08:49 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static void	monitor(t_data *data)
 			pthread_mutex_unlock(&data->running_mutex);
 			return ;
 		}
-		allow_philos_to_eat(data);
+		round_update(data);
 		usleep(500);
 	}
 }
@@ -107,6 +107,7 @@ int	simulation(t_data *data)
 
 	data->start_time = get_time_in_ms();
 	data->is_running = 1;
+	data->current_round = 0;
 	i = 0;
 	while (i < data->philo_count)
 	{

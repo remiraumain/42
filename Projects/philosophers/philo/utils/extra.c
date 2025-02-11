@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:21:13 by rraumain          #+#    #+#             */
-/*   Updated: 2025/02/11 12:59:28 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:25:48 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,6 @@ void	died(t_philo *philo)
 	pthread_mutex_lock(&data->print_mutex);
 	printf("%ld %d died\n", get_time_in_ms() - data->start_time, philo->id);
 	pthread_mutex_unlock(&data->print_mutex);
-}
-
-void	remove_id_from_array(int *array, int id)
-{
-	int	i;
-
-	i = 0;
-	while (array[i] != 0)
-	{
-		if (array[i] == id)
-		{
-			while (array[i] != 0)
-			{
-				array[i] = array[i + 1];
-				i++;
-			}
-			return ;
-		}
-		i++;
-	}
 }
 
 void	set_neighbors(t_philo *philo, t_philo **left, t_philo **right)
@@ -69,23 +49,30 @@ void	set_neighbors(t_philo *philo, t_philo **left, t_philo **right)
 	}
 }
 
-int	is_next_to_allowed(t_philo *philo)
+int	is_in_current_round(t_philo *philo, int current_round)
 {
-	t_philo	*left_philo;
-	t_philo	*right_philo;
-	int		left_allowed;
-	int		right_allowed;
+	if (philo->finished)
+		return (0);
+	if (current_round == 0 && (philo->id % 2) == 0)
+		return (1);
+	if (current_round == 1 && (philo->id % 2) == 1)
+		return (1);
+	return (0);
+}
 
-	left_philo = NULL;
-	right_philo = NULL;
-	left_allowed = 0;
-	right_allowed = 0;
-	set_neighbors(philo, &left_philo, &right_philo);
-	pthread_mutex_lock(&left_philo->data_mutex);
-	left_allowed = left_philo->allowed;
-	pthread_mutex_unlock(&left_philo->data_mutex);
-	pthread_mutex_lock(&right_philo->data_mutex);
-	right_allowed = right_philo->allowed;
-	pthread_mutex_unlock(&right_philo->data_mutex);
-	return (left_allowed || right_allowed);
+void	reset_ate_flags(t_data *data)
+{
+	int		i;
+	t_philo	*philo;
+
+	i = 0;
+	while (i < data->philo_count)
+	{
+		philo = &data->philos[i];
+		pthread_mutex_lock(&philo->data_mutex);
+		if (is_in_current_round(philo, data->current_round))
+			philo->ate_this_round = 0;
+		pthread_mutex_unlock(&philo->data_mutex);
+		i++;
+	}
 }

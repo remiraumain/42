@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:50:26 by rraumain          #+#    #+#             */
-/*   Updated: 2025/02/11 12:59:44 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:28:23 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ long			get_time_in_ms(void);
 
 //	Extra
 void			died(t_philo *philo);
-void			remove_id_from_array(int *array, int id);
 void			set_neighbors(t_philo *philo, t_philo **left, t_philo **right);
-int				is_next_to_allowed(t_philo *philo);
+int				is_in_current_round(t_philo *philo, int current_round);
+void			reset_ate_flags(t_data *data);
 
 //	Priority
-void			allow_philos_to_eat(t_data *data);
+void			round_update(t_data *data);
 
 #endif

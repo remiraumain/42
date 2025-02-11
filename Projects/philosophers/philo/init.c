@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:41:39 by rraumain          #+#    #+#             */
-/*   Updated: 2025/02/11 12:11:25 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:09:03 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int	intit_philo(int i, t_philo *philo, t_data *data)
 	philo->last_meal_time = 0;
 	philo->meals_eaten = 0;
 	philo->allowed = 0;
+	philo->ate_this_round = 0;
 	philo->finished = 0;
 	philo->data = data;
 	if (pthread_mutex_init(&data->forks[i], NULL)

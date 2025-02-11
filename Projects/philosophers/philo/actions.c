@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 23:29:51 by rraumain          #+#    #+#             */
-/*   Updated: 2025/02/11 12:14:46 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:28:20 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	eat(t_philo *philo)
 	usleep(philo->data->time_to_eat * 1000);
 	pthread_mutex_lock(&philo->data_mutex);
 	philo->allowed = 0;
+	philo->ate_this_round = 1;
 	philo->meals_eaten++;
 	philo->last_meal_time = get_time_in_ms();
 	if (philo->meals_eaten >= philo->data->nb_of_meals)
