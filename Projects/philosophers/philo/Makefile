@@ -6,16 +6,16 @@
 #    By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 21:26:30 by rraumain          #+#    #+#              #
-#    Updated: 2025/01/27 10:00:41 by rraumain         ###   ########.fr        #
+#    Updated: 2025/02/11 12:09:47 by rraumain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = main.c parse.c init.c thread.c actions.c
-SRC_UTILS = $(addprefix utils/, cleanup.c error.c string.c time.c)
+SRC = main.c parse.c init.c simulation.c actions.c
+SRC_UTILS = $(addprefix utils/, cleanup.c error.c string.c time.c extra.c philo_priority.c)
 INCLUDES = -Iutils -I.
 
 OBJ_DIR = obj

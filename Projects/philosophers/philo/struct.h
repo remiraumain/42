@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 23:17:43 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/27 09:50:40 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/01 07:44:52 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ typedef struct s_philo
 	int				id;
 	int				meals_eaten;
 	long			last_meal_time;
+	int				allowed;
+	int				finished;
 	pthread_t		thread;
+	pthread_mutex_t	data_mutex;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	t_data			*data;
-	int				has_priority;
 }	t_philo;
 
 typedef struct s_data
@@ -37,11 +39,13 @@ typedef struct s_data
 	int				time_to_sleep;
 	int				nb_of_meals;
 	int				is_running;
+	int				mutex_init;
+	int				philo_count_init;
 	long			start_time;
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex;
-	int				mutex_init;
+	pthread_mutex_t	running_mutex;
 }	t_data;
 
 #endif

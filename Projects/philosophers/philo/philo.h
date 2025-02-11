@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:51:37 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/27 10:19:19 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:06:17 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 int		parse(int ac, char **av, t_data *data);
 int		init(t_data *data);
-int		start_simu(t_data *data);
+int		simulation(t_data *data);
 //	ACTIONS
 void	take_forks(t_philo *philo);
 void	drop_forks(t_philo *philo);

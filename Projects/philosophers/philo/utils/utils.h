@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:50:26 by rraumain          #+#    #+#             */
-/*   Updated: 2025/01/27 10:00:14 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/11 12:10:20 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,12 @@ int				my_error(char *message);
 
 //	Time
 long			get_time_in_ms(void);
+
+//	Thread
+void			died(t_philo *philo);
+void			remove_id_from_array(int *array, int id);
+
+//	Priority
+void			allow_philos_to_eat(t_data *data);
 
 #endif
