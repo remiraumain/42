@@ -6,62 +6,19 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:54:28 by rraumain          #+#    #+#             */
-/*   Updated: 2025/02/11 12:15:37 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/11 12:58:55 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static void	set_neighbors(t_philo *philo, t_philo **left, t_philo **right)
-{
-	t_data	*data;
-	int		id;
-
-	data = philo->data;
-	id = philo->id;
-	if (id == 1)
-	{
-		*left = &data->philos[data->philo_count - 1];
-		*right = &data->philos[1];
-	}
-	else if (id == data->philo_count)
-	{
-		*left = &data->philos[id - 2];
-		*right = &data->philos[0];
-	}
-	else
-	{
-		*left = &data->philos[id - 2];
-		*right = &data->philos[id];
-	}
-}
-
-static int	is_next_to_allowed(t_philo *philo)
-{
-	t_philo	*left_philo;
-	t_philo	*right_philo;
-	int		left_allowed;
-	int		right_allowed;
-
-	left_philo = NULL;
-	right_philo = NULL;
-	left_allowed = 0;
-	right_allowed = 0;
-	set_neighbors(philo, &left_philo, &right_philo);
-	pthread_mutex_lock(&left_philo->data_mutex);
-	left_allowed = left_philo->allowed;
-	pthread_mutex_unlock(&left_philo->data_mutex);
-	pthread_mutex_lock(&right_philo->data_mutex);
-	right_allowed = right_philo->allowed;
-	pthread_mutex_unlock(&right_philo->data_mutex);
-	return (left_allowed || right_allowed);
-}
 
 static int	allow_count(t_data *data, int *to_allow)
 {
 	int		i;
 	int		j;
 	t_philo	*philo;
+	int		finished;
+	int		allowed;
 
 	i = 0;
 	j = 0;
@@ -69,40 +26,58 @@ static int	allow_count(t_data *data, int *to_allow)
 	{
 		philo = &data->philos[i];
 		pthread_mutex_lock(&philo->data_mutex);
-		if (!philo->finished && !philo->allowed && !is_next_to_allowed(philo))
+		finished = philo->finished;
+		allowed = philo->allowed;
+		pthread_mutex_unlock(&philo->data_mutex);
+		if (!finished && !allowed && !is_next_to_allowed(philo))
 		{
 			to_allow[j] = philo->id;
 			j++;
 		}
-		pthread_mutex_unlock(&philo->data_mutex);
 		i++;
 	}
 	to_allow[j] = 0;
 	return (j);
 }
 
+static t_philo	*check_candidate(t_data *data, t_philo *most_hungry, int id)
+{
+	t_philo	*candidate;
+	int		finished;
+	int		allowed;
+	int		candidate_lmt;
+	int		most_hungry_lmt;
+
+	candidate = &data->philos[id - 1];
+	pthread_mutex_lock(&candidate->data_mutex);
+	finished = candidate->finished;
+	allowed = candidate->allowed;
+	candidate_lmt = candidate->last_meal_time;
+	pthread_mutex_unlock(&candidate->data_mutex);
+	if (finished || allowed || is_next_to_allowed(candidate))
+		return (most_hungry);
+	if (!most_hungry)
+		return (candidate);
+	pthread_mutex_lock(&most_hungry->data_mutex);
+	most_hungry_lmt = most_hungry->last_meal_time;
+	pthread_mutex_unlock(&most_hungry->data_mutex);
+	if (candidate_lmt < most_hungry_lmt)
+		return (candidate);
+	return (most_hungry);
+}
+
 static t_philo	*pick_most_hungry(t_data *data, int *to_allow)
 {
-	t_philo	*current;
 	t_philo	*most_hungry;
 	int		i;
-	int		index;
+	int		id;
 
 	most_hungry = NULL;
 	i = 0;
 	while (to_allow[i] != 0)
 	{
-		index = to_allow[i] - 1;
-		current = &data->philos[index];
-		pthread_mutex_lock(&current->data_mutex);
-		if (!current->finished && !current->allowed
-			&& !is_next_to_allowed(current))
-		{
-			if (!most_hungry
-				|| current->last_meal_time < most_hungry->last_meal_time)
-				most_hungry = current;
-		}
-		pthread_mutex_unlock(&current->data_mutex);
+		id = to_allow[i];
+		most_hungry = check_candidate(data, most_hungry, id);
 		i++;
 	}
 	return (most_hungry);
