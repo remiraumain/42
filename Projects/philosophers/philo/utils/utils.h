@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:50:26 by rraumain          #+#    #+#             */
-/*   Updated: 2025/02/11 15:28:23 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:44:57 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ long			get_time_in_ms(void);
 //	Extra
 void			died(t_philo *philo);
 void			set_neighbors(t_philo *philo, t_philo **left, t_philo **right);
-int				is_in_current_round(t_philo *philo, int current_round);
+int				is_in_current_round(int id, int finished, int current_round);
+int				all_in_round_ate(t_data *data);
 void			reset_ate_flags(t_data *data);
 
 //	Priority

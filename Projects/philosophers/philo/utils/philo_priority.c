@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:54:28 by rraumain          #+#    #+#             */
-/*   Updated: 2025/02/11 15:28:40 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:44:54 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,55 +35,60 @@ static int	is_next_to_allowed(t_philo *philo)
 	return (left_allowed || right_allowed);
 }
 
+static int	is_eligible_to_most_hungry(t_data *data, t_philo *philo,
+long *meal_time)
+{
+	int	id;
+	int	finished;
+	int	allowed;
+	int	ate;
+
+	finished = 0;
+	allowed = 0;
+	ate = 0;
+	pthread_mutex_lock(&philo->data_mutex);
+	id = philo->id;
+	finished = philo->finished;
+	allowed = philo->allowed;
+	ate = philo->ate_this_round;
+	*meal_time = philo->last_meal_time;
+	pthread_mutex_unlock(&philo->data_mutex);
+	if (is_in_current_round(id, finished, data->current_round)
+		&& !finished
+		&& !allowed
+		&& !ate
+		&& !is_next_to_allowed(philo))
+		return (1);
+	return (0);
+}
+
 static t_philo	*pick_most_hungry_in_round(t_data *data)
 {
 	t_philo	*most_hungry;
-	t_philo	*philo;
 	int		i;
+	long	most_hungry_lmt;
+	long	philo_lmt;
 
 	most_hungry = NULL;
 	i = 0;
 	while (i < data->philo_count)
 	{
-		philo = &data->philos[i];
-		pthread_mutex_lock(&philo->data_mutex);
-		if (is_in_current_round(philo, data->current_round)
-			&& !philo->finished
-			&& !philo->allowed
-			&& !philo->ate_this_round
-			&& !is_next_to_allowed(philo))
+		if (is_eligible_to_most_hungry(data, &data->philos[i], &philo_lmt))
 		{
 			if (!most_hungry)
-				most_hungry = philo;
-			else if (philo->last_meal_time < most_hungry->last_meal_time)
-				most_hungry = philo;
+				most_hungry = &data->philos[i];
+			else
+			{
+				pthread_mutex_lock(&most_hungry->data_mutex);
+				most_hungry_lmt = most_hungry->last_meal_time;
+				pthread_mutex_unlock(&most_hungry->data_mutex);
+				if (philo_lmt < most_hungry_lmt)
+					most_hungry = &data->philos[i];
+			}
 		}
-		pthread_mutex_unlock(&philo->data_mutex);
 		i++;
 	}
 	return (most_hungry);
-}
-
-static int	all_in_round_ate(t_data *data)
-{
-	int		i;
-	t_philo	*philo;
-
-	i = 0;
-	while (i < data->philo_count)
-	{
-		philo = &data->philos[i];
-		pthread_mutex_lock(&philo->data_mutex);
-		if (is_in_current_round(philo, data->current_round)
-			&& philo->ate_this_round == 0)
-		{
-			pthread_mutex_unlock(&philo->data_mutex);
-			return (0);
-		}
-		pthread_mutex_unlock(&philo->data_mutex);
-		i++;
-	}
-	return (1);
 }
 
 static void	authorize_one_in_round(t_data *data)
