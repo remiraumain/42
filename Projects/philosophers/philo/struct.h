@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 23:17:43 by rraumain          #+#    #+#             */
-/*   Updated: 2025/02/11 15:08:43 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:07:20 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_philo
 	int				allowed;
 	int				ate_this_round;
 	int				finished;
+	int				thinking;
+	int				philo_mutex_init;
 	pthread_t		thread;
 	pthread_mutex_t	data_mutex;
 	pthread_mutex_t	*left_fork;
@@ -42,6 +44,7 @@ typedef struct s_data
 	int				is_running;
 	int				mutex_init;
 	int				philo_count_init;
+	int				thread_count_init;
 	long			start_time;
 	int				current_round;
 	t_philo			*philos;

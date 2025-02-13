@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 22:50:26 by rraumain          #+#    #+#             */
-/*   Updated: 2025/02/11 16:44:57 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:11:57 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ int				my_atoi(char *arg);
 int				clear(t_data *data);
 
 //	Error
-int				my_error(char *message);
+void			my_error(char *message);
 
 //	Time
 long			get_time_in_ms(void);
 
 //	Extra
-void			died(t_philo *philo);
 void			set_neighbors(t_philo *philo, t_philo **left, t_philo **right);
 int				is_in_current_round(int id, int finished, int current_round);
 int				all_in_round_ate(t_data *data);

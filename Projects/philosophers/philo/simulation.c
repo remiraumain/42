@@ -6,7 +6,7 @@
 /*   By: rraumain <rraumain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:21:55 by rraumain          #+#    #+#             */
-/*   Updated: 2025/02/11 15:08:49 by rraumain         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:15:17 by rraumain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static void	actions(t_philo *philo)
 	take_forks(philo);
 	eat(philo);
 	drop_forks(philo);
-	sleep_and_think(philo);
+	psleep(philo);
 }
 
 static void	*routine(void *arg)
 {
 	t_philo	*philo;
 	int		running;
-	int		finished;
 	int		allowed;
+	int		thinking;
 
 	philo = (t_philo *)arg;
 	while (1)
@@ -34,13 +34,15 @@ static void	*routine(void *arg)
 		running = philo->data->is_running;
 		pthread_mutex_unlock(&philo->data->running_mutex);
 		pthread_mutex_lock(&philo->data_mutex);
-		finished = philo->finished;
 		allowed = philo->allowed;
+		thinking = philo->thinking;
 		pthread_mutex_unlock(&philo->data_mutex);
-		if (!running || finished)
+		if (!running)
 			return (NULL);
 		if (allowed)
 			actions(philo);
+		else if (!thinking)
+			think(philo);
 		usleep(500);
 	}
 }
@@ -64,7 +66,7 @@ static void	check_philos(t_data *data, int *finished_count)
 			(*finished_count)++;
 		else
 		{
-			if (last_meal_time >= data->time_to_die)
+			if (last_meal_time > data->time_to_die)
 			{
 				died(philo);
 				return ;
@@ -100,7 +102,7 @@ static void	monitor(t_data *data)
 	}
 }
 
-int	simulation(t_data *data)
+void	simulation(t_data *data)
 {
 	int		i;
 	t_philo	*philo;
@@ -109,9 +111,9 @@ int	simulation(t_data *data)
 	data->is_running = 1;
 	data->current_round = 0;
 	i = 0;
-	while (i < data->philo_count)
+	while (i++ < data->philo_count)
 	{
-		philo = &data->philos[i];
+		philo = &data->philos[i - 1];
 		philo->last_meal_time = get_time_in_ms();
 		if (philo->id % 2 == 0)
 			philo->allowed = 1;
@@ -120,10 +122,11 @@ int	simulation(t_data *data)
 			pthread_mutex_lock(&data->running_mutex);
 			data->is_running = 0;
 			pthread_mutex_unlock(&data->running_mutex);
-			return (my_error("error creating philo thread"));
+			data->thread_count_init = i - 1;
+			my_error("error creating philo thread");
+			return ;
 		}
-		i++;
 	}
+	data->thread_count_init = --i;
 	monitor(data);
-	return (0);
 }
